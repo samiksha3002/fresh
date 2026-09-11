@@ -1,5 +1,3 @@
-// Target path in your repo:
-// backend/apps/storefront/src/app/[countryCode]/(main)/categories/[...category]/page.tsx
 
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -45,11 +43,6 @@ export async function generateStaticParams() {
 
     return staticParams ?? []
   } catch (error) {
-    // The Medusa backend wasn't reachable at build time (wrong/missing
-    // NEXT_PUBLIC_MEDUSA_BACKEND_URL, or the server was down/still deploying).
-    // Skip static generation for this route instead of failing the whole
-    // build — every category page will simply be rendered on-demand
-    // at request time (dynamicParams defaults to true).
     console.warn(
       "generateStaticParams (categories) skipped — could not reach Medusa backend at build time:",
       error
@@ -99,3 +92,109 @@ export default async function CategoryPage(props: Props) {
     />
   )
 }
+EOF
+
+# 3. Write the CORRECT collections fix into the collections route.
+cat > 'backend/apps/storefront/src/app/[countryCode]/(main)/collections/[handle]/page.tsx' << 'EOF'
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+
+import { getCollectionByHandle, listCollections } from "@lib/data/collections"
+import { listRegions } from "@lib/data/regions"
+import { StoreCollection, StoreRegion } from "@medusajs/types"
+import CollectionTemplate from "@modules/collections/templates"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+
+type Props = {
+  params: Promise<{ handle: string; countryCode: string }>
+  searchParams: Promise<{
+    page?: string
+    sortBy?: SortOptions
+  }>
+}
+
+export const PRODUCT_LIMIT = 12
+
+export async function generateStaticParams() {
+  try {
+    const { collections } = await listCollections({
+      fields: "*products",
+    })
+
+    if (!collections) {
+      return []
+    }
+
+    const countryCodes = await listRegions().then(
+      (regions: StoreRegion[]) =>
+        regions
+          ?.map((r) => r.countries?.map((c) => c.iso_2))
+          .flat()
+          .filter(Boolean) as string[]
+    )
+
+    const collectionHandles = collections.map(
+      (collection: StoreCollection) => collection.handle
+    )
+
+    const staticParams = countryCodes
+      ?.map((countryCode: string) =>
+        collectionHandles.map((handle: string | undefined) => ({
+          countryCode,
+          handle,
+        }))
+      )
+      .flat()
+
+    return staticParams ?? []
+  } catch (error) {
+    console.warn(
+      "generateStaticParams (collections) skipped — could not reach Medusa backend at build time:",
+      error
+    )
+    return []
+  }
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params
+  const collection = await getCollectionByHandle(params.handle)
+
+  if (!collection) {
+    notFound()
+  }
+
+  const metadata = {
+    title: `${collection.title} | Medusa Store`,
+    description: `${collection.title} collection`,
+  } as Metadata
+
+  return metadata
+}
+
+export default async function CollectionPage(props: Props) {
+  const searchParams = await props.searchParams
+  const params = await props.params
+  const { sortBy, page } = searchParams
+
+  const collection = await getCollectionByHandle(params.handle).then(
+    (collection: StoreCollection) => collection
+  )
+
+  if (!collection) {
+    notFound()
+  }
+
+  return (
+    <CollectionTemplate
+      collection={collection}
+      page={page}
+      sortBy={sortBy}
+      countryCode={params.countryCode}
+    />
+  )
+}
+EOF
+
+echo "Done. Review with: git status && git diff"
+echo "Then: git add -A && git commit -m 'Fix build-time fetch crash in categories/collections pages' && git push"
