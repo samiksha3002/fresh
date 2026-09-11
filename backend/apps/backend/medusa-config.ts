@@ -2,7 +2,7 @@ import { defineConfig } from "@medusajs/framework/utils"
 
 export default defineConfig({
   admin: {
-    disable: true,
+    disable: false,
   },
 
   projectConfig: {
