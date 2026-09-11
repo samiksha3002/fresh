@@ -1,90 +1,100 @@
-export const dynamic = 'force-dynamic';
+// Target path in your repo:
+// backend/apps/storefront/src/app/[countryCode]/(main)/categories/[...category]/page.tsx
+
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { getCollectionByHandle, listCollections } from "@lib/data/collections"
+import { getCategoryByHandle, listCategories } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
-import { StoreCollection, StoreRegion } from "@medusajs/types"
-import CollectionTemplate from "@modules/collections/templates"
+import { StoreRegion } from "@medusajs/types"
+import CategoryTemplate from "@modules/categories/templates"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 type Props = {
-  params: Promise<{ handle: string; countryCode: string }>
+  params: Promise<{ category: string[]; countryCode: string }>
   searchParams: Promise<{
-    page?: string
     sortBy?: SortOptions
+    page?: string
   }>
 }
 
-export const PRODUCT_LIMIT = 12
-
 export async function generateStaticParams() {
-  const { collections } = await listCollections({
-    fields: "*products",
-  })
+  try {
+    const product_categories = await listCategories()
 
-  if (!collections) {
+    if (!product_categories) {
+      return []
+    }
+
+    const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
+      regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
+    )
+
+    const categoryHandles = product_categories.map(
+      (category: any) => category.handle
+    )
+
+    const staticParams = countryCodes
+      ?.map((countryCode: string | undefined) =>
+        categoryHandles.map((handle: any) => ({
+          countryCode,
+          category: [handle],
+        }))
+      )
+      .flat()
+
+    return staticParams ?? []
+  } catch (error) {
+    // The Medusa backend wasn't reachable at build time (wrong/missing
+    // NEXT_PUBLIC_MEDUSA_BACKEND_URL, or the server was down/still deploying).
+    // Skip static generation for this route instead of failing the whole
+    // build — every category page will simply be rendered on-demand
+    // at request time (dynamicParams defaults to true).
+    console.warn(
+      "generateStaticParams (categories) skipped — could not reach Medusa backend at build time:",
+      error
+    )
     return []
   }
-
-  const countryCodes = await listRegions().then(
-    (regions: StoreRegion[]) =>
-      regions
-        ?.map((r) => r.countries?.map((c) => c.iso_2))
-        .flat()
-        .filter(Boolean) as string[]
-  )
-
-  const collectionHandles = collections.map(
-    (collection: StoreCollection) => collection.handle
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode: string) =>
-      collectionHandles.map((handle: string | undefined) => ({
-        countryCode,
-        handle,
-      }))
-    )
-    .flat()
-
-  return staticParams
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
-  const collection = await getCollectionByHandle(params.handle)
+  try {
+    const productCategory = await getCategoryByHandle(params.category)
 
-  if (!collection) {
+    const title = productCategory.name + " | Medusa Store"
+
+    const description = productCategory.description ?? `${title} category.`
+
+    return {
+      title: `${title} | Medusa Store`,
+      description,
+      alternates: {
+        canonical: `${params.category.join("/")}`,
+      },
+    }
+  } catch (error) {
     notFound()
   }
-
-  const metadata = {
-    title: `${collection.title} | Medusa Store`,
-    description: `${collection.title} collection`,
-  } as Metadata
-
-  return metadata
 }
 
-export default async function CollectionPage(props: Props) {
+export default async function CategoryPage(props: Props) {
   const searchParams = await props.searchParams
   const params = await props.params
   const { sortBy, page } = searchParams
 
-  const collection = await getCollectionByHandle(params.handle).then(
-    (collection: StoreCollection) => collection
-  )
+  const productCategory = await getCategoryByHandle(params.category)
 
-  if (!collection) {
+  if (!productCategory) {
     notFound()
   }
 
   return (
-    <CollectionTemplate
-      collection={collection}
-      page={page}
+    <CategoryTemplate
+      category={productCategory}
       sortBy={sortBy}
+      page={page}
       countryCode={params.countryCode}
     />
   )
