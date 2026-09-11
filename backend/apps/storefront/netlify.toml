@@ -1,5 +1,4 @@
 [build]
+  base = "backend/apps/storefront"
   command = "npm run build"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  publish = "backend/apps/storefront/.next"
