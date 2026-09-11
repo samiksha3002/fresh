@@ -5,14 +5,14 @@
   "author": "Kasper Fabricius Kristensen <kasper@medusajs.com> & Victor Gerbrands <victor@medusajs.com> (https://www.medusajs.com)",
   "description": "Next.js Starter to be used with Medusa V2",
   "keywords": ["medusa-storefront"],
-  "packageManager": "pnpm@9.12.0",
+ "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "next dev --turbopack -p 8000",
     "build": "next build",
     "start": "next start -p 8000",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build",
-    "postinstall": "corepack enable && corepack prepare pnpm@9.15.9 --activate"
+    "analyze": "ANALYZE=true next build"
+   
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
