@@ -1,7 +1,7 @@
 {
   "name": "dtc-starter-monorepo",
   "private": false,
- "packageManager": "pnpm@9.12.0",
+  "packageManager": "pnpm@9.15.9",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
@@ -13,7 +13,8 @@
     "test": "turbo test",
     "backend:seed": "turbo seed --filter=@dtc/backend",
     "backend:dev": "turbo dev --filter=@dtc/backend",
-    "storefront:dev": "turbo dev --filter=@dtc/storefront"
+    "storefront:dev": "turbo dev --filter=@dtc/storefront",
+    "postinstall": "corepack enable && corepack prepare pnpm@9.15.9 --activate"
   },
   "pnpm": {
     "overrides": {
