@@ -5,6 +5,7 @@
   "author": "Kasper Fabricius Kristensen <kasper@medusajs.com> & Victor Gerbrands <victor@medusajs.com> (https://www.medusajs.com)",
   "description": "Next.js Starter to be used with Medusa V2",
   "keywords": ["medusa-storefront"],
+  "packageManager": "pnpm@9.12.0",
   "scripts": {
     "dev": "next dev --turbopack -p 8000",
     "build": "next build",
@@ -59,10 +60,8 @@
     "react": "19.0.5",
     "react-dom": "19.0.5"
   },
- "engines": {
-  "node": "24.x",
-  "pnpm": ">=9"
-}
-
-
+  "engines": {
+    "node": "24.x",
+    "pnpm": ">=9"
+  }
 }
