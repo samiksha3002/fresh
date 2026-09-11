@@ -1,4 +1,4 @@
 [build]
   base = "backend/apps/storefront"
   command = "npm run build"
-  publish = "backend/apps/storefront/.next"
+  publish = ".next"
