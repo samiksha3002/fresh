@@ -1,5 +1,5 @@
 import React from "react"
-import LocalizedClientLink from "@modules/common/components/localized-link"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const LocalGrid = () => {
   const items = [
