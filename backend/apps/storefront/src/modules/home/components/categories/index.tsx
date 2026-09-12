@@ -35,44 +35,53 @@ const skincareCategories = [
 
 const HomeCategories = () => {
   return (
-    <div className="py-16 bg-white border-b border-gray-100">
-      <div className="content-container mx-auto px-6 md:px-8">
+    <div className="py-16 bg-white">
+      <div className="content-container mx-auto px-6 md:px-8 max-w-7xl">
         
-        {/* Section Heading & Arrows like Shopify */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+        {/* Section Heading */}
+        <div className="mb-8">
+          <h2 className="text-3xl font-normal tracking-tight text-zinc-900 font-serif">
             Shop by Category
           </h2>
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition text-gray-700 font-bold">
-              ←
-            </button>
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition text-gray-700 font-bold">
-              →
-            </button>
-          </div>
         </div>
 
-        {/* Categories Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+        {/* Categories Cards Grid - Exact Shopify Local style */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {skincareCategories.map((cat, index) => (
             <LocalizedClientLink 
               key={index} 
               href={cat.href}
-              className="group flex flex-col items-center bg-[#fcf8f5]/60 border border-gray-200/70 rounded-2xl p-5 hover:shadow-xl hover:border-gray-300 transition-all duration-300"
+              className="group flex flex-col justify-between bg-white border border-zinc-200/80 rounded-3xl p-6 hover:border-zinc-400 transition-all duration-300 min-h-[280px]"
             >
-              <div className="w-full h-36 md:h-40 rounded-xl overflow-hidden mb-4 bg-white flex items-center justify-center shadow-sm">
+              {/* Floating Image Container with soft drop shadow */}
+              <div className="w-full h-36 flex items-center justify-center mb-6">
                 <img 
                   src={cat.image} 
                   alt={cat.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  className="max-h-full max-w-full object-contain drop-shadow-md group-hover:scale-105 transition duration-500"
                 />
               </div>
-              <span className="text-sm md:text-base font-semibold text-gray-900 text-center group-hover:text-black">
+
+              {/* Category Title */}
+              <span className="text-sm md:text-base font-medium text-zinc-900 text-center group-hover:text-black tracking-tight">
                 {cat.name}
               </span>
             </LocalizedClientLink>
           ))}
+        </div>
+
+        {/* Carousel Slider Pagination Dots & Arrows (matching Shopify reference) */}
+        <div className="flex items-center justify-center gap-3 mt-8">
+          <button className="w-8 h-8 rounded-full border border-zinc-300 flex items-center justify-center hover:bg-zinc-100 transition text-zinc-600 text-xs">
+            ←
+          </button>
+          <div className="flex items-center gap-1.5 px-2">
+            <span className="w-6 h-2 rounded-full bg-black"></span>
+            <span className="w-2 h-2 rounded-full bg-zinc-300"></span>
+          </div>
+          <button className="w-8 h-8 rounded-full border border-zinc-300 flex items-center justify-center hover:bg-zinc-100 transition text-zinc-600 text-xs">
+            →
+          </button>
         </div>
 
       </div>

@@ -7,6 +7,7 @@ import BestSellers from "@modules/home/components/best-sellers" // <-- Best Sell
 import LocalGrid from "@modules/home/components/local-grid" // <-- Local Grid Import
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+import LocalProductTemplate from "@modules/products/templates" // ya jahan bhi ye file save hai
 
 export const metadata: Metadata = {
   title: "Kovea Touch | Skincare E-Commerce",
@@ -36,7 +37,8 @@ export default async function Home(props: {
       <Hero />
       <HomeCategories />
       <BestSellers /> {/* <-- Best Sellers Section */}
-      <LocalGrid />   {/* <-- Shopify "Local" Style 3-Column Section Added Here */}
+      <LocalGrid />  
+      <LocalProductTemplate /> {/* <-- Shopify "Local" Style 3-Column Section Added Here */}
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
