@@ -42,6 +42,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
       },
+      // ✅ Added Unsplash here so your Hero and Slider images work!
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
       ...(S3_HOSTNAME && S3_PATHNAME
         ? [
             {

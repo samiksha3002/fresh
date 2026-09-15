@@ -1,9 +1,8 @@
 import { listCategories } from "@lib/data/categories"
 import { listCollections } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
-
+import { clx } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
 
 export default async function Footer() {
   const { collections } = await listCollections({
@@ -12,145 +11,123 @@ export default async function Footer() {
   const productCategories = await listCategories()
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="bg-[#fafafa] border-t border-gray-200 w-full font-sans mt-20">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              Medusa Store
-            </LocalizedClientLink>
+        
+        {/* Top Section: Newsletter (Clinical/Premium touch) */}
+        <div className="flex flex-col items-center justify-center py-20 text-center border-b border-gray-200">
+          <h2 className="text-2xl md:text-3xl font-medium text-gray-900 mb-4 tracking-wide">
+            Join the Kovea Touch Community
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base mb-8 max-w-md">
+            Subscribe for advanced skincare insights, exclusive access to clinical treatments, and targeted solutions for dark spots and aging.
+          </p>
+          <div className="flex w-full max-w-md gap-4">
+            <input 
+              type="email" 
+              placeholder="Enter your email address" 
+              className="w-full border-b border-gray-300 bg-transparent py-2 px-1 text-sm focus:outline-none focus:border-black transition duration-300"
+            />
+            <button className="bg-black text-white px-6 py-2 text-sm font-medium hover:bg-gray-800 transition duration-300">
+              Subscribe
+            </button>
           </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
+        </div>
+
+        {/* Middle Section: Navigation & Links */}
+        <div className="flex flex-col md:flex-row items-start justify-between py-16 gap-12 md:gap-8">
+          
+          {/* Brand Column with Logo Image */}
+          <div className="md:w-1/3 flex flex-col items-start">
+            <LocalizedClientLink href="/" className="mb-6 block">
+              <Image 
+                src="/logo kovea.jpeg" 
+                alt="Kovea Touch Logo" 
+                width={160} 
+                height={60} 
+                className="object-contain mix-blend-multiply"
+              />
+            </LocalizedClientLink>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs pr-4">
+              Advanced dermocosmetics scientifically formulated to target aging, dark spots, and uneven tone for clinically proven, radiant skin.
+            </p>
+          </div>
+
+          {/* Links Columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 md:gap-16 flex-1">
+            
+            {/* Dynamic Categories (Fetched from Medusa Admin) */}
             {productCategories && productCategories?.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
+              <div className="flex flex-col gap-y-4">
+                <span className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                  Shop
                 </span>
-                <ul
-                  className="grid grid-cols-1 gap-2"
-                  data-testid="footer-categories"
-                >
-                  {productCategories?.slice(0, 6).map((c) => {
-                    if (c.parent_category) {
-                      return
-                    }
-
-                    const children =
-                      c.category_children?.map((child) => ({
-                        name: child.name,
-                        handle: child.handle,
-                        id: child.id,
-                      })) || null
-
+                <ul className="grid grid-cols-1 gap-3">
+                  {productCategories?.slice(0, 5).map((c) => {
+                    if (c.parent_category) return null;
                     return (
-                      <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                        key={c.id}
-                      >
+                      <li key={c.id}>
                         <LocalizedClientLink
-                          className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
-                          )}
+                          className="text-gray-500 hover:text-black transition-colors text-sm"
                           href={`/categories/${c.handle}`}
-                          data-testid="category-link"
                         >
                           {c.name}
                         </LocalizedClientLink>
-                        {children && (
-                          <ul className="grid grid-cols-1 ml-3 gap-2">
-                            {children &&
-                              children.map((child) => (
-                                <li key={child.id}>
-                                  <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
-                                    href={`/categories/${child.handle}`}
-                                    data-testid="category-link"
-                                  >
-                                    {child.name}
-                                  </LocalizedClientLink>
-                                </li>
-                              ))}
-                          </ul>
-                        )}
                       </li>
                     )
                   })}
                 </ul>
               </div>
             )}
-            {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Collections
-                </span>
-                <ul
-                  className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                    {
-                      "grid-cols-2": (collections?.length || 0) > 3,
-                    }
-                  )}
-                >
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
+
+            {/* Customer Care */}
+            <div className="flex flex-col gap-y-4">
+              <span className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                Support
+              </span>
+              <ul className="grid grid-cols-1 gap-3 text-gray-500 text-sm">
+                <li><LocalizedClientLink href="/faq" className="hover:text-black transition-colors">FAQ</LocalizedClientLink></li>
+                <li><LocalizedClientLink href="/shipping" className="hover:text-black transition-colors">Shipping & Returns</LocalizedClientLink></li>
+                <li><LocalizedClientLink href="/contact" className="hover:text-black transition-colors">Contact Us</LocalizedClientLink></li>
+                <li><LocalizedClientLink href="/track-order" className="hover:text-black transition-colors">Track Order</LocalizedClientLink></li>
               </ul>
             </div>
+
+            {/* Socials / Legal */}
+            <div className="flex flex-col gap-y-4">
+              <span className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                Connect
+              </span>
+              <ul className="grid grid-cols-1 gap-3 text-gray-500 text-sm">
+                <li>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-black transition-colors">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-black transition-colors">
+                    Facebook
+                  </a>
+                </li>
+                <li><LocalizedClientLink href="/terms" className="hover:text-black transition-colors">Terms of Service</LocalizedClientLink></li>
+                <li><LocalizedClientLink href="/privacy" className="hover:text-black transition-colors">Privacy Policy</LocalizedClientLink></li>
+              </ul>
+            </div>
+
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
-          </Text>
-          <MedusaCTA />
+
+        {/* Bottom Section: Copyright */}
+        <div className="flex flex-col md:flex-row w-full mb-8 pt-8 border-t border-gray-200 justify-between items-center text-gray-400 text-xs">
+          <p>
+            © {new Date().getFullYear()} Kovea Touch. All rights reserved.
+          </p>
+          <div className="flex gap-4 mt-4 md:mt-0">
+            <span>INR ₹</span>
+            <span>Secure Checkout</span>
+          </div>
         </div>
+        
       </div>
     </footer>
   )

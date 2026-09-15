@@ -9,7 +9,7 @@ export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 group font-sans">
+    <div className="sticky top-0 inset-x-0 z-50 font-sans">
       
       {/* Top Announcement Bar */}
       <div className="bg-gray-900 text-white text-xs py-2 px-4 text-center font-medium tracking-wide">
@@ -39,14 +39,20 @@ export default async function Nav() {
                   Product Type 
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-56">
-                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm">
-                    <LocalizedClientLink href="/store?category=all" className="hover:text-black hover:translate-x-1 transition-transform">All Skincare</LocalizedClientLink>
-                    <LocalizedClientLink href="/store?category=cleansers" className="hover:text-black hover:translate-x-1 transition-transform">Cleansers & Body Washes</LocalizedClientLink>
+                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-64">
+                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm max-h-[70vh] overflow-y-auto">
+                    <LocalizedClientLink href="/store?category=all-skincare" className="hover:text-black hover:translate-x-1 transition-transform">All Skincare</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=azelaic-acid" className="hover:text-black hover:translate-x-1 transition-transform">Azelaic Acid</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=brighteners" className="hover:text-black hover:translate-x-1 transition-transform">Brighteners</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=cleansers-body-washes" className="hover:text-black hover:translate-x-1 transition-transform">Cleansers & Body Washes</LocalizedClientLink>
                     <LocalizedClientLink href="/store?category=exfoliants" className="hover:text-black hover:translate-x-1 transition-transform">Exfoliants</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=hair-care" className="hover:text-black hover:translate-x-1 transition-transform">Hair Care</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=hydroquinone-break-products" className="hover:text-black hover:translate-x-1 transition-transform">Hydroquinone Break Products</LocalizedClientLink>
                     <LocalizedClientLink href="/store?category=moisturizers" className="hover:text-black hover:translate-x-1 transition-transform">Moisturizers</LocalizedClientLink>
-                    <LocalizedClientLink href="/store?category=serums" className="hover:text-black hover:translate-x-1 transition-transform">Serums & Retinoids</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=serums-retinoids" className="hover:text-black hover:translate-x-1 transition-transform">Serums & Retinoids</LocalizedClientLink>
                     <LocalizedClientLink href="/store?category=sunscreens" className="hover:text-black hover:translate-x-1 transition-transform">Sunscreens</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=toners-essense-ampoule" className="hover:text-black hover:translate-x-1 transition-transform">Toners/Essense/Ampoule</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?category=vitamin-c-antioxidant" className="hover:text-black hover:translate-x-1 transition-transform">Vitamin C / Antioxidant</LocalizedClientLink>
                   </div>
                 </div>
               </div>
@@ -57,13 +63,25 @@ export default async function Nav() {
                   Skin Concerns
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-64">
-                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm">
-                    <LocalizedClientLink href="/store?concern=acne" className="hover:text-black hover:translate-x-1 transition-transform">Acne / Texture</LocalizedClientLink>
+                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-72">
+                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm max-h-[70vh] overflow-y-auto">
+                    <LocalizedClientLink href="/store?concern=acne-texture" className="hover:text-black hover:translate-x-1 transition-transform">Acne/Texture</LocalizedClientLink>
                     <LocalizedClientLink href="/store?concern=aging" className="hover:text-black hover:translate-x-1 transition-transform">Aging</LocalizedClientLink>
-                    <LocalizedClientLink href="/store?concern=pigmentation" className="hover:text-black hover:translate-x-1 transition-transform">Body Pigmentation</LocalizedClientLink>
-                    <LocalizedClientLink href="/store?concern=oily" className="hover:text-black hover:translate-x-1 transition-transform">Oily Skin</LocalizedClientLink>
-                    <LocalizedClientLink href="/store?concern=sensitive" className="hover:text-black hover:translate-x-1 transition-transform">Sensitive Skin / Barrier Repair</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=body-pigmentation" className="hover:text-black hover:translate-x-1 transition-transform">Body Pigmentation</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=dark-knees-elbows" className="hover:text-black hover:translate-x-1 transition-transform">Dark Knees & Elbows</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=dark-underarms-dark-neck" className="hover:text-black hover:translate-x-1 transition-transform">Dark Underarms & Dark Neck</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=hair-loss-care" className="hover:text-black hover:translate-x-1 transition-transform">Hair Loss/Care</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=kp-strawberry-legs" className="hover:text-black hover:translate-x-1 transition-transform">KP & Strawberry Legs</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=large-pores-texture" className="hover:text-black hover:translate-x-1 transition-transform">Large Pores/Texture</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=lip-eye-care" className="hover:text-black hover:translate-x-1 transition-transform">Lip & Eye Care</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=mild-moderate-pigmentation" className="hover:text-black hover:translate-x-1 transition-transform">Mild - Moderate Pigmentation</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=oily-skin" className="hover:text-black hover:translate-x-1 transition-transform">Oily Skin</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=pregnancy-safe" className="hover:text-black hover:translate-x-1 transition-transform">Pregnancy Safe</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=scar-treatment" className="hover:text-black hover:translate-x-1 transition-transform">Scar Treatment</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=sensitive-skin-barrier-repair-dry-skin" className="hover:text-black hover:translate-x-1 transition-transform">Sensitive Skin/Barrier Repair/Dry Skin</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=skintags-razor-bumps" className="hover:text-black hover:translate-x-1 transition-transform">Skintags/Razor Bumps</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=stubborn-pigmentation" className="hover:text-black hover:translate-x-1 transition-transform">Stubborn Pigmentation</LocalizedClientLink>
+                    <LocalizedClientLink href="/store?concern=tinea-versicolor-dandruff-hibiclens" className="hover:text-black hover:translate-x-1 transition-transform">Tinea Versicolor/Dandruff/Hibiclens</LocalizedClientLink>
                   </div>
                 </div>
               </div>
@@ -76,20 +94,19 @@ export default async function Nav() {
 
           {/* Center: Brand Logo Image */}
           <div className="flex items-center justify-center h-full flex-1">
-            <LocalizedClientLink href="/" className="flex items-center justify-center">
-              {/* NOTE: Make sure to put your logo file in the 'public' folder and name it 'logo.png' */}
+            <LocalizedClientLink href="/" className="flex items-center justify-center w-full h-full">
               <Image 
-                src="/logo.png" 
+                src="/logo kovea.jpeg" 
                 alt="Kovea Touch Logo" 
-                width={150} 
-                height={50} 
-                className="object-contain"
+                width={400} 
+                height={1200} 
+                className="object-contain max-h-16 w-auto mix-blend-multiply"
                 priority
               />
             </LocalizedClientLink>
           </div>
 
-          {/* Right: Search & Cart (And optionally Account) */}
+          {/* Right: Search & Cart */}
           <div className="flex items-center gap-x-6 flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-4">
               <LocalizedClientLink
@@ -97,7 +114,6 @@ export default async function Nav() {
                 className="hover:text-black text-gray-700 transition"
                 data-testid="nav-search-link"
               >
-                {/* Search Icon */}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               </LocalizedClientLink>
             </div>
