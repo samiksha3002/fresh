@@ -4,19 +4,18 @@ import { listRegions } from "@lib/data/regions"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
+import AnnouncementBar from "@modules/layout/announcement-bar" // Naya import
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 font-sans">
+    <div className="sticky top-0 inset-x-0 z-50 font-sans shadow-sm">
       
-      {/* Top Announcement Bar */}
-      <div className="bg-gray-900 text-white text-xs py-2 px-4 text-center font-medium tracking-wide">
-        ✨ Free shipping on all orders over $50 | Use code <span className="underline font-bold">GLOW20</span> for 20% off
-      </div>
+      {/* Top Announcement Bar - Ab ye rotate hoga */}
+      <AnnouncementBar />
 
-      <header className="relative h-[80px] px-6 mx-auto border-b duration-200 bg-white border-ui-border-base">
+      <header className="relative h-[80px] px-6 mx-auto duration-200 bg-white border-b border-ui-border-base">
         <nav className="content-container flex items-center justify-between w-full h-full text-sm">
           
           {/* Left: Mobile menu & Category Links */}
@@ -29,18 +28,18 @@ export default async function Nav() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-6 text-gray-700 font-medium">
-              <LocalizedClientLink href="/" className="hover:text-black transition">
+              <LocalizedClientLink href="/" className="hover:text-black transition-colors">
                 Home
               </LocalizedClientLink>
 
               {/* Product Type Dropdown */}
               <div className="relative group h-full flex items-center">
-                <button className="flex items-center gap-1 hover:text-black transition cursor-pointer">
+                <button className="flex items-center gap-1 hover:text-black transition-colors cursor-pointer">
                   Product Type 
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-64">
-                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm max-h-[70vh] overflow-y-auto">
+                <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-64">
+                  <div className="bg-white border border-gray-100 shadow-xl p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
                     <LocalizedClientLink href="/store?category=all-skincare" className="hover:text-black hover:translate-x-1 transition-transform">All Skincare</LocalizedClientLink>
                     <LocalizedClientLink href="/store?category=azelaic-acid" className="hover:text-black hover:translate-x-1 transition-transform">Azelaic Acid</LocalizedClientLink>
                     <LocalizedClientLink href="/store?category=brighteners" className="hover:text-black hover:translate-x-1 transition-transform">Brighteners</LocalizedClientLink>
@@ -59,12 +58,12 @@ export default async function Nav() {
 
               {/* Skin Concerns Dropdown */}
               <div className="relative group h-full flex items-center">
-                <button className="flex items-center gap-1 hover:text-black transition cursor-pointer">
+                <button className="flex items-center gap-1 hover:text-black transition-colors cursor-pointer">
                   Skin Concerns
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div className="absolute top-full left-0 pt-2 hidden group-hover:block w-72">
-                  <div className="bg-white border border-gray-100 shadow-lg p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-sm max-h-[70vh] overflow-y-auto">
+                <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-72">
+                  <div className="bg-white border border-gray-100 shadow-xl p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
                     <LocalizedClientLink href="/store?concern=acne-texture" className="hover:text-black hover:translate-x-1 transition-transform">Acne/Texture</LocalizedClientLink>
                     <LocalizedClientLink href="/store?concern=aging" className="hover:text-black hover:translate-x-1 transition-transform">Aging</LocalizedClientLink>
                     <LocalizedClientLink href="/store?concern=body-pigmentation" className="hover:text-black hover:translate-x-1 transition-transform">Body Pigmentation</LocalizedClientLink>
@@ -86,7 +85,7 @@ export default async function Nav() {
                 </div>
               </div>
 
-              <LocalizedClientLink href="/about" className="hover:text-black transition">
+              <LocalizedClientLink href="/about" className="hover:text-black transition-colors">
                 About Us
               </LocalizedClientLink>
             </div>
@@ -94,13 +93,13 @@ export default async function Nav() {
 
           {/* Center: Brand Logo Image */}
           <div className="flex items-center justify-center h-full flex-1">
-            <LocalizedClientLink href="/" className="flex items-center justify-center w-full h-full">
+            <LocalizedClientLink href="/" className="flex items-center justify-center w-full h-full relative">
               <Image 
                 src="/logo kovea.jpeg" 
                 alt="Kovea Touch Logo" 
-                width={400} 
-                height={1200} 
-                className="object-contain max-h-16 w-auto mix-blend-multiply"
+                width={160} 
+                height={60} 
+                className="object-contain mix-blend-multiply"
                 priority
               />
             </LocalizedClientLink>
@@ -111,7 +110,7 @@ export default async function Nav() {
             <div className="hidden small:flex items-center gap-x-4">
               <LocalizedClientLink
                 href="/search"
-                className="hover:text-black text-gray-700 transition"
+                className="hover:text-black text-gray-700 transition-colors"
                 data-testid="nav-search-link"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
@@ -122,7 +121,7 @@ export default async function Nav() {
               fallback={
                 <LocalizedClientLink
                   href="/cart"
-                  className="hover:text-black flex gap-2 text-gray-700 transition"
+                  className="hover:text-black flex gap-2 text-gray-700 transition-colors"
                   data-testid="nav-cart-link"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
