@@ -14,14 +14,14 @@
     "medusa"
   ],
   "scripts": {
-    "build": "medusa build --admin",
-    "start": "medusa start",
-    "dev": "medusa develop",
-    "lint": "medusa lint",
-    "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
-    "test:integration:modules": "TEST_TYPE=integration:modules jest --silent=false --runInBand --forceExit",
-    "test:unit": "TEST_TYPE=unit jest --silent --runInBand --forceExit"
-  },
+  "build": "medusa build --admin-only",
+  "start": "medusa start",
+  "dev": "medusa develop",
+  "lint": "medusa lint",
+  "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+  "test:integration:modules": "TEST_TYPE=integration:modules jest --silent=false --runInBand --forceExit",
+  "test:unit": "TEST_TYPE=unit jest --silent --runInBand --forceExit"
+},
   "dependencies": {
     "@medusajs/admin-bundler": "2.20.1",
     "@medusajs/admin-sdk": "2.20.1",
