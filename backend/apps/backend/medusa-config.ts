@@ -2,7 +2,7 @@ import { defineConfig } from "@medusajs/framework/utils"
 
 export default defineConfig({
   admin: {
-    disable: true,
+    disable: false, // Ise false karein taaki admin build aur serve ho sake
   },
 
   projectConfig: {
