@@ -6,6 +6,8 @@ export default defineConfig({
     disable: process.env.DISABLE_ADMIN === "true",
     // Admin ko batana zaroori hai ki API kahan host hai
     backendUrl: process.env.MEDUSA_BACKEND_URL,
+    // Ye path "/" set karne se Vercel par direct main link par admin khulega, 404 error nahi aayega
+    path: "/",
   },
 
   projectConfig: {
