@@ -2,7 +2,7 @@ import { defineConfig } from "@medusajs/framework/utils"
 
 export default defineConfig({
   admin: {
-    disable: process.env.DISABLE_ADMIN === "true",
+    disable: process.env.DISABLE_ADMIN === "false",
     backendUrl: process.env.MEDUSA_BACKEND_URL,
   },
   projectConfig: {
