@@ -54,23 +54,23 @@ export const listProducts = async ({
   }
 
   return sdk.client
-    .fetch<{ products: HttpTypes.StoreProduct[]; count: number }>(
-      `/store/products`,
-      {
-        method: "GET",
-        query: {
-          limit,
-          offset,
-          region_id: region?.id,
-          fields:
-            "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
-          ...queryParams,
-        },
-        headers,
-        next,
-        cache: "force-cache",
-      }
-    )
+    .fetch<{
+      products: HttpTypes.StoreProduct[]
+      count: number
+    }>("/store/products", {
+      method: "GET",
+      query: {
+        limit,
+        offset,
+        region_id: region.id,
+        fields:
+          "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
+        ...queryParams,
+      },
+      headers,
+      next,
+      cache: "force-cache",
+    })
     .then(({ products, count }) => {
       const nextPage = count > offset + limit ? pageParam + 1 : null
 
@@ -79,15 +79,16 @@ export const listProducts = async ({
           products,
           count,
         },
-        nextPage: nextPage,
+        nextPage,
         queryParams,
       }
     })
 }
 
 /**
- * This will fetch 100 products to the Next.js cache and sort them based on the sortBy parameter.
- * It will then return the paginated products based on the page and limit parameters.
+ * This will fetch 100 products to the Next.js cache and sort them
+ * based on the sortBy parameter. It will then return the paginated
+ * products based on the page and limit parameters.
  */
 export const listProductsWithSort = async ({
   page = 0,
@@ -121,9 +122,13 @@ export const listProductsWithSort = async ({
 
   const pageParam = (page - 1) * limit
 
-  const nextPage = count > pageParam + limit ? pageParam + limit : null
+  const nextPage =
+    count > pageParam + limit ? pageParam + limit : null
 
-  const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
+  const paginatedProducts = sortedProducts.slice(
+    pageParam,
+    pageParam + limit
+  )
 
   return {
     response: {
@@ -133,4 +138,39 @@ export const listProductsWithSort = async ({
     nextPage,
     queryParams,
   }
+}
+
+/**
+ * Get a single product by its handle.
+ *
+ * Example:
+ * handle = "adapalene-gel-0-1"
+ *
+ * This is used by the product detail page so that
+ * the UI displays the actual product from Medusa
+ * instead of static/demo product information.
+ */
+export const getProductByHandle = async ({
+  handle,
+  countryCode,
+}: {
+  handle: string
+  countryCode: string
+}): Promise<HttpTypes.StoreProduct | null> => {
+  if (!handle || !countryCode) {
+    return null
+  }
+
+  const {
+    response: { products },
+  } = await listProducts({
+    pageParam: 1,
+    countryCode,
+    queryParams: {
+      handle,
+      limit: 1,
+    },
+  })
+
+  return products[0] || null
 }

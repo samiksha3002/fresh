@@ -121,19 +121,23 @@ export default function ProductActions({
   const inView = useIntersection(actionsRef, "0px")
 
   // add the selected variant to the cart
-  const handleAddToCart = async () => {
-    if (!selectedVariant?.id) return null
+ const handleAddToCart = async () => {
+  if (!selectedVariant?.id) return
 
-    setIsAdding(true)
+  setIsAdding(true)
 
+  try {
     await addToCart({
       variantId: selectedVariant.id,
       quantity: 1,
       countryCode,
     })
-
+  } catch (error) {
+    console.error("Add to cart failed:", error)
+  } finally {
     setIsAdding(false)
   }
+}
 
   return (
     <>
