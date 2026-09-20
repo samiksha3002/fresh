@@ -2,16 +2,23 @@ import { defineConfig } from "@medusajs/framework/utils"
 
 export default defineConfig({
   admin: {
-     disable: false,
-  backendUrl: process.env.MEDUSA_BACKEND_URL,
+    disable: false,
+    backendUrl: process.env.MEDUSA_BACKEND_URL,
   },
+
   projectConfig: {
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET!,
-    cookieSecret: process.env.COOKIE_SECRET!,
+      cookieSecret: process.env.COOKIE_SECRET!,
+    },
+  },
+
+  modules: {
+    testimonials: {
+      resolve: "./src/modules/testimonials",
     },
   },
 })
