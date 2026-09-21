@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { HttpTypes } from "@medusajs/types"
 import ProductActions from "@modules/products/components/product-actions"
+import ProductReviews from "@modules/products/components/product-reviews/ProductReviews"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -20,7 +21,8 @@ const ProductTemplate = ({
   const productImages =
     images.length > 0
       ? images
-      : product.images || (product.thumbnail ? [{ url: product.thumbnail }] : [])
+      : product.images ||
+        (product.thumbnail ? [{ url: product.thumbnail }] : [])
 
   const [activeImage, setActiveImage] = useState(0)
 
@@ -76,7 +78,6 @@ const ProductTemplate = ({
 
             {/* Actual Product Image */}
             <div className="w-full h-[420px] flex items-center justify-center">
-
               {currentImage ? (
                 <img
                   src={currentImage}
@@ -88,7 +89,6 @@ const ProductTemplate = ({
                   No Image
                 </div>
               )}
-
             </div>
 
             {/* Image Navigation */}
@@ -202,7 +202,6 @@ const ProductTemplate = ({
 
           {/* Product Information */}
           <div className="border-t border-zinc-100 pt-5">
-
             <div className="grid grid-cols-2 gap-4">
 
               <div>
@@ -232,15 +231,7 @@ const ProductTemplate = ({
 
           {/* =====================================================
               MEDUSA PRODUCT ACTIONS
-              
-              This handles:
-              - Variant selection
-              - Price
-              - Inventory
-              - Add to cart
-              - Cart API
           ====================================================== */}
-
           <div className="border-t border-zinc-100 pt-6">
             <ProductActions
               product={product}
@@ -248,7 +239,7 @@ const ProductTemplate = ({
             />
           </div>
 
-          {/* Buy Now — keep disabled for now */}
+          {/* Buy Now */}
           <button
             type="button"
             className="w-full bg-white border border-zinc-300 text-zinc-900 py-4 rounded-full font-medium hover:bg-zinc-50 transition"
@@ -289,6 +280,12 @@ const ProductTemplate = ({
 
         </div>
       </div>
+
+      {/* =====================================================
+          CUSTOMER REVIEWS
+      ====================================================== */}
+      <ProductReviews productId={product.id} />
+
     </div>
   )
 }

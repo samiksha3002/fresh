@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import Image from "next/image"
 import { listRegions } from "@lib/data/regions"
+import { retrieveCustomer } from "@lib/data/customer"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
@@ -8,14 +9,19 @@ import AnnouncementBar from "@modules/layout/announcement-bar"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
+  const customer = await retrieveCustomer().catch(() => null)
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 font-sans shadow-sm">
 
-      {/* Top Announcement Bar */}
+      {/* ====================================================== */}
+      {/* TOP ANNOUNCEMENT BAR */}
+      {/* ====================================================== */}
+
       <AnnouncementBar />
 
       <header className="relative h-[80px] px-6 mx-auto duration-200 bg-white border-b border-ui-border-base">
+
         <nav className="content-container flex items-center justify-between w-full h-full text-sm">
 
           {/* ====================================================== */}
@@ -343,7 +349,7 @@ export default async function Nav() {
           </div>
 
           {/* ====================================================== */}
-          {/* RIGHT: SEARCH + SIGN IN + CART */}
+          {/* RIGHT: SEARCH + ACCOUNT + CART */}
           {/* ====================================================== */}
 
           <div className="flex items-center gap-x-6 flex-1 basis-0 justify-end">
@@ -374,34 +380,81 @@ export default async function Nav() {
             </div>
 
             {/* ================================================== */}
-            {/* SIGN IN / ACCOUNT */}
+            {/* ACCOUNT */}
             {/* ================================================== */}
 
-            <LocalizedClientLink
-              href="/account"
-              className="hidden small:flex items-center gap-2 text-gray-700 hover:text-black transition-colors"
-            >
+            {customer ? (
 
-              {/* User Icon */}
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              /* LOGGED IN */
+              <LocalizedClientLink
+                href="/account"
+                className="hidden small:flex items-center gap-2 text-gray-700 hover:text-black transition-colors"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.8"
-                  d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
-                />
-              </svg>
 
-              <span className="font-medium">
-                Sign In
-              </span>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.8"
+                    d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                  />
+                </svg>
 
-            </LocalizedClientLink>
+                <span className="font-medium">
+                  {customer.first_name || customer.email}
+                </span>
+
+              </LocalizedClientLink>
+
+            ) : (
+
+              /* LOGGED OUT */
+              <div className="hidden small:flex items-center gap-3 text-gray-700">
+
+                <LocalizedClientLink
+                  href="/account"
+                  className="flex items-center gap-2 hover:text-black transition-colors"
+                >
+
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                      d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                    />
+                  </svg>
+
+                  <span className="font-medium">
+                    Sign In
+                  </span>
+
+                </LocalizedClientLink>
+
+                <span className="text-gray-300">
+                  |
+                </span>
+
+                <LocalizedClientLink
+                  href="/account?view=register"
+                  className="font-medium hover:text-black transition-colors"
+                >
+                  Sign Up
+                </LocalizedClientLink>
+
+              </div>
+
+            )}
 
             {/* ================================================== */}
             {/* CART */}
@@ -414,6 +467,7 @@ export default async function Nav() {
                   className="hover:text-black flex gap-2 text-gray-700 transition-colors"
                   data-testid="nav-cart-link"
                 >
+
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -431,6 +485,7 @@ export default async function Nav() {
                   <span className="font-medium">
                     (0)
                   </span>
+
                 </LocalizedClientLink>
               }
             >

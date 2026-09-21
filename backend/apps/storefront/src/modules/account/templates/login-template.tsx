@@ -16,9 +16,13 @@ const LoginTemplate = () => {
 
   const redirectUrl = searchParams.get("redirect") || ""
 
-  const [currentView, setCurrentView] = useState<LOGIN_VIEW>(
-    LOGIN_VIEW.SIGN_IN
-  )
+  const initialView =
+    searchParams.get("view") === "register"
+      ? LOGIN_VIEW.REGISTER
+      : LOGIN_VIEW.SIGN_IN
+
+  const [currentView, setCurrentView] =
+    useState<LOGIN_VIEW>(initialView)
 
   return (
     <div className="w-full flex justify-start px-8 py-8">
