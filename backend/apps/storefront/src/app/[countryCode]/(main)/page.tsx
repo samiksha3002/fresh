@@ -3,11 +3,12 @@ import { Metadata } from "next"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import HomeCategories from "@modules/home/components/categories"
-import BestSellers from "@modules/home/components/best-sellers" // <-- Best Sellers Import
-import LocalGrid from "@modules/home/components/local-grid" // <-- Local Grid Import
+import BestSellers from "@modules/home/components/best-sellers"
+import LocalGrid from "@modules/home/components/local-grid"
+import TestimonialsSection from "@modules/home/components/Testimonials/TestimonialsSection"
+
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
- // ya jahan bhi ye file save hai
 
 export const metadata: Metadata = {
   title: "Kovea Touch | Skincare E-Commerce",
@@ -34,16 +35,42 @@ export default async function Home(props: {
 
   return (
     <>
+      {/* =====================================================
+          HERO
+      ====================================================== */}
       <Hero />
+
+      {/* =====================================================
+          CATEGORIES
+      ====================================================== */}
       <HomeCategories />
-      <BestSellers /> {/* <-- Best Sellers Section */}
-      <LocalGrid />  
-     {/* <-- Shopify "Local" Style 3-Column Section Added Here */}
+
+      {/* =====================================================
+          BEST SELLERS
+      ====================================================== */}
+      <BestSellers />
+
+      {/* =====================================================
+          LOCAL / EDITORIAL GRID
+      ====================================================== */}
+      <LocalGrid />
+
+      {/* =====================================================
+          FEATURED PRODUCTS
+      ====================================================== */}
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
+          <FeaturedProducts
+            collections={collections}
+            region={region}
+          />
         </ul>
       </div>
+
+      {/* =====================================================
+          CUSTOMER TESTIMONIALS
+      ====================================================== */}
+      <TestimonialsSection />
     </>
   )
 }

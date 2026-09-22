@@ -1079,7 +1079,7 @@ export async function placeOrder(
  * UPDATE REGION
  * ============================================================
  *
- * Updates the country code parameter and
+ * Updates the country code parameter and 
  * revalidates region/product caches.
  */
 export async function updateRegion(
