@@ -8,7 +8,7 @@ export default defineConfig({
 
   projectConfig: {
     http: {
-      storeCors: process.env.STORE_CORS!,
+      storeCors: process.env.STORE_CORS  || "http://localhost:8000,http://localhost:7001",
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET!,
