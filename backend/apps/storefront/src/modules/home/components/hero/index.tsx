@@ -1,153 +1,353 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-// Yahan aap apne 5-5 second wale alag-alag texts aur images define kar sakte hain
 const heroSlides = [
   {
     id: 1,
-    rating: "4.9 (840+ Glowing Reviews)",
+    eyebrow: "THE KOVEA TOUCH RITUAL",
     title: ["Pure.", "Radiant.", "Skincare."],
-    description: "Elevate your daily routine with clean, nourishing formulations designed specifically for healthy, glowing skin.",
+    description:
+      "Elevate your daily ritual with thoughtfully selected skincare essentials designed to reveal healthy, luminous skin.",
     buttonText: "SHOP SKINCARE",
     buttonLink: "/store",
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1200",
+    image:
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=85&w=1800",
   },
   {
     id: 2,
-    rating: "5.0 (1.2k+ Verified Users)",
+    eyebrow: "RESTORE YOUR GLOW",
     title: ["Defy.", "Restore.", "Protect."],
-    description: "Discover our age-defying serums and moisturizers, crafted to restore your skin's natural barrier and youthful glow.",
+    description:
+      "Discover carefully selected serums and moisturizers created to support your skin barrier and bring back its natural glow.",
     buttonText: "EXPLORE SERUMS",
     buttonLink: "/store?category=serums-retinoids",
-    image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=1200",
+    image:
+      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=85&w=1800",
   },
   {
     id: 3,
-    rating: "4.8 (500+ Happy Customers)",
+    eyebrow: "EVERYDAY ESSENTIALS",
     title: ["Cleanse.", "Refresh.", "Revive."],
-    description: "Wash away the day with our gentle, hydrating cleansers, leaving your skin feeling fresh and deeply purified.",
+    description:
+      "Gentle cleansing essentials that leave your skin feeling fresh, comfortable and beautifully renewed.",
     buttonText: "SHOP CLEANSERS",
     buttonLink: "/store?category=cleansers-body-washes",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=1200",
-  }
+    image:
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=85&w=1800",
+  },
 ]
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isChanging, setIsChanging] = useState(false)
 
-  // Auto-play logic: Har 5 seconds (5000ms) mein slide change karega
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % heroSlides.length)
-    }, 5000)
+      setIsChanging(true)
 
-    // Component unmount hone par timer clear karna zaroori hai
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+        setIsChanging(false)
+      }, 350)
+    }, 5500)
+
     return () => clearInterval(timer)
   }, [])
 
-  const activeData = heroSlides[currentSlide]
+  const activeSlide = heroSlides[currentSlide]
+
+  const goToSlide = (index: number) => {
+    if (index === currentSlide) return
+
+    setIsChanging(true)
+
+    setTimeout(() => {
+      setCurrentSlide(index)
+      setIsChanging(false)
+    }, 350)
+  }
 
   return (
-    <div className="relative bg-[#fcfbf9] w-full pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
-      <div className="content-container mx-auto px-6 md:px-8 max-w-7xl">
-        
-        {/* The 'key' prop forces React to re-run the animations every time currentSlide changes */}
-        <div key={currentSlide} className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          
-          {/* LEFT: Text Content with Staggered Slide-Up */}
-          <div className="flex flex-col items-start z-10">
-            
-            {/* Reviews / Stars */}
-            <div className="flex items-center gap-2 mb-6 opacity-0 animate-[slideUpFade_1s_ease-out_0.2s_forwards]">
-              <div className="flex text-amber-500 text-lg">
-                ★★★★★
-              </div>
-              <span className="text-zinc-600 text-sm font-medium">
-                {activeData.rating}
-              </span>
-            </div>
-            
-            {/* Main Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-zinc-900 leading-[1.05] tracking-tight mb-6 opacity-0 animate-[slideUpFade_1s_ease-out_0.4s_forwards]">
-              {activeData.title.map((line, index) => (
-                <span key={index}>
-                  {line}
-                  {index !== activeData.title.length - 1 && <br />}
-                </span>
-              ))}
-            </h1>
-            
-            {/* Description */}
-            <p className="text-zinc-600 text-base md:text-lg mb-10 max-w-md font-light leading-relaxed opacity-0 animate-[slideUpFade_1s_ease-out_0.6s_forwards]">
-              {activeData.description}
-            </p>
-            
-            {/* Button */}
-            <div className="opacity-0 animate-[slideUpFade_1s_ease-out_0.8s_forwards]">
-              <LocalizedClientLink
-                href={activeData.buttonLink}
-                className="inline-block bg-[#0f172a] text-white px-8 py-4 rounded-full text-sm font-medium tracking-wide transition-all duration-300 hover:bg-zinc-800 hover:shadow-xl hover:-translate-y-1 active:scale-95"
-              >
-                {activeData.buttonText}
-              </LocalizedClientLink>
-            </div>
-          </div>
+    <section className="relative w-full overflow-hidden bg-white">
 
-          {/* RIGHT: Image with Soft Zoom and Float Animation */}
-          <div className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] opacity-0 animate-[fadeIn_1.5s_ease-out_0.5s_forwards]">
-            <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] bg-zinc-100">
+      {/* =========================================================
+          HERO
+      ========================================================== */}
+
+      <div className="relative min-h-[720px] md:min-h-[760px] lg:min-h-[820px]">
+
+        {/* Very subtle warm background */}
+        <div className="absolute inset-0 bg-[#faf9f6]" />
+
+        {/* =====================================================
+            DESKTOP IMAGE
+        ====================================================== */}
+
+        <div className="absolute inset-y-0 right-0 hidden w-[54%] lg:block">
+
+          {/* Image frame */}
+          <div className="absolute inset-y-8 right-8 left-0 overflow-hidden">
+
+            {/* Current image */}
+            <div
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                isChanging ? "opacity-0" : "opacity-100"
+              }`}
+            >
               <Image
-                src={activeData.image}
-                alt={`Skincare slide ${currentSlide + 1}`}
+                src={activeSlide.image}
+                alt={activeSlide.title.join(" ")}
                 fill
-                className="object-cover object-center animate-[softZoom_20s_ease-in-out_infinite]"
                 priority
+                sizes="54vw"
+                className="object-cover object-center animate-[heroImageZoom_8s_ease-out_forwards]"
               />
             </div>
-            
-            {/* Decorative soft glow behind the image */}
-            <div className="absolute -inset-4 bg-zinc-200/50 rounded-[2.5rem] -z-10 blur-2xl opacity-50"></div>
+
+            {/* Soft inner light */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#faf9f6]/15 via-transparent to-white/5" />
+          </div>
+
+          {/* Small editorial label */}
+          <div className="absolute bottom-14 left-8 z-10">
+            <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-white/80">
+              Kovea Touch
+            </span>
           </div>
 
         </div>
 
-        {/* Carousel Dots Navigation at the bottom */}
-        <div className="flex justify-center items-center gap-3 mt-16 z-20 relative">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-500 rounded-full ${
-                currentSlide === index 
-                  ? "w-8 h-2 bg-zinc-800" 
-                  : "w-2 h-2 bg-zinc-300 hover:bg-zinc-400"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
+        {/* =====================================================
+            MOBILE IMAGE
+        ====================================================== */}
+
+        <div className="relative block h-[58vh] min-h-[430px] max-h-[620px] w-full lg:hidden">
+
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+              isChanging ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <Image
+              src={activeSlide.image}
+              alt={activeSlide.title.join(" ")}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center animate-[heroImageZoom_8s_ease-out_forwards]"
             />
-          ))}
+          </div>
+
+          {/* subtle bottom fade */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#faf9f6] to-transparent" />
+        </div>
+
+        {/* =====================================================
+            CONTENT
+        ====================================================== */}
+
+        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-[1500px] items-center px-6 py-16 sm:px-10 md:min-h-[760px] md:px-14 lg:min-h-[820px] lg:px-20">
+
+          <div
+            key={activeSlide.id}
+            className={`max-w-[560px] transition-all duration-700 ease-out ${
+              isChanging
+                ? "translate-y-2 opacity-0"
+                : "translate-y-0 opacity-100"
+            }`}
+          >
+
+            {/* Eyebrow */}
+            <div className="mb-7 flex items-center gap-4">
+
+              <span className="h-px w-8 bg-[#25231f]/40" />
+
+              <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-[#77736b]">
+                {activeSlide.eyebrow}
+              </p>
+
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="font-serif text-[56px] font-normal leading-[0.91] tracking-[-0.045em] text-[#25231f] sm:text-[72px] md:text-[82px] lg:text-[96px]">
+
+              {activeSlide.title.map((line, index) => (
+                <span
+                  key={line}
+                  className="block"
+                  style={{
+                    animation: `heroTextReveal 900ms ${
+                      index * 90
+                    }ms cubic-bezier(.22,.61,.36,1) both`,
+                  }}
+                >
+                  {line}
+                </span>
+              ))}
+
+            </h1>
+
+            {/* Description */}
+            <p
+              className="mt-9 max-w-[430px] text-[14px] leading-7 text-[#77736b] sm:text-[15px]"
+              style={{
+                animation:
+                  "heroDescriptionReveal 900ms 280ms cubic-bezier(.22,.61,.36,1) both",
+              }}
+            >
+              {activeSlide.description}
+            </p>
+
+            {/* CTA */}
+            <div
+              className="mt-9"
+              style={{
+                animation:
+                  "heroDescriptionReveal 900ms 400ms cubic-bezier(.22,.61,.36,1) both",
+              }}
+            >
+              <LocalizedClientLink
+                href={activeSlide.buttonLink}
+                className="group inline-flex items-center gap-4 border-b border-[#25231f]/40 pb-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#25231f] transition-all duration-300 hover:border-[#25231f]"
+              >
+                {activeSlide.buttonText}
+
+                <span className="text-[15px] transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </LocalizedClientLink>
+            </div>
+
+          </div>
+        </div>
+
+        {/* =====================================================
+            SLIDE NAVIGATION
+        ====================================================== */}
+
+        <div className="absolute bottom-8 left-6 right-6 z-20 flex items-center justify-between sm:left-10 sm:right-10 md:left-14 md:right-14 lg:bottom-12 lg:left-20 lg:right-20">
+
+          {/* Slide number */}
+          <div className="flex items-center gap-3">
+
+            <span className="font-serif text-[18px] text-[#25231f]">
+              {String(currentSlide + 1).padStart(2, "0")}
+            </span>
+
+            <span className="text-[9px] tracking-[0.2em] text-[#aaa49a]">
+              /
+            </span>
+
+            <span className="text-[9px] tracking-[0.2em] text-[#aaa49a]">
+              {String(heroSlides.length).padStart(2, "0")}
+            </span>
+
+          </div>
+
+          {/* Progress */}
+          <div className="flex items-center gap-3">
+
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.id}
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className="group relative h-5 w-12"
+              >
+                <span
+                  className={`absolute left-0 top-1/2 h-px -translate-y-1/2 transition-all duration-500 ${
+                    currentSlide === index
+                      ? "w-12 bg-[#25231f]"
+                      : "w-7 bg-[#25231f]/20 group-hover:w-10 group-hover:bg-[#25231f]/50"
+                  }`}
+                />
+              </button>
+            ))}
+
+          </div>
+
         </div>
 
       </div>
 
-      {/* Global Animation Styles */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes slideUpFade {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: scale(0.98); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes softZoom {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.08); }
-        }
-      `}} />
-    </div>
+      {/* =========================================================
+          BOTTOM BRAND STRIP
+      ========================================================== */}
+
+      <div className="border-t border-[#25231f]/8 bg-white">
+
+        <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-5 sm:px-10 md:px-14 lg:px-20">
+
+          <p className="text-[9px] uppercase tracking-[0.28em] text-[#8a857c]">
+            Authentic Indian Personal Care
+          </p>
+
+          <p className="hidden text-[9px] uppercase tracking-[0.28em] text-[#aaa49a] sm:block">
+            Thoughtfully selected · Carefully delivered
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* =========================================================
+          ANIMATIONS
+      ========================================================== */}
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes heroTextReveal {
+              0% {
+                opacity: 0;
+                transform: translateY(14px);
+              }
+
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes heroDescriptionReveal {
+              0% {
+                opacity: 0;
+                transform: translateY(10px);
+              }
+
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes heroImageZoom {
+              0% {
+                transform: scale(1.025);
+              }
+
+              100% {
+                transform: scale(1);
+              }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              *,
+              *::before,
+              *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+              }
+            }
+          `,
+        }}
+      />
+
+    </section>
   )
 }
 

@@ -6,7 +6,7 @@ import HomeCategories from "@modules/home/components/categories"
 import BestSellers from "@modules/home/components/best-sellers"
 import LocalGrid from "@modules/home/components/local-grid"
 import TestimonialsSection from "@modules/home/components/Testimonials/TestimonialsSection"
-
+import InfiniteBrandStrip from "@modules/home/components/infinite-brand-strip"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
@@ -71,6 +71,7 @@ export default async function Home(props: {
           CUSTOMER TESTIMONIALS
       ====================================================== */}
       <TestimonialsSection />
+      <InfiniteBrandStrip />
     </>
   )
 }

@@ -6,13 +6,14 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import AnnouncementBar from "@modules/layout/announcement-bar"
+import ScrollNav from "./scroll-nav"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
   const customer = await retrieveCustomer().catch(() => null)
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 font-sans shadow-sm">
+     <ScrollNav>
 
       {/* ====================================================== */}
       {/* TOP ANNOUNCEMENT BAR */}
@@ -496,6 +497,6 @@ export default async function Nav() {
 
         </nav>
       </header>
-    </div>
+     </ScrollNav>
   )
 }

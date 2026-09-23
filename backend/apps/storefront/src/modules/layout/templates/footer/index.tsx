@@ -5,7 +5,7 @@ export default async function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="mt-24 w-full border-t border-[#25231f]/10 bg-[#f7f5f0] text-[#25231f]">
+   <footer className="w-full border-t border-[#25231f]/10 bg-[#f7f5f0] text-[#25231f]">
       
       {/* ======================================================
           NEWSLETTER
