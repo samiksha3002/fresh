@@ -13,40 +13,55 @@ const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
  */
 const nextConfig = {
   reactStrictMode: true,
+
   logging: {
     fetches: {
       fullUrl: true,
     },
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   images: {
     remotePatterns: [
       {
         protocol: "http",
         hostname: "localhost",
       },
+
       {
         protocol: "https",
         hostname: "medusa-public-images.s3.eu-west-1.amazonaws.com",
       },
+
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.amazonaws.com",
       },
+
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
       },
-      // ✅ Added Unsplash here so your Hero and Slider images work!
+
+      // Unsplash
       {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+
+      // Kovea Touch - Supabase Product Images
+      {
+        protocol: "https",
+        hostname: "iywsowwyrjpnneqmbcek.supabase.co",
+      },
+
       ...(S3_HOSTNAME && S3_PATHNAME
         ? [
             {

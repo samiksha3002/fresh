@@ -48,7 +48,7 @@ export default async function Home(props: {
       {/* =====================================================
           BEST SELLERS
       ====================================================== */}
-      <BestSellers />
+      <BestSellers region={region} />
 
       {/* =====================================================
           LOCAL / EDITORIAL GRID

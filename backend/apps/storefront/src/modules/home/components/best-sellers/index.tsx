@@ -1,136 +1,173 @@
+import { listProducts } from "@lib/data/products"
+import { HttpTypes } from "@medusajs/types"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-const skincareBestSellers = [
-  {
-    id: "1",
-    title: "Hydrating Facial Cleanser",
-    price: "$24.00",
-    originalPrice: "$30.00",
-    rating: "★★★★★",
-    reviews: "(124)",
-    badge: "ON SALE",
-    badgeColor: "bg-red-500",
-    description: "Gentle daily cleanser for glowing skin.",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    id: "2",
-    title: "Vitamin C Brightening Serum",
-    price: "$42.00",
-    originalPrice: "",
-    rating: "★★★★★",
-    reviews: "(98)",
-    badge: "NEW",
-    badgeColor: "bg-emerald-600",
-    description: "Boosts radiance & fades dark spots.",
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    id: "3",
-    title: "Niacinamide Oil-Control Cream",
-    price: "$28.00",
-    originalPrice: "$35.00",
-    rating: "★★★★★",
-    reviews: "(215)",
-    badge: "ON SALE",
-    badgeColor: "bg-red-500",
-    description: "Balances sebum and hydrates deeply.",
-    image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    id: "4",
-    title: "Soothing Rose Petal Toner",
-    price: "$19.00",
-    originalPrice: "",
-    rating: "★★★★★",
-    reviews: "(64)",
-    badge: "",
-    badgeColor: "",
-    description: "Refreshes and tightens pores naturally.",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600"
+export default async function BestSellers({
+  region,
+}: {
+  region: HttpTypes.StoreRegion
+}) {
+  const {
+    response: { products },
+  } = await listProducts({
+    regionId: region.id,
+    queryParams: {
+      limit: 4,
+      order: "-created_at",
+      fields:
+        "id,title,handle,thumbnail,description,*variants.calculated_price",
+    },
+  })
+
+  if (!products || products.length === 0) {
+    return null
   }
-]
 
-const BestSellers = () => {
   return (
-    <div className="py-16 bg-white border-b border-gray-100">
-      <div className="content-container mx-auto px-6 md:px-8">
-        
-        {/* Section Header */}
-        <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-            Best Sellers
-          </h2>
-          <LocalizedClientLink 
-            href="/store" 
-            className="text-sm font-semibold text-gray-900 underline hover:text-gray-600 transition"
+    <section className="w-full bg-white">
+      <div className="content-container">
+
+        {/* =========================================================
+            HEADER
+        ========================================================= */}
+        <div className="flex flex-col px-6 pb-12 pt-20 sm:px-8 md:flex-row md:items-end md:justify-between md:pb-16 md:pt-24 lg:px-0">
+
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#8a857c]">
+              Customer Favourites
+            </p>
+
+            <h2 className="mt-5 font-serif text-[42px] font-normal leading-[0.98] tracking-[-0.035em] text-[#25231f] sm:text-[50px] md:text-[58px]">
+              Best Sellers
+            </h2>
+          </div>
+
+          <LocalizedClientLink
+            href="/store"
+            className="group mt-7 inline-flex w-fit items-center gap-3 border-b border-[#25231f]/20 pb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#25231f] transition-all duration-300 hover:border-[#25231f] md:mt-0"
           >
-            View all products
+            Shop All
+
+            <span className="text-[13px] transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </LocalizedClientLink>
+
         </div>
 
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skincareBestSellers.map((product) => (
-            <div 
-              key={product.id}
-              className="group flex flex-col bg-[#fcf8f5]/40 border border-gray-200/80 rounded-2xl p-5 hover:shadow-xl transition-all duration-300 relative"
-            >
-              {/* Badge (ON SALE / NEW) */}
-              {product.badge && (
-                <span className={`absolute top-4 left-4 z-10 text-[10px] font-bold text-white px-2.5 py-1 rounded-md tracking-wider ${product.badgeColor}`}>
-                  {product.badge}
-                </span>
-              )}
+        {/* =========================================================
+            PRODUCTS
+        ========================================================= */}
+        <div className="border-t border-[#25231f]/8 px-5 py-10 sm:px-8 sm:py-12 lg:px-0 lg:py-14">
 
-              {/* Product Image */}
-              <div className="w-full h-64 rounded-xl overflow-hidden mb-5 bg-white flex items-center justify-center shadow-sm">
-                <img 
-                  src={product.image} 
-                  alt={product.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-14 sm:gap-x-8 sm:gap-y-16 lg:grid-cols-4 lg:gap-x-10">
 
-              {/* Price & Title */}
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-lg font-bold text-gray-900">{product.price}</span>
-                {product.originalPrice && (
-                  <span className="text-sm text-gray-400 line-through">{product.originalPrice}</span>
-                )}
-              </div>
+            {products.map((product) => {
+              const variant = product.variants?.[0]
 
-              <h3 className="text-base font-semibold text-gray-900 mb-1 group-hover:text-black">
-                {product.title}
-              </h3>
+              const calculatedPrice =
+                variant?.calculated_price
 
-              {/* Ratings */}
-              <div className="flex items-center gap-1.5 mb-2">
-                <span className="text-amber-500 text-xs">{product.rating}</span>
-                <span className="text-xs text-gray-400 font-medium">{product.reviews}</span>
-              </div>
+              const amount =
+                calculatedPrice?.calculated_amount
 
-              {/* Description */}
-              <p className="text-xs text-gray-500 mb-6 line-clamp-1">
-                {product.description}
-              </p>
+              const currencyCode =
+                calculatedPrice?.currency_code
 
-              {/* Buy Now Button */}
-              <div className="mt-auto">
-                <LocalizedClientLink 
-                  href={`/products/${product.id}`}
-                  className="w-full block text-center border border-gray-900 text-gray-900 font-medium py-3 rounded-full hover:bg-gray-900 hover:text-white transition duration-300 text-sm"
+              const formattedPrice =
+                amount !== undefined && amount !== null
+                  ? new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency:
+                        currencyCode?.toUpperCase() || "USD",
+                    }).format(amount)
+                  : null
+
+              return (
+                <article
+                  key={product.id}
+                  className="group min-w-0"
                 >
-                  Buy now
-                </LocalizedClientLink>
-              </div>
-            </div>
-          ))}
+
+                  {/* =================================================
+                      PRODUCT IMAGE
+                  ================================================= */}
+                  <LocalizedClientLink
+                    href={`/products/${product.handle}`}
+                    className="block"
+                  >
+                    <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-[#FAF9F6]">
+
+                      {product.thumbnail ? (
+                        <img
+                          src={product.thumbnail}
+                          alt={product.title}
+                          className="h-full w-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-[1.035] sm:p-8"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <span className="text-[9px] uppercase tracking-[0.24em] text-[#aaa49a]">
+                            Kovea Touch
+                          </span>
+                        </div>
+                      )}
+
+                    </div>
+                  </LocalizedClientLink>
+
+                  {/* =================================================
+                      PRODUCT INFORMATION
+                  ================================================= */}
+                  <div className="pt-5">
+
+                    <div className="flex items-start justify-between gap-4">
+
+                      <LocalizedClientLink
+                        href={`/products/${product.handle}`}
+                        className="min-w-0"
+                      >
+                        <h3 className="font-serif text-[17px] font-normal leading-[1.25] tracking-[-0.015em] text-[#25231f] transition-colors duration-300 group-hover:text-[#69645c] sm:text-[19px]">
+                          {product.title}
+                        </h3>
+                      </LocalizedClientLink>
+
+                      {formattedPrice && (
+                        <span className="shrink-0 pt-[2px] text-[12px] font-medium text-[#4f4b44]">
+                          {formattedPrice}
+                        </span>
+                      )}
+
+                    </div>
+
+                    {/* PRODUCT LINK */}
+                    <LocalizedClientLink
+                      href={`/products/${product.handle}`}
+                      className="mt-4 inline-flex items-center gap-2 text-[9px] font-medium uppercase tracking-[0.18em] text-[#99938a] transition-colors duration-300 hover:text-[#25231f]"
+                    >
+                      View Product
+
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </LocalizedClientLink>
+
+                  </div>
+
+                </article>
+              )
+            })}
+
+          </div>
+
         </div>
+
+        {/* =========================================================
+            SMALL BOTTOM SPACING
+        ========================================================= */}
+        <div className="h-16 bg-white sm:h-20 md:h-24" />
 
       </div>
-    </div>
+    </section>
   )
 }
-
-export default BestSellers
