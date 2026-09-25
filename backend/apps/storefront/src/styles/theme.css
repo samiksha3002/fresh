@@ -1,0 +1,38 @@
+:root {
+  /* ================================
+     KOVEA TOUCH — GLOBAL THEME
+     ================================ */
+
+  /* Backgrounds */
+  --theme-white: #ffffff;
+  --theme-ivory: #faf9f6;
+  --theme-sand: #f2ece5;
+  --theme-soft: #f7f3ee;
+
+  /* Main Text */
+  --theme-text: #2b2724;
+  --theme-text-muted: #766c63;
+  --theme-text-subtle: #9a9088;
+
+  /* Brand Accent */
+  --theme-primary: #96745c;
+  --theme-primary-dark: #765d49;
+  --theme-primary-soft: #d8c9be;
+
+  /* Borders */
+  --theme-border: rgba(43, 39, 36, 0.1);
+  --theme-border-light: rgba(43, 39, 36, 0.06);
+
+  /* Buttons */
+  --theme-button-bg: #2b2724;
+  --theme-button-text: #ffffff;
+  --theme-button-hover: #765d49;
+
+  /* Cards */
+  --theme-card-bg: #ffffff;
+  --theme-card-hover: #faf9f6;
+
+  /* Logo / Icons */
+  --theme-icon: #2b2724;
+  --theme-icon-muted: #766c63;
+}

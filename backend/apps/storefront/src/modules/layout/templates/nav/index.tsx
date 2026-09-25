@@ -13,17 +13,15 @@ export default async function Nav() {
   const customer = await retrieveCustomer().catch(() => null)
 
   return (
-     <ScrollNav>
-
+    <ScrollNav>
       {/* ====================================================== */}
       {/* TOP ANNOUNCEMENT BAR */}
       {/* ====================================================== */}
 
       <AnnouncementBar />
 
-      <header className="relative h-[80px] px-6 mx-auto duration-200 bg-white border-b border-ui-border-base">
-
-        <nav className="content-container flex items-center justify-between w-full h-full text-sm">
+      <header className="relative h-[80px] px-6 mx-auto duration-200 theme-bg border-b theme-border">
+        <nav className="content-container flex items-center justify-between w-full h-full text-sm theme-text">
 
           {/* ====================================================== */}
           {/* LEFT: MOBILE MENU + DESKTOP NAVIGATION */}
@@ -39,12 +37,12 @@ export default async function Nav() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-6 text-gray-700 font-medium">
+            <div className="hidden lg:flex items-center gap-6 theme-text-muted font-medium">
 
               {/* Home */}
               <LocalizedClientLink
                 href="/"
-                className="hover:text-black transition-colors"
+                className="hover:theme-text transition-colors"
               >
                 Home
               </LocalizedClientLink>
@@ -55,7 +53,7 @@ export default async function Nav() {
 
               <div className="relative group h-full flex items-center">
 
-                <button className="flex items-center gap-1 hover:text-black transition-colors cursor-pointer">
+                <button className="flex items-center gap-1 hover:theme-text transition-colors cursor-pointer">
                   Product Type
 
                   <svg
@@ -75,88 +73,88 @@ export default async function Nav() {
 
                 <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-64">
 
-                  <div className="bg-white border border-gray-100 shadow-xl p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
+                  <div className="theme-bg border theme-border-light shadow-xl p-4 flex flex-col gap-3 theme-text-muted font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
 
                     <LocalizedClientLink
                       href="/store?category=all-skincare"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       All Skincare
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=azelaic-acid"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Azelaic Acid
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=brighteners"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Brighteners
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=cleansers-body-washes"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Cleansers & Body Washes
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=exfoliants"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Exfoliants
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=hair-care"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Hair Care
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=hydroquinone-break-products"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Hydroquinone Break Products
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=moisturizers"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Moisturizers
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=serums-retinoids"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Serums & Retinoids
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=sunscreens"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Sunscreens
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=toners-essense-ampoule"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Toners/Essense/Ampoule
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?category=vitamin-c-antioxidant"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Vitamin C / Antioxidant
                     </LocalizedClientLink>
@@ -171,7 +169,7 @@ export default async function Nav() {
 
               <div className="relative group h-full flex items-center">
 
-                <button className="flex items-center gap-1 hover:text-black transition-colors cursor-pointer">
+                <button className="flex items-center gap-1 hover:theme-text transition-colors cursor-pointer">
                   Skin Concerns
 
                   <svg
@@ -191,123 +189,123 @@ export default async function Nav() {
 
                 <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-72">
 
-                  <div className="bg-white border border-gray-100 shadow-xl p-4 flex flex-col gap-3 text-gray-600 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
+                  <div className="theme-bg border theme-border-light shadow-xl p-4 flex flex-col gap-3 theme-text-muted font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
 
                     <LocalizedClientLink
                       href="/store?concern=acne-texture"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Acne/Texture
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=aging"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Aging
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=body-pigmentation"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Body Pigmentation
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=dark-knees-elbows"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Dark Knees & Elbows
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=dark-underarms-dark-neck"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Dark Underarms & Dark Neck
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=hair-loss-care"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Hair Loss/Care
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=kp-strawberry-legs"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       KP & Strawberry Legs
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=large-pores-texture"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Large Pores/Texture
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=lip-eye-care"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Lip & Eye Care
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=mild-moderate-pigmentation"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Mild - Moderate Pigmentation
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=oily-skin"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Oily Skin
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=pregnancy-safe"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Pregnancy Safe
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=scar-treatment"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Scar Treatment
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=sensitive-skin-barrier-repair-dry-skin"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Sensitive Skin/Barrier Repair/Dry Skin
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=skintags-razor-bumps"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Skintags/Razor Bumps
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=stubborn-pigmentation"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Stubborn Pigmentation
                     </LocalizedClientLink>
 
                     <LocalizedClientLink
                       href="/store?concern=tinea-versicolor-dandruff-hibiclens"
-                      className="hover:text-black hover:translate-x-1 transition-transform"
+                      className="hover:theme-text hover:translate-x-1 transition-transform"
                     >
                       Tinea Versicolor/Dandruff/Hibiclens
                     </LocalizedClientLink>
@@ -319,7 +317,7 @@ export default async function Nav() {
               {/* About Us */}
               <LocalizedClientLink
                 href="/about"
-                className="hover:text-black transition-colors"
+                className="hover:theme-text transition-colors"
               >
                 About Us
               </LocalizedClientLink>
@@ -360,7 +358,7 @@ export default async function Nav() {
 
               <LocalizedClientLink
                 href="/search"
-                className="hover:text-black text-gray-700 transition-colors"
+                className="hover:theme-text theme-text-muted transition-colors"
                 data-testid="nav-search-link"
               >
                 <svg
@@ -389,7 +387,7 @@ export default async function Nav() {
               /* LOGGED IN */
               <LocalizedClientLink
                 href="/account"
-                className="hidden small:flex items-center gap-2 text-gray-700 hover:text-black transition-colors"
+                className="hidden small:flex items-center gap-2 theme-text-muted hover:theme-text transition-colors"
               >
 
                 <svg
@@ -415,11 +413,11 @@ export default async function Nav() {
             ) : (
 
               /* LOGGED OUT */
-              <div className="hidden small:flex items-center gap-3 text-gray-700">
+              <div className="hidden small:flex items-center gap-3 theme-text-muted">
 
                 <LocalizedClientLink
                   href="/account"
-                  className="flex items-center gap-2 hover:text-black transition-colors"
+                  className="flex items-center gap-2 hover:theme-text transition-colors"
                 >
 
                   <svg
@@ -442,13 +440,13 @@ export default async function Nav() {
 
                 </LocalizedClientLink>
 
-                <span className="text-gray-300">
+                <span className="theme-text-subtle">
                   |
                 </span>
 
                 <LocalizedClientLink
                   href="/account?view=register"
-                  className="font-medium hover:text-black transition-colors"
+                  className="font-medium hover:theme-text transition-colors"
                 >
                   Sign Up
                 </LocalizedClientLink>
@@ -465,7 +463,7 @@ export default async function Nav() {
               fallback={
                 <LocalizedClientLink
                   href="/cart"
-                  className="hover:text-black flex gap-2 text-gray-700 transition-colors"
+                  className="flex gap-2 theme-text-muted hover:theme-text transition-colors"
                   data-testid="nav-cart-link"
                 >
 
@@ -497,6 +495,6 @@ export default async function Nav() {
 
         </nav>
       </header>
-     </ScrollNav>
+    </ScrollNav>
   )
 }

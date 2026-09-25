@@ -14,7 +14,7 @@ const heroSlides = [
     buttonText: "SHOP SKINCARE",
     buttonLink: "/store",
     image:
-      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=85&w=1800",
+      "/images/hero/hero 1.jpeg",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const heroSlides = [
     buttonText: "EXPLORE SERUMS",
     buttonLink: "/store?category=serums-retinoids",
     image:
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=85&w=1800",
+      "/images/hero/hero 2.jpeg",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const heroSlides = [
     buttonText: "SHOP CLEANSERS",
     buttonLink: "/store?category=cleansers-body-washes",
     image:
-      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=85&w=1800",
+      "/images/hero/hero 3.jpeg",
   },
 ]
 

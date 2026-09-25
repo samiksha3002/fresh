@@ -83,7 +83,7 @@ export default async function Footer() {
               className="relative mb-7 block h-[72px] w-[180px]"
             >
               <Image
-                src="/logo kovea.jpeg"
+                src="/kovea logo.png"
                 alt="Kovea Touch"
                 fill
                 sizes="180px"
