@@ -7,6 +7,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import AnnouncementBar from "@modules/layout/announcement-bar"
 import ScrollNav from "./scroll-nav"
+import CurrencySelector from "./currency-selector"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
@@ -330,36 +331,37 @@ export default async function Nav() {
           {/* ====================================================== */}
 
           <div className="flex items-center justify-center h-full flex-1">
-
             <LocalizedClientLink
               href="/"
-              className="flex items-center justify-center w-full h-full relative"
+              className="flex items-center justify-center h-full relative"
             >
-              <Image
-                src="/logo kovea.jpeg"
-                alt="Kovea Touch Logo"
-                width={160}
-                height={60}
-                className="object-contain mix-blend-multiply"
-                priority
-              />
+              <div className="relative h-[68px] w-[160px] overflow-hidden">
+                <Image
+                  src="/brownlogo.png"
+                  alt="Kovea Touch Logo"
+                  width={160}
+                  height={60}
+                  priority
+                  className="absolute left-1/2 top-1/2 h-auto w-[150px] -translate-x-1/2 -translate-y-1/2 object-contain"
+                />
+              </div>
             </LocalizedClientLink>
-
           </div>
 
           {/* ====================================================== */}
-          {/* RIGHT: SEARCH + ACCOUNT + CART */}
+          {/* RIGHT: SEARCH + ACCOUNT + CURRENCY + CART */}
           {/* ====================================================== */}
 
-          <div className="flex items-center gap-x-6 flex-1 basis-0 justify-end">
+          <div className="flex items-center gap-x-5 flex-1 basis-0 justify-end">
 
             {/* Search */}
-            <div className="hidden small:flex items-center gap-x-4">
+            <div className="hidden small:flex items-center">
 
               <LocalizedClientLink
                 href="/search"
                 className="hover:theme-text theme-text-muted transition-colors"
                 data-testid="nav-search-link"
+                aria-label="Search"
               >
                 <svg
                   className="w-5 h-5"
@@ -379,81 +381,34 @@ export default async function Nav() {
             </div>
 
             {/* ================================================== */}
-            {/* ACCOUNT */}
+            {/* ACCOUNT — ICON ONLY */}
             {/* ================================================== */}
 
-            {customer ? (
-
-              /* LOGGED IN */
-              <LocalizedClientLink
-                href="/account"
-                className="hidden small:flex items-center gap-2 theme-text-muted hover:theme-text transition-colors"
+            <LocalizedClientLink
+              href="/account"
+              className="hidden small:flex items-center theme-text-muted hover:theme-text transition-colors"
+              aria-label={customer ? "My Account" : "Sign In"}
+            >
+              <svg
+                className="w-[21px] h-[21px]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                  d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                />
+              </svg>
+            </LocalizedClientLink>
 
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.8"
-                    d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
-                  />
-                </svg>
+            {/* ================================================== */}
+            {/* COUNTRY / CURRENCY */}
+            {/* ================================================== */}
 
-                <span className="font-medium">
-                  {customer.first_name || customer.email}
-                </span>
-
-              </LocalizedClientLink>
-
-            ) : (
-
-              /* LOGGED OUT */
-              <div className="hidden small:flex items-center gap-3 theme-text-muted">
-
-                <LocalizedClientLink
-                  href="/account"
-                  className="flex items-center gap-2 hover:theme-text transition-colors"
-                >
-
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.8"
-                      d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
-                    />
-                  </svg>
-
-                  <span className="font-medium">
-                    Sign In
-                  </span>
-
-                </LocalizedClientLink>
-
-                <span className="theme-text-subtle">
-                  |
-                </span>
-
-                <LocalizedClientLink
-                  href="/account?view=register"
-                  className="font-medium hover:theme-text transition-colors"
-                >
-                  Sign Up
-                </LocalizedClientLink>
-
-              </div>
-
-            )}
+            <CurrencySelector regions={regions} />
 
             {/* ================================================== */}
             {/* CART */}
@@ -463,10 +418,10 @@ export default async function Nav() {
               fallback={
                 <LocalizedClientLink
                   href="/cart"
-                  className="flex gap-2 theme-text-muted hover:theme-text transition-colors"
+                  className="flex items-center theme-text-muted hover:theme-text transition-colors"
                   data-testid="nav-cart-link"
+                  aria-label="Cart"
                 >
-
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -480,11 +435,6 @@ export default async function Nav() {
                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                     />
                   </svg>
-
-                  <span className="font-medium">
-                    (0)
-                  </span>
-
                 </LocalizedClientLink>
               }
             >

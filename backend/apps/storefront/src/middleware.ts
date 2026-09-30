@@ -172,8 +172,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // If the country code is in the URL but
-  // cache ID isn't set, set the cache ID.
+
   if (
     urlHasCountryCode &&
     !cacheIdCookie
