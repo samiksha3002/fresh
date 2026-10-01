@@ -1,64 +1,252 @@
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* ==========================================
+   KOVEA TOUCH — GLOBAL DESIGN SYSTEM
+   Manage brand colors, fonts and sizing here
+========================================== */
 
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+:root {
+  /* Brand colors */
+  --kt-primary: #2b2724;
+  --kt-secondary: #766c63;
+  --kt-accent: #96745c;
 
-  .no-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
+  /* Background colors */
+  --kt-white: #ffffff;
+  --kt-cream: #faf9f6;
+  --kt-sand: #f2ece5;
+  --kt-beige: #d8c9be;
+  --kt-black: #1f1c19;
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+  /* Borders and shadows */
+  --kt-border: rgba(43, 39, 36, 0.1);
+  --kt-border-strong: rgba(43, 39, 36, 0.18);
+  --kt-shadow: rgba(43, 39, 36, 0.12);
 
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
-  }
+  /* Fonts */
+  --kt-font-body: "Noto Sans", sans-serif;
+  --kt-font-heading: "Noto Sans", sans-serif;
 
-  input:focus ~ label {
-    @apply left-0;
-  }
+  /* Typography scale */
+  --kt-heading-xl: 56px;
+  --kt-heading-lg: 42px;
+  --kt-heading-md: 32px;
+  --kt-heading-sm: 24px;
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
+  --kt-body-lg: 18px;
+  --kt-body: 14px;
+  --kt-body-sm: 12px;
 
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
+  /* Layout */
+  --kt-content-width: 1440px;
+  --kt-section-gap: 64px;
+
+  /* Buttons */
+  --kt-button-radius: 999px;
+  --kt-button-padding-y: 12px;
+  --kt-button-padding-x: 24px;
+}
+
+/* ==========================================
+   GLOBAL BASE STYLES
+========================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--kt-primary);
+  background-color: var(--kt-white);
+  font-family: var(--kt-font-body);
+}
+
+/* Consistent heading font when using these classes */
+.kt-heading-xl,
+.kt-heading-lg,
+.kt-heading-md,
+.kt-heading-sm {
+  font-family: var(--kt-font-heading);
+  color: var(--kt-primary);
+  font-weight: 400;
+}
+
+.kt-heading-xl {
+  font-size: var(--kt-heading-xl);
+  line-height: 1.12;
+}
+
+.kt-heading-lg {
+  font-size: var(--kt-heading-lg);
+  line-height: 1.2;
+}
+
+.kt-heading-md {
+  font-size: var(--kt-heading-md);
+  line-height: 1.25;
+}
+
+.kt-heading-sm {
+  font-size: var(--kt-heading-sm);
+  line-height: 1.35;
+}
+
+.kt-body-lg {
+  font-size: var(--kt-body-lg);
+  line-height: 1.7;
+}
+
+.kt-body {
+  font-size: var(--kt-body);
+  line-height: 1.7;
+}
+
+.kt-small {
+  font-size: var(--kt-body-sm);
+  line-height: 1.6;
+}
+
+/* Responsive typography */
+@media (max-width: 767px) {
+  :root {
+    --kt-heading-xl: 38px;
+    --kt-heading-lg: 32px;
+    --kt-heading-md: 26px;
+    --kt-heading-sm: 21px;
+    --kt-body-lg: 16px;
+    --kt-section-gap: 40px;
   }
 }
 
+/* ==========================================
+   KOVEA TOUCH — REUSABLE THEME CLASSES
+========================================== */
+
 @layer components {
+  /* Containers */
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-6;
   }
 
+  .kt-section {
+    padding-top: var(--kt-section-gap);
+    padding-bottom: var(--kt-section-gap);
+  }
+
+  /* Text colors */
+  .kt-primary {
+    color: var(--kt-primary);
+  }
+
+  .kt-secondary {
+    color: var(--kt-secondary);
+  }
+
+  .kt-accent {
+    color: var(--kt-accent);
+  }
+
+  /* Background colors */
+  .kt-bg-white {
+    background-color: var(--kt-white);
+  }
+
+  .kt-bg-cream {
+    background-color: var(--kt-cream);
+  }
+
+  .kt-bg-sand {
+    background-color: var(--kt-sand);
+  }
+
+  .kt-bg-primary {
+    background-color: var(--kt-primary);
+    color: var(--kt-white);
+  }
+
+  .kt-bg-accent {
+    background-color: var(--kt-accent);
+    color: var(--kt-white);
+  }
+
+  /* Borders */
+  .kt-border {
+    border: 1px solid var(--kt-border);
+  }
+
+  .kt-border-bottom {
+    border-bottom: 1px solid var(--kt-border);
+  }
+
+  /* Buttons */
+  .kt-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: var(--kt-button-padding-y) var(--kt-button-padding-x);
+    border: 1px solid var(--kt-primary);
+    border-radius: var(--kt-button-radius);
+    background-color: var(--kt-primary);
+    color: var(--kt-white);
+    font-family: var(--kt-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+    cursor: pointer;
+  }
+
+  .kt-button:hover {
+    background-color: var(--kt-accent);
+    border-color: var(--kt-accent);
+  }
+
+  .kt-button-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--kt-button-padding-y) var(--kt-button-padding-x);
+    border: 1px solid var(--kt-border-strong);
+    border-radius: var(--kt-button-radius);
+    background-color: transparent;
+    color: var(--kt-primary);
+    font-family: var(--kt-font-body);
+    font-size: 14px;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+    cursor: pointer;
+  }
+
+  .kt-button-outline:hover {
+    background-color: var(--kt-cream);
+    border-color: var(--kt-primary);
+  }
+
+  /* Small uppercase section labels */
+  .kt-eyebrow {
+    color: var(--kt-accent);
+    font-family: var(--kt-font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  /* Existing button */
   .contrast-btn {
     @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
   }
 
+  /* Existing typography utilities */
   .text-xsmall-regular {
     @apply text-[10px] leading-4 font-normal;
   }
@@ -109,5 +297,59 @@
 
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
+  }
+}
+
+/* ==========================================
+   EXISTING UTILITIES — PRESERVED
+========================================== */
+
+@layer utilities {
+  /* Hide scrollbars */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Floating input labels */
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  /* Browser autofill styling */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #212121;
+    -webkit-text-fill-color: #212121;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* Remove native search decorations */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
   }
 }

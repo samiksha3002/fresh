@@ -1,6 +1,8 @@
+
 "use client"
 
 import { useRef } from "react"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
 
@@ -44,25 +46,17 @@ const HomeCategoriesClient = ({ categories }: Props) => {
   }
 
   return (
-    <section className="bg-white pt-8 pb-1 md:pt-10 md:pb-2">
+    <section className="bg-[var(--kt-white)] pt-8 pb-1 md:pt-10 md:pb-2">
       <div className="content-container mx-auto max-w-7xl px-6 md:px-8">
-
-        {/* ===================================================== */}
         {/* HEADING */}
-        {/* ===================================================== */}
-
         <div className="mb-5">
-          <h2 className="font-serif text-[30px] font-normal tracking-tight text-[#2b2724] md:text-[32px]">
+          <h2 className="font-serif text-[30px] font-normal tracking-tight text-[var(--kt-primary)] md:text-[32px]">
             Shop by Category
           </h2>
         </div>
 
-        {/* ===================================================== */}
         {/* CATEGORY CAROUSEL */}
-        {/* ===================================================== */}
-
         <div className="relative">
-
           <style
             dangerouslySetInnerHTML={{
               __html: `
@@ -93,8 +87,7 @@ const HomeCategoriesClient = ({ categories }: Props) => {
             "
           >
             {categories.map((category) => {
-              const image =
-                categoryImages[category.handle] || fallbackImage
+              const image = categoryImages[category.handle] || fallbackImage
 
               return (
                 <LocalizedClientLink
@@ -109,23 +102,20 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                     md:w-[135px]
                   "
                 >
-                  {/* ================================================= */}
                   {/* CIRCLE IMAGE */}
-                  {/* ================================================= */}
-
                   <div
                     className="
                       relative
                       h-[108px]
                       w-[108px]
                       rounded-full
-                      bg-[#f4eee8]
+                      bg-[var(--kt-sand)]
                       p-[4px]
                       transition-all
                       duration-500
                       ease-out
                       group-hover:-translate-y-1
-                      group-hover:shadow-[0_12px_30px_rgba(43,39,36,0.12)]
+                      group-hover:shadow-[0_12px_30px_var(--kt-shadow)]
                       sm:h-[116px]
                       sm:w-[116px]
                       md:h-[122px]
@@ -139,15 +129,15 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                         inset-0
                         rounded-full
                         border
-                        border-[#2b2724]/[0.08]
+                        border-[var(--kt-border)]
                         transition-all
                         duration-500
-                        group-hover:border-[#96745c]/30
+                        group-hover:border-[var(--kt-accent)]
                       "
                     />
 
                     {/* Image */}
-                    <div className="h-full w-full overflow-hidden rounded-full bg-[#eee7df]">
+                    <div className="h-full w-full overflow-hidden rounded-full bg-[var(--kt-cream)]">
                       <img
                         src={image}
                         alt={category.name}
@@ -176,11 +166,11 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                         justify-center
                         rounded-full
                         border
-                        border-white
-                        bg-[#2b2724]
-                        text-white
+                        border-[var(--kt-white)]
+                        bg-[var(--kt-primary)]
+                        text-[var(--kt-white)]
                         opacity-0
-                        shadow-[0_4px_12px_rgba(43,39,36,0.18)]
+                        shadow-[0_4px_12px_var(--kt-shadow)]
                         transition-all
                         duration-300
                         group-hover:opacity-100
@@ -204,10 +194,7 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                     </span>
                   </div>
 
-                  {/* ================================================= */}
                   {/* CATEGORY NAME */}
-                  {/* ================================================= */}
-
                   <div className="mt-3 min-h-[34px] pr-1">
                     <span
                       className="
@@ -217,10 +204,10 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                         font-medium
                         leading-[17px]
                         tracking-[-0.01em]
-                        text-[#2b2724]
+                        text-[var(--kt-primary)]
                         transition-colors
                         duration-300
-                        group-hover:text-[#765d49]
+                        group-hover:text-[var(--kt-accent)]
                         md:text-[13px]
                       "
                     >
@@ -232,12 +219,8 @@ const HomeCategoriesClient = ({ categories }: Props) => {
             })}
           </div>
 
-          {/* ===================================================== */}
           {/* NAVIGATION */}
-          {/* ===================================================== */}
-
           <div className="mt-4 flex items-center justify-center">
-
             {/* Previous */}
             <button
               type="button"
@@ -251,14 +234,14 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                 justify-center
                 rounded-full
                 border
-                border-[#2b2724]/10
-                bg-white
-                text-[#766c63]
+                border-[var(--kt-border)]
+                bg-[var(--kt-white)]
+                text-[var(--kt-secondary)]
                 transition-all
                 duration-300
-                hover:border-[#2b2724]/20
-                hover:bg-[#f7f3ee]
-                hover:text-[#2b2724]
+                hover:border-[var(--kt-border-strong)]
+                hover:bg-[var(--kt-cream)]
+                hover:text-[var(--kt-primary)]
                 active:scale-95
               "
             >
@@ -281,9 +264,9 @@ const HomeCategoriesClient = ({ categories }: Props) => {
 
             {/* Indicators */}
             <div className="mx-4 flex items-center gap-2">
-              <span className="h-[3px] w-7 rounded-full bg-[#2b2724]" />
-              <span className="h-[3px] w-[3px] rounded-full bg-[#d8c9be]" />
-              <span className="h-[3px] w-[3px] rounded-full bg-[#d8c9be]" />
+              <span className="h-[3px] w-7 rounded-full bg-[var(--kt-primary)]" />
+              <span className="h-[3px] w-[3px] rounded-full bg-[var(--kt-beige)]" />
+              <span className="h-[3px] w-[3px] rounded-full bg-[var(--kt-beige)]" />
             </div>
 
             {/* Next */}
@@ -299,14 +282,14 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                 justify-center
                 rounded-full
                 border
-                border-[#2b2724]/10
-                bg-white
-                text-[#766c63]
+                border-[var(--kt-border)]
+                bg-[var(--kt-white)]
+                text-[var(--kt-secondary)]
                 transition-all
                 duration-300
-                hover:border-[#2b2724]/20
-                hover:bg-[#f7f3ee]
-                hover:text-[#2b2724]
+                hover:border-[var(--kt-border-strong)]
+                hover:bg-[var(--kt-cream)]
+                hover:text-[var(--kt-primary)]
                 active:scale-95
               "
             >
@@ -326,7 +309,6 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                 />
               </svg>
             </button>
-
           </div>
         </div>
       </div>

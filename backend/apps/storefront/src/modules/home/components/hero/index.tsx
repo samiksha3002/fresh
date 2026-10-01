@@ -1,13 +1,10 @@
+
 "use client"
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-/**
- * Images: /public/images/results/before-N.jpeg & after-N.jpeg
- * Dono photo same angle + same crop me rakho (portrait ya square best hai).
- */
 const heroSlides = [
   {
     id: 1,
@@ -50,10 +47,8 @@ const heroSlides = [
   },
 ]
 
-// Divider ka tilt (% of width). Bada number = zyada slanted.
 const SKEW = 7
 
-// Missing image par alt text overlap na ho
 const hideBroken = (e: React.SyntheticEvent<HTMLImageElement>) => {
   e.currentTarget.style.visibility = "hidden"
 }
@@ -61,16 +56,18 @@ const hideBroken = (e: React.SyntheticEvent<HTMLImageElement>) => {
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isChanging, setIsChanging] = useState(false)
-  const [pos, setPos] = useState(50) // divider position 0-100
+  const [pos, setPos] = useState(50)
   const [dragging, setDragging] = useState(false)
   const [hasDragged, setHasDragged] = useState(false)
+
   const draggingRef = useRef(false)
 
-  // Auto-advance (drag ke time pause)
   useEffect(() => {
     const timer = setInterval(() => {
       if (draggingRef.current) return
+
       setIsChanging(true)
+
       setTimeout(() => {
         setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
         setIsChanging(false)
@@ -80,18 +77,21 @@ const Hero = () => {
     return () => clearInterval(timer)
   }, [])
 
-  // Naye slide par divider ek baar sweep karta hai
   useEffect(() => {
     setPos(90)
-    const t = setTimeout(() => setPos(50), 600)
-    return () => clearTimeout(t)
+
+    const timer = setTimeout(() => setPos(50), 600)
+
+    return () => clearTimeout(timer)
   }, [currentSlide])
 
   const activeSlide = heroSlides[currentSlide]
 
   const goToSlide = (index: number) => {
     if (index === currentSlide) return
+
     setIsChanging(true)
+
     setTimeout(() => {
       setCurrentSlide(index)
       setIsChanging(false)
@@ -103,6 +103,7 @@ const Hero = () => {
     setDragging(true)
     setHasDragged(true)
   }
+
   const endDrag = () => {
     draggingRef.current = false
     setDragging(false)
@@ -112,36 +113,29 @@ const Hero = () => {
     ? ""
     : "transition-[clip-path] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)]"
 
-  // Slanted edge: upar right ki taraf, neeche left ki taraf
   const topX = pos + SKEW
   const bottomX = pos - SKEW
 
   return (
-    <section className="relative w-full overflow-hidden bg-white">
-
-      {/* =========================================================
-          HERO  (desktop par viewport ke andar fit hota hai)
-      ========================================================== */}
-
+    <section
+      className="relative w-full overflow-hidden bg-[var(--kt-white,#ffffff)] text-[var(--kt-primary,#2b2724)]"
+      style={{
+        fontFamily: "var(--kt-font-body, var(--font-noto-sans), sans-serif)",
+      }}
+    >
+      {/* HERO */}
       <div className="relative lg:h-[calc(100svh-150px)] lg:max-h-[860px] lg:min-h-[640px]">
+        <div className="absolute inset-0 bg-[var(--kt-cream,#faf9f6)]" />
 
-        <div className="absolute inset-0 bg-[#faf9f6]" />
-
-        {/* =====================================================
-            RESULTS PANEL: poora right portion, full-bleed
-            Mobile: text ke upar
-        ====================================================== */}
-
+        {/* BEFORE / AFTER IMAGE PANEL */}
         <div className="relative h-[64vh] min-h-[460px] max-h-[640px] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:max-h-none lg:min-h-0 lg:w-[54%]">
-
           <div
-            className={`absolute inset-0 overflow-hidden bg-[#e6dccf] transition-opacity duration-700 ease-out ${
+            className={`absolute inset-0 overflow-hidden bg-[var(--kt-sand,#f2ece5)] transition-opacity duration-700 ease-out ${
               isChanging ? "opacity-0" : "opacity-100"
             }`}
           >
-
-            {/* AFTER: poora panel, neeche ki layer */}
-            <div className="absolute inset-0 bg-[#e9e0d4]">
+            {/* AFTER IMAGE */}
+            <div className="absolute inset-0 bg-[var(--kt-sand,#f2ece5)]">
               <Image
                 src={activeSlide.after}
                 alt={`Skin after ${activeSlide.duration} of Kovea Touch`}
@@ -153,9 +147,9 @@ const Hero = () => {
               />
             </div>
 
-            {/* BEFORE: upar ki layer, slanted clip */}
+            {/* BEFORE IMAGE */}
             <div
-              className={`absolute inset-0 bg-[#d3c8b8] ${ease}`}
+              className={`absolute inset-0 bg-[var(--kt-beige,#d8c9be)] ${ease}`}
               style={{
                 clipPath: `polygon(0 0, ${topX}% 0, ${bottomX}% 100%, 0 100%)`,
               }}
@@ -169,13 +163,13 @@ const Hero = () => {
                 onError={hideBroken}
                 className="object-cover object-center"
               />
-              {/* before ko halka muted feel */}
-              <div className="absolute inset-0 bg-[#25231f]/10" />
+
+              <div className="absolute inset-0 bg-[var(--kt-primary,#2b2724)]/10" />
             </div>
 
-            {/* Slanted divider line (thin clip-path band) */}
+            {/* DIVIDER */}
             <div
-              className={`pointer-events-none absolute inset-0 bg-white ${ease}`}
+              className={`pointer-events-none absolute inset-0 bg-[var(--kt-white,#ffffff)] ${ease}`}
               style={{
                 clipPath: `polygon(${topX - 0.18}% 0, ${topX + 0.18}% 0, ${
                   bottomX + 0.18
@@ -183,9 +177,9 @@ const Hero = () => {
               }}
             />
 
-            {/* Handle: divider ke beech me */}
+            {/* DIVIDER HANDLE */}
             <div
-              className={`pointer-events-none absolute top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[15px] text-[#25231f] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.45)] ${
+              className={`pointer-events-none absolute top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--kt-border,#e9e4de)] bg-[var(--kt-white,#ffffff)] text-[15px] text-[var(--kt-primary,#2b2724)] shadow-[0_10px_30px_-8px_var(--kt-shadow,rgba(43,39,36,0.12))] ${
                 dragging
                   ? ""
                   : "transition-[left] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)]"
@@ -195,33 +189,37 @@ const Hero = () => {
               ⇆
             </div>
 
-            {/* Corner labels */}
-            <span className="pointer-events-none absolute left-5 top-5 rounded-full bg-white/90 px-4 py-2 text-[11px] font-medium tracking-[0.1em] text-[#25231f] backdrop-blur sm:left-8 sm:top-8">
+            {/* BEFORE LABEL */}
+            <span className="pointer-events-none absolute left-5 top-5 rounded-full border border-[var(--kt-border,#e9e4de)] bg-[var(--kt-white,#ffffff)]/95 px-4 py-2 text-[11px] font-medium tracking-[0.1em] text-[var(--kt-primary,#2b2724)] sm:left-8 sm:top-8">
               Before
             </span>
-            <span className="pointer-events-none absolute right-5 top-5 rounded-full bg-[#25231f]/85 px-4 py-2 text-[11px] font-medium tracking-[0.1em] text-white backdrop-blur sm:right-8 sm:top-8 lg:right-16">
+
+            {/* AFTER LABEL */}
+            <span className="pointer-events-none absolute right-5 top-5 rounded-full bg-[var(--kt-primary,#2b2724)]/85 px-4 py-2 text-[11px] font-medium tracking-[0.1em] text-[var(--kt-white,#ffffff)] sm:right-8 sm:top-8 lg:right-16">
               After
             </span>
 
-            {/* Result card, bottom-left */}
-            <div className="pointer-events-none absolute bottom-5 left-5 z-10 max-w-[230px] rounded-2xl bg-white/90 px-5 py-4 shadow-[0_24px_50px_-20px_rgba(37,35,31,0.5)] backdrop-blur sm:bottom-8 sm:left-8">
-              <p className="text-[11px] tracking-[0.08em] text-[#aaa49a]">
+            {/* RESULT CARD */}
+            <div className="pointer-events-none absolute bottom-5 left-5 z-10 max-w-[230px] rounded-2xl border border-[var(--kt-border,#e9e4de)] bg-[var(--kt-white,#ffffff)]/95 px-5 py-4 shadow-[0_24px_50px_-20px_var(--kt-shadow,rgba(43,39,36,0.12))] sm:bottom-8 sm:left-8">
+              <p className="text-[11px] tracking-[0.08em] text-[var(--kt-secondary,#766c63)]">
                 Skin concern
               </p>
-              <p className="mt-1 font-serif text-[18px] leading-snug text-[#25231f]">
+
+              <p className="mt-1 text-[18px] font-medium leading-snug text-[var(--kt-primary,#2b2724)]">
                 {activeSlide.concern}
               </p>
+
               <div className="mt-3 flex items-center gap-3">
-                <span className="h-px flex-1 bg-[#25231f]/20" />
-                <span className="text-[11px] tracking-[0.08em] text-[#77736b]">
+                <span className="h-px flex-1 bg-[var(--kt-border-strong,rgba(43,39,36,0.18))]" />
+                <span className="text-[11px] tracking-[0.08em] text-[var(--kt-secondary,#766c63)]">
                   {activeSlide.duration}
                 </span>
               </div>
             </div>
 
-            {/* Drag hint, pehli baar drag hone ke baad gayab */}
+            {/* DRAG HINT */}
             <div
-              className={`pointer-events-none absolute bottom-5 right-5 z-10 flex items-center gap-3 rounded-full bg-[#25231f]/80 px-4 py-2 text-white backdrop-blur transition-opacity duration-500 sm:bottom-8 sm:right-8 lg:right-16 ${
+              className={`pointer-events-none absolute bottom-5 right-5 z-10 flex items-center gap-3 rounded-full bg-[var(--kt-primary,#2b2724)]/85 px-4 py-2 text-[var(--kt-white,#ffffff)] transition-opacity duration-500 sm:bottom-8 sm:right-8 lg:right-16 ${
                 hasDragged ? "opacity-0" : "opacity-100"
               }`}
             >
@@ -230,7 +228,7 @@ const Hero = () => {
               </span>
             </div>
 
-            {/* Touch/mouse/keyboard input, poore panel par */}
+            {/* TOUCH / MOUSE / KEYBOARD INPUT */}
             <input
               type="range"
               min={0}
@@ -247,12 +245,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            CONTENT
-        ====================================================== */}
-
-        <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[1500px] items-center px-6 py-16 sm:px-10 md:px-14 lg:absolute lg:inset-0 lg:min-h-0 lg:py-10 lg:px-20 pointer-events-none">
-
+        {/* HERO CONTENT */}
+        <div className="pointer-events-none relative z-10 mx-auto flex min-h-[560px] max-w-[1500px] items-center px-6 py-16 sm:px-10 md:px-14 lg:absolute lg:inset-0 lg:min-h-0 lg:px-20 lg:py-10">
           <div
             key={activeSlide.id}
             className={`pointer-events-auto max-w-[560px] transition-all duration-700 ease-out ${
@@ -261,15 +255,21 @@ const Hero = () => {
                 : "translate-y-0 opacity-100"
             }`}
           >
-
             <div className="mb-6 flex items-center gap-4">
-              <span className="h-px w-8 bg-[#25231f]/40" />
-              <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-[#77736b]">
+              <span className="h-px w-8 bg-[var(--kt-accent,#96745c)]" />
+
+              <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-[var(--kt-accent,#96745c)]">
                 {activeSlide.eyebrow}
               </p>
             </div>
 
-            <h1 className="font-serif text-[56px] font-normal leading-[0.91] tracking-[-0.045em] text-[#25231f] sm:text-[72px] md:text-[82px] lg:text-[clamp(64px,10vh,96px)]">
+            <h1
+              className="text-[56px] font-normal leading-[0.91] tracking-[-0.045em] text-[var(--kt-primary,#2b2724)] sm:text-[72px] md:text-[82px] lg:text-[clamp(64px,10vh,96px)]"
+              style={{
+                fontFamily:
+                  "var(--kt-font-heading, var(--font-noto-sans), sans-serif)",
+              }}
+            >
               {activeSlide.title.map((line, index) => (
                 <span
                   key={line}
@@ -286,7 +286,7 @@ const Hero = () => {
             </h1>
 
             <p
-              className="mt-8 max-w-[430px] text-[14px] leading-7 text-[#77736b] sm:text-[15px]"
+              className="mt-8 max-w-[430px] text-[14px] leading-7 text-[var(--kt-secondary,#766c63)] sm:text-[15px]"
               style={{
                 animation:
                   "heroDescriptionReveal 900ms 280ms cubic-bezier(.22,.61,.36,1) both",
@@ -304,30 +304,30 @@ const Hero = () => {
             >
               <LocalizedClientLink
                 href={activeSlide.buttonLink}
-                className="group inline-flex items-center gap-4 border-b border-[#25231f]/40 pb-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#25231f] transition-all duration-300 hover:border-[#25231f]"
+                className="group inline-flex items-center gap-4 border-b border-[var(--kt-accent,#96745c)] pb-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--kt-primary,#2b2724)] transition-all duration-300 hover:border-[var(--kt-primary,#2b2724)]"
               >
                 {activeSlide.buttonText}
+
                 <span className="text-[15px] transition-transform duration-500 group-hover:translate-x-1">
                   →
                 </span>
               </LocalizedClientLink>
             </div>
-
           </div>
         </div>
 
-        {/* =====================================================
-            SLIDE NAVIGATION (left column me)
-        ====================================================== */}
-
+        {/* SLIDE NAVIGATION */}
         <div className="absolute bottom-6 left-6 right-6 z-20 flex items-center justify-between sm:left-10 sm:right-10 md:left-14 md:right-14 lg:bottom-8 lg:left-20 lg:right-auto lg:w-[38%]">
-
           <div className="flex items-center gap-3">
-            <span className="font-serif text-[18px] text-[#25231f]">
+            <span className="text-[18px] font-medium text-[var(--kt-primary,#2b2724)]">
               {String(currentSlide + 1).padStart(2, "0")}
             </span>
-            <span className="text-[9px] tracking-[0.2em] text-[#aaa49a]">/</span>
-            <span className="text-[9px] tracking-[0.2em] text-[#aaa49a]">
+
+            <span className="text-[9px] tracking-[0.2em] text-[var(--kt-secondary,#766c63)]">
+              /
+            </span>
+
+            <span className="text-[9px] tracking-[0.2em] text-[var(--kt-secondary,#766c63)]">
               {String(heroSlides.length).padStart(2, "0")}
             </span>
           </div>
@@ -338,42 +338,36 @@ const Hero = () => {
                 key={slide.id}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
+                aria-current={currentSlide === index ? "true" : undefined}
                 className="group relative h-5 w-12"
               >
                 <span
                   className={`absolute left-0 top-1/2 h-px -translate-y-1/2 transition-all duration-500 ${
                     currentSlide === index
-                      ? "w-12 bg-[#25231f]"
-                      : "w-7 bg-[#25231f]/20 group-hover:w-10 group-hover:bg-[#25231f]/50"
+                      ? "w-12 bg-[var(--kt-primary,#2b2724)]"
+                      : "w-7 bg-[var(--kt-border-strong,rgba(43,39,36,0.18))] group-hover:w-10 group-hover:bg-[var(--kt-accent,#96745c)]"
                   }`}
                 />
               </button>
             ))}
           </div>
-
         </div>
-
       </div>
 
-      {/* =========================================================
-          BOTTOM BRAND STRIP
-      ========================================================== */}
-
-      <div className="border-t border-[#25231f]/8 bg-white">
+      {/* BOTTOM BRAND STRIP */}
+      <div className="border-t border-[var(--kt-border,rgba(43,39,36,0.1))] bg-[var(--kt-white,#ffffff)]">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-4 sm:px-10 md:px-14 lg:px-20">
-          <p className="text-[9px] uppercase tracking-[0.28em] text-[#8a857c]">
+          <p className="text-[9px] uppercase tracking-[0.28em] text-[var(--kt-secondary,#766c63)]">
             Authentic Indian Personal Care
           </p>
-          <p className="hidden text-[9px] uppercase tracking-[0.28em] text-[#aaa49a] sm:block">
+
+          <p className="hidden text-[9px] uppercase tracking-[0.28em] text-[var(--kt-secondary,#766c63)] sm:block">
             Thoughtfully selected · Carefully delivered
           </p>
         </div>
       </div>
 
-      {/* =========================================================
-          ANIMATIONS
-      ========================================================== */}
-
+      {/* ANIMATIONS */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -399,7 +393,6 @@ const Hero = () => {
           `,
         }}
       />
-
     </section>
   )
 }

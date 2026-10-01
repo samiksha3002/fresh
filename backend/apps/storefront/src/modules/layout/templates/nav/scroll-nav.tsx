@@ -1,3 +1,4 @@
+
 "use client"
 
 import { ReactNode, useEffect, useRef, useState } from "react"
@@ -13,6 +14,9 @@ export default function ScrollNav({
   const ticking = useRef(false)
 
   useEffect(() => {
+    // Initialize the scroll position when the component mounts.
+    lastScrollY.current = window.scrollY
+
     const handleScroll = () => {
       if (ticking.current) return
 
@@ -22,7 +26,7 @@ export default function ScrollNav({
         const currentScrollY = window.scrollY
         const previousScrollY = lastScrollY.current
 
-        // Always show at the very top
+        // Always show the navbar at the top.
         if (currentScrollY <= 20) {
           setVisible(true)
           lastScrollY.current = currentScrollY
@@ -32,13 +36,13 @@ export default function ScrollNav({
 
         const difference = currentScrollY - previousScrollY
 
-        // Ignore tiny movements
+        // Ignore tiny movements to prevent flickering.
         if (Math.abs(difference) > 6) {
           if (difference > 0) {
-            // Scrolling DOWN
+            // Scrolling down: hide navbar.
             setVisible(false)
           } else {
-            // Scrolling UP
+            // Scrolling up: show navbar.
             setVisible(true)
           }
 
@@ -61,11 +65,17 @@ export default function ScrollNav({
   return (
     <div
       className={`
-        sticky
+        fixed
         top-0
         inset-x-0
         z-50
+        w-full
         font-sans
+        bg-white
+        text-[#2b2724]
+        border-b
+        border-[#e9e4de]
+        shadow-sm
         transition-transform
         duration-300
         ease-out
@@ -75,6 +85,11 @@ export default function ScrollNav({
             : "-translate-y-full"
         }
       `}
+      style={{
+        backgroundColor: "#ffffff",
+        opacity: 1,
+        isolation: "isolate",
+      }}
     >
       {children}
     </div>

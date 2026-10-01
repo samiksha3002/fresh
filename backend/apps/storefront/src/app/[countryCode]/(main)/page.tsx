@@ -1,12 +1,15 @@
+
 import { Metadata } from "next"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import HomeCategories from "@modules/home/components/categories"
 import BestSellers from "@modules/home/components/best-sellers"
+import SignatureProducts from "@modules/layout/components/signature-products"
 import LocalGrid from "@modules/home/components/local-grid"
 import TestimonialsSection from "@modules/home/components/Testimonials/TestimonialsSection"
 import InfiniteBrandStrip from "@modules/home/components/infinite-brand-strip"
+
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
@@ -35,29 +38,22 @@ export default async function Home(props: {
 
   return (
     <>
-      {/* =====================================================
-          HERO
-      ====================================================== */}
+      {/* HERO */}
       <Hero />
 
-      {/* =====================================================
-          CATEGORIES
-      ====================================================== */}
+      {/* CATEGORIES */}
       <HomeCategories />
 
-      {/* =====================================================
-          BEST SELLERS
-      ====================================================== */}
+      {/* BEST SELLERS */}
       <BestSellers region={region} />
 
-      {/* =====================================================
-          LOCAL / EDITORIAL GRID
-      ====================================================== */}
+      {/* SIGNATURE PRODUCTS */}
+      <SignatureProducts />
+
+      {/* LOCAL / EDITORIAL GRID */}
       <LocalGrid />
 
-      {/* =====================================================
-          FEATURED PRODUCTS
-      ====================================================== */}
+      {/* FEATURED PRODUCTS */}
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts
@@ -67,10 +63,10 @@ export default async function Home(props: {
         </ul>
       </div>
 
-      {/* =====================================================
-          CUSTOMER TESTIMONIALS
-      ====================================================== */}
+      {/* CUSTOMER TESTIMONIALS */}
       <TestimonialsSection />
+
+      {/* BRAND STRIP */}
       <InfiniteBrandStrip />
     </>
   )

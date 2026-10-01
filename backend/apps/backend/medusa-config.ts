@@ -1,17 +1,26 @@
-import { defineConfig } from "@medusajs/framework/utils"
+import { defineConfig, loadEnv } from "@medusajs/framework/utils"
 
-// Redis modules tabhi load honge jab REDIS_URL set ho
-// (local me REDIS_URL na ho to sab pehle jaisa chalega)
-const redisModules = process.env.REDIS_URL
+// .env ko config evaluate hone se pehle load karo
+loadEnv(process.env.NODE_ENV || "development", process.cwd())
+
+const REDIS_URL = process.env.REDIS_URL
+// Local pe Redis band rakhna ho to .env mein DISABLE_REDIS=true daal do
+const useRedis = !!REDIS_URL && process.env.DISABLE_REDIS !== "true"
+
+// Debug line: useRedis define hone ke BAAD hi rakhna
+console.log("useRedis =", useRedis, "| REDIS_URL =", REDIS_URL, "| DISABLE =", process.env.DISABLE_REDIS)
+
+// Redis modules tabhi load honge jab useRedis true ho
+const redisModules = useRedis
   ? [
       {
         resolve: "@medusajs/medusa/event-bus-redis",
-        options: { redisUrl: process.env.REDIS_URL },
+        options: { redisUrl: REDIS_URL },
       },
       {
         resolve: "@medusajs/medusa/workflow-engine-redis",
         // Medusa purana ho (< v2.12.2) to redisUrl ki jagah url likhna
-        options: { redis: { redisUrl: process.env.REDIS_URL } },
+        options: { redis: { redisUrl: REDIS_URL } },
       },
       {
         resolve: "@medusajs/medusa/locking",
@@ -21,7 +30,7 @@ const redisModules = process.env.REDIS_URL
               resolve: "@medusajs/medusa/locking-redis",
               id: "locking-redis",
               is_default: true,
-              options: { redisUrl: process.env.REDIS_URL },
+              options: { redisUrl: REDIS_URL },
             },
           ],
         },
@@ -36,11 +45,11 @@ export default defineConfig({
   },
 
   projectConfig: {
-    // NEW: Redis
-    redisUrl: process.env.REDIS_URL,
+    // Redis sirf tab jab enabled ho
+    ...(useRedis ? { redisUrl: REDIS_URL } : {}),
 
     http: {
-      storeCors: process.env.STORE_CORS  || "http://localhost:8000,http://localhost:7001",
+      storeCors: process.env.STORE_CORS || "http://localhost:8000,http://localhost:7001",
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET!,
@@ -49,7 +58,7 @@ export default defineConfig({
   },
 
   modules: [
-    // NEW: Redis event bus, workflow engine, locking
+    // Redis event bus, workflow engine, locking (conditional)
     ...redisModules,
 
     // Product images / file storage (unchanged)
