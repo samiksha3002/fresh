@@ -9,60 +9,27 @@ type Props = {
 }
 
 const categoryImages: Record<string, string> = {
-  "acne":
-    "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&q=80&w=600",
-
-  "aging":
-    "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&q=80&w=600",
-
-  "body-pigmentation":
-    "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
-
-  "dark-knees-elbows":
-    "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600",
-
-  "dark-underarms-dark-neck":
-    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
-
-  "hair-loss-care":
-    "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
-
-  "kp-strawberry-legs":
-    "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=600",
-
-  "large-pores-texture":
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
-
-  "lip-eye-care":
-    "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600",
-
-  "mild-moderate-pigmentation":
-    "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
-
-  "oily-skin":
-    "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600",
-
-  "pregnancy-safe":
-    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
-
-  "scar-treatment":
-    "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&q=80&w=600",
-
+  acne: "/acne.png",
+  aging: "/aging.png",
+  "body-pigmentation": "/pigmenentaion.png",
+  "dark-knees-elbows": "/elbow.png",
+  "dark-underarms-dark-neck": "/underarms.png",
+  "kp-strawberry-legs": "/strawberry.png",
+  "large-pores-texture": "/large pores and texture.png",
+  "lip-eye-care": "/lip-eye-care.jpg",
+  "mild-moderate-pigmentation": "/mild-moderate-pigmentation.jpg",
+  "oily-skin": "/categories/oily-skin.jpg",
+  "pregnancy-safe": "/categories/pregnancy-safe.jpg",
+  "scar-treatment": "/categories/scar-treatment.jpg",
   "sensitive-skin-barrier-repair-dry-skin":
-    "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=600",
-
-  "skintags-razor-bumps":
-    "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600",
-
-  "stubborn-pigmentation":
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
-
+    "/categories/sensitive-skin-barrier-repair-dry-skin.jpg",
+  "skintags-razor-bumps": "/categories/skintags-razor-bumps.jpg",
+  "stubborn-pigmentation": "/categories/stubborn-pigmentation.jpg",
   "tinea-versicolor-dandruff-hibiclens":
-    "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
+    "/categories/tinea-versicolor-dandruff-hibiclens.jpg",
 }
 
-const fallbackImage =
-  "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600"
+const fallbackImage = "/categories/default.jpg"
 
 const HomeCategoriesClient = ({ categories }: Props) => {
   const sliderRef = useRef<HTMLDivElement>(null)
@@ -70,58 +37,40 @@ const HomeCategoriesClient = ({ categories }: Props) => {
   const slide = (direction: "left" | "right") => {
     if (!sliderRef.current) return
 
-    const slider = sliderRef.current
-    const scrollAmount = 280
-
-    const start = slider.scrollLeft
-    const target =
-      direction === "left"
-        ? start - scrollAmount
-        : start + scrollAmount
-
-    const change = target - start
-    const duration = 600
-
-    let startTime: number | null = null
-
-    const animateScroll = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-
-      const timeElapsed = currentTime - startTime
-      const progress = Math.min(timeElapsed / duration, 1)
-
-      const ease = 1 - Math.pow(1 - progress, 4)
-
-      slider.scrollLeft = start + change * ease
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animateScroll)
-      }
-    }
-
-    requestAnimationFrame(animateScroll)
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -500 : 500,
+      behavior: "smooth",
+    })
   }
 
   return (
-    <div className="py-16 bg-white">
-      <div className="content-container mx-auto px-6 md:px-8 max-w-7xl">
+    <section className="bg-white pt-8 pb-1 md:pt-10 md:pb-2">
+      <div className="content-container mx-auto max-w-7xl px-6 md:px-8">
 
-        <div className="mb-8">
-          <h2 className="text-3xl font-normal tracking-tight text-zinc-900 font-serif">
+        {/* ===================================================== */}
+        {/* HEADING */}
+        {/* ===================================================== */}
+
+        <div className="mb-5">
+          <h2 className="font-serif text-[30px] font-normal tracking-tight text-[#2b2724] md:text-[32px]">
             Shop by Category
           </h2>
         </div>
 
-        <div className="relative w-full">
+        {/* ===================================================== */}
+        {/* CATEGORY CAROUSEL */}
+        {/* ===================================================== */}
+
+        <div className="relative">
 
           <style
             dangerouslySetInnerHTML={{
               __html: `
-                .hide-scrollbar::-webkit-scrollbar {
+                .category-circle-scroll::-webkit-scrollbar {
                   display: none;
                 }
 
-                .hide-scrollbar {
+                .category-circle-scroll {
                   -ms-overflow-style: none;
                   scrollbar-width: none;
                 }
@@ -131,9 +80,18 @@ const HomeCategoriesClient = ({ categories }: Props) => {
 
           <div
             ref={sliderRef}
-            className="flex overflow-x-auto gap-5 hide-scrollbar pb-6 pt-2 cursor-grab active:cursor-grabbing"
+            className="
+              category-circle-scroll
+              flex
+              gap-7
+              overflow-x-auto
+              px-1
+              pt-1
+              pb-0
+              sm:gap-8
+              md:gap-9
+            "
           >
-
             {categories.map((category) => {
               const image =
                 categoryImages[category.handle] || fallbackImage
@@ -142,80 +100,237 @@ const HomeCategoriesClient = ({ categories }: Props) => {
                 <LocalizedClientLink
                   key={category.id}
                   href={`/store?category=${category.handle}`}
-                  className="shrink-0 w-[240px] group flex flex-col justify-between bg-white border border-zinc-200/60 rounded-3xl p-6 transition-all duration-500 ease-out hover:border-zinc-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 min-h-[280px]"
+                  className="
+                    group
+                    relative
+                    w-[118px]
+                    shrink-0
+                    sm:w-[128px]
+                    md:w-[135px]
+                  "
                 >
+                  {/* ================================================= */}
+                  {/* CIRCLE IMAGE */}
+                  {/* ================================================= */}
 
-                  <div className="w-full h-36 flex items-center justify-center mb-6">
-                    <img
-                      src={image}
-                      alt={category.name}
-                      className="max-h-full max-w-full object-contain drop-shadow-sm group-hover:drop-shadow-md group-hover:scale-[1.03] transition-all duration-500 ease-out"
+                  <div
+                    className="
+                      relative
+                      h-[108px]
+                      w-[108px]
+                      rounded-full
+                      bg-[#f4eee8]
+                      p-[4px]
+                      transition-all
+                      duration-500
+                      ease-out
+                      group-hover:-translate-y-1
+                      group-hover:shadow-[0_12px_30px_rgba(43,39,36,0.12)]
+                      sm:h-[116px]
+                      sm:w-[116px]
+                      md:h-[122px]
+                      md:w-[122px]
+                    "
+                  >
+                    {/* Outer Ring */}
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        rounded-full
+                        border
+                        border-[#2b2724]/[0.08]
+                        transition-all
+                        duration-500
+                        group-hover:border-[#96745c]/30
+                      "
                     />
+
+                    {/* Image */}
+                    <div className="h-full w-full overflow-hidden rounded-full bg-[#eee7df]">
+                      <img
+                        src={image}
+                        alt={category.name}
+                        className="
+                          h-full
+                          w-full
+                          object-cover
+                          transition-transform
+                          duration-700
+                          ease-out
+                          group-hover:scale-[1.06]
+                        "
+                      />
+                    </div>
+
+                    {/* Hover Arrow */}
+                    <span
+                      className="
+                        absolute
+                        bottom-0
+                        right-0
+                        flex
+                        h-7
+                        w-7
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-white
+                        bg-[#2b2724]
+                        text-white
+                        opacity-0
+                        shadow-[0_4px_12px_rgba(43,39,36,0.18)]
+                        transition-all
+                        duration-300
+                        group-hover:opacity-100
+                      "
+                    >
+                      <svg
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 5l7 7-7 7"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                   </div>
 
-                  <span className="text-sm md:text-base font-medium text-zinc-800 text-center group-hover:text-black tracking-tight transition-colors duration-300">
-                    {category.name}
-                  </span>
+                  {/* ================================================= */}
+                  {/* CATEGORY NAME */}
+                  {/* ================================================= */}
 
+                  <div className="mt-3 min-h-[34px] pr-1">
+                    <span
+                      className="
+                        block
+                        text-left
+                        text-[12px]
+                        font-medium
+                        leading-[17px]
+                        tracking-[-0.01em]
+                        text-[#2b2724]
+                        transition-colors
+                        duration-300
+                        group-hover:text-[#765d49]
+                        md:text-[13px]
+                      "
+                    >
+                      {category.name}
+                    </span>
+                  </div>
                 </LocalizedClientLink>
               )
             })}
+          </div>
+
+          {/* ===================================================== */}
+          {/* NAVIGATION */}
+          {/* ===================================================== */}
+
+          <div className="mt-4 flex items-center justify-center">
+
+            {/* Previous */}
+            <button
+              type="button"
+              onClick={() => slide("left")}
+              aria-label="Previous categories"
+              className="
+                flex
+                h-8
+                w-8
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#2b2724]/10
+                bg-white
+                text-[#766c63]
+                transition-all
+                duration-300
+                hover:border-[#2b2724]/20
+                hover:bg-[#f7f3ee]
+                hover:text-[#2b2724]
+                active:scale-95
+              "
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 19l-7-7 7-7"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            {/* Indicators */}
+            <div className="mx-4 flex items-center gap-2">
+              <span className="h-[3px] w-7 rounded-full bg-[#2b2724]" />
+              <span className="h-[3px] w-[3px] rounded-full bg-[#d8c9be]" />
+              <span className="h-[3px] w-[3px] rounded-full bg-[#d8c9be]" />
+            </div>
+
+            {/* Next */}
+            <button
+              type="button"
+              onClick={() => slide("right")}
+              aria-label="Next categories"
+              className="
+                flex
+                h-8
+                w-8
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#2b2724]/10
+                bg-white
+                text-[#766c63]
+                transition-all
+                duration-300
+                hover:border-[#2b2724]/20
+                hover:bg-[#f7f3ee]
+                hover:text-[#2b2724]
+                active:scale-95
+              "
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 5l7 7-7 7"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
 
           </div>
         </div>
-
-        <div className="flex items-center justify-center gap-4 mt-4">
-
-          <button
-            onClick={() => slide("left")}
-            className="w-11 h-11 rounded-full border border-zinc-200 bg-white flex items-center justify-center hover:bg-zinc-50 hover:shadow-md active:scale-95 transition-all duration-300 text-zinc-600"
-            aria-label="Scroll left"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-
-          <div className="flex items-center gap-2 px-3">
-            <span className="w-6 h-1.5 rounded-full bg-zinc-800" />
-            <span className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
-            <span className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
-          </div>
-
-          <button
-            onClick={() => slide("right")}
-            className="w-11 h-11 rounded-full border border-zinc-200 bg-white flex items-center justify-center hover:bg-zinc-50 hover:shadow-md active:scale-95 transition-all duration-300 text-zinc-600"
-            aria-label="Scroll right"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
-        </div>
-
       </div>
-    </div>
+    </section>
   )
 }
 
