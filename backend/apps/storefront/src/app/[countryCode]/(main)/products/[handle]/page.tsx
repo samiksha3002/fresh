@@ -10,26 +10,23 @@ type Props = {
   searchParams: Promise<{ v_id?: string }>
 }
 
+/**
+ * Pre-generate static paths for popular products
+ */
 export async function generateStaticParams() {
   try {
     const countryCodes = await listRegions().then((regions) =>
       regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
     )
 
-    if (!countryCodes) {
-      return []
-    }
+    if (!countryCodes) return []
 
     const promises = countryCodes.map(async (country) => {
       const { response } = await listProducts({
         countryCode: country,
         queryParams: { limit: 100, fields: "handle" },
       })
-
-      return {
-        country,
-        products: response.products,
-      }
+      return { country, products: response.products }
     })
 
     const countryProducts = await Promise.all(promises)
@@ -52,18 +49,18 @@ export async function generateStaticParams() {
   }
 }
 
+/**
+ * Helper: get images for selected variant
+ */
 function getImagesForVariant(
   product: HttpTypes.StoreProduct,
   selectedVariantId?: string
 ) {
-  // Added fallback to empty array to prevent returning undefined
   if (!selectedVariantId || !product.variants) {
     return product.images || []
   }
 
   const variant = product.variants.find((v) => v.id === selectedVariantId)
-  
-  // FIXED: Added optional chaining (?.) to safely check length
   if (!variant || !variant.images?.length) {
     return product.images || []
   }
@@ -72,23 +69,22 @@ function getImagesForVariant(
   return (product.images || []).filter((i) => imageIdsMap.has(i.id))
 }
 
+/**
+ * Metadata for SEO
+ */
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
   const { handle } = params
   const region = await getRegion(params.countryCode)
 
-  if (!region) {
-    notFound()
-  }
+  if (!region) notFound()
 
   const product = await listProducts({
     countryCode: params.countryCode,
-    queryParams: { handle },
+    queryParams: { handle, fields: "title,thumbnail" },
   }).then(({ response }) => response.products[0])
 
-  if (!product) {
-    notFound()
-  }
+  if (!product) notFound()
 
   return {
     title: `${product.title} | Medusa Store`,
@@ -101,26 +97,23 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
+/**
+ * Product page
+ */
 export default async function ProductPage(props: Props) {
   const params = await props.params
   const region = await getRegion(params.countryCode)
   const searchParams = await props.searchParams
-
   const selectedVariantId = searchParams.v_id
 
-  if (!region) {
-    notFound()
-  }
+  if (!region) notFound()
 
   const pricedProduct = await listProducts({
     countryCode: params.countryCode,
-    queryParams: { handle: params.handle },
+    queryParams: { handle: params.handle, fields: "id,title,handle,thumbnail,variants.calculated_price,images" },
   }).then(({ response }) => response.products[0])
 
-  // FIXED: Moved the notFound() check above the getImagesForVariant call
-  if (!pricedProduct) {
-    notFound()
-  }
+  if (!pricedProduct) notFound()
 
   const images = getImagesForVariant(pricedProduct, selectedVariantId)
 

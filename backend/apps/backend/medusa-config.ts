@@ -1,26 +1,45 @@
+
 import { defineConfig, loadEnv } from "@medusajs/framework/utils"
 
-// .env ko config evaluate hone se pehle load karo
+// Load environment variables before evaluating the config
 loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
+// Existing Redis configuration
 const REDIS_URL = process.env.REDIS_URL
-// Local pe Redis band rakhna ho to .env mein DISABLE_REDIS=true daal do
-const useRedis = !!REDIS_URL && process.env.DISABLE_REDIS !== "true"
 
-// Debug line: useRedis define hone ke BAAD hi rakhna
-console.log("useRedis =", useRedis, "| REDIS_URL =", REDIS_URL, "| DISABLE =", process.env.DISABLE_REDIS)
+const useRedis =
+  !!REDIS_URL && process.env.DISABLE_REDIS !== "true"
 
-// Redis modules tabhi load honge jab useRedis true ho
+// Dedicated cache URL is optional; REDIS_URL is the fallback
+const CACHE_REDIS_URL =
+  process.env.CACHE_REDIS_URL || REDIS_URL
+
+// Enable Medusa caching only when explicitly enabled and Redis is available
+const useCaching =
+  process.env.MEDUSA_FF_CACHING === "true" &&
+  !!CACHE_REDIS_URL &&
+  process.env.DISABLE_REDIS !== "true"
+
+// Do not print Redis URLs because they may contain credentials
+console.log("Redis configured:", useRedis)
+console.log("Redis caching enabled:", useCaching)
+
+// Existing Redis modules
 const redisModules = useRedis
   ? [
       {
         resolve: "@medusajs/medusa/event-bus-redis",
-        options: { redisUrl: REDIS_URL },
+        options: {
+          redisUrl: REDIS_URL,
+        },
       },
       {
         resolve: "@medusajs/medusa/workflow-engine-redis",
-        // Medusa purana ho (< v2.12.2) to redisUrl ki jagah url likhna
-        options: { redis: { redisUrl: REDIS_URL } },
+        options: {
+          redis: {
+            redisUrl: REDIS_URL,
+          },
+        },
       },
       {
         resolve: "@medusajs/medusa/locking",
@@ -30,7 +49,30 @@ const redisModules = useRedis
               resolve: "@medusajs/medusa/locking-redis",
               id: "locking-redis",
               is_default: true,
-              options: { redisUrl: REDIS_URL },
+              options: {
+                redisUrl: REDIS_URL,
+              },
+            },
+          ],
+        },
+      },
+    ]
+  : []
+
+// Redis caching provider
+const cachingModules = useCaching
+  ? [
+      {
+        resolve: "@medusajs/medusa/caching",
+        options: {
+          providers: [
+            {
+              resolve: "@medusajs/caching-redis",
+              id: "caching-redis",
+              is_default: true,
+              options: {
+                redisUrl: CACHE_REDIS_URL,
+              },
             },
           ],
         },
@@ -45,11 +87,13 @@ export default defineConfig({
   },
 
   projectConfig: {
-    // Redis sirf tab jab enabled ho
     ...(useRedis ? { redisUrl: REDIS_URL } : {}),
 
     http: {
-      storeCors: process.env.STORE_CORS || "http://localhost:8000,http://localhost:7001",
+      storeCors:
+        process.env.STORE_CORS ||
+        "http://localhost:8000,http://localhost:7001",
+
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET!,
@@ -58,10 +102,13 @@ export default defineConfig({
   },
 
   modules: [
-    // Redis event bus, workflow engine, locking (conditional)
+    // Existing Redis event bus, workflow engine and locking
     ...redisModules,
 
-    // Product images / file storage (unchanged)
+    // Redis caching, enabled conditionally
+    ...cachingModules,
+
+    // Existing S3 file storage
     {
       resolve: "@medusajs/medusa/file",
       options: {
@@ -86,7 +133,7 @@ export default defineConfig({
       },
     },
 
-    // Existing Testimonials module (unchanged)
+    // Existing Testimonials module
     {
       resolve: "./src/modules/testimonials",
     },

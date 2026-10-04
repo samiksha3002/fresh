@@ -1,4 +1,3 @@
-
 import { listProducts } from "@lib/data/products"
 import { HttpTypes } from "@medusajs/types"
 import BestSellersClient from "./best-sellers-client"
@@ -8,6 +7,10 @@ export default async function BestSellers({
 }: {
   region: HttpTypes.StoreRegion
 }) {
+  if (!region?.id) {
+    return null
+  }
+
   const {
     response: { products },
   } = await listProducts({
@@ -20,7 +23,7 @@ export default async function BestSellers({
     },
   })
 
-  if (!products || products.length === 0) {
+  if (!products?.length) {
     return null
   }
 
@@ -28,15 +31,24 @@ export default async function BestSellers({
     const variant = product.variants?.[0]
     const calculatedPrice = variant?.calculated_price
     const amount = calculatedPrice?.calculated_amount
-    const currencyCode = calculatedPrice?.currency_code
+    const currencyCode =
+      calculatedPrice?.currency_code?.toUpperCase()
 
-    const formattedPrice =
-      amount !== undefined && amount !== null
-        ? new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: currencyCode?.toUpperCase() || "USD",
-          }).format(amount)
-        : null
+    let formattedPrice: string | null = null
+
+    if (
+      typeof amount === "number" &&
+      currencyCode
+    ) {
+      try {
+        formattedPrice = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: currencyCode,
+        }).format(amount)
+      } catch {
+        formattedPrice = `${amount} ${currencyCode}`
+      }
+    }
 
     return {
       id: product.id,

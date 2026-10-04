@@ -13,20 +13,21 @@
     "headless",
     "medusa"
   ],
- "scripts": {
-   "build": "medusa build",
- "start": "medusa start",
-  "dev": "medusa develop",
-  "lint": "medusa lint",
-  "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
-  "test:integration:modules": "TEST_TYPE=integration:modules jest --silent=false --runInBand --forceExit",
-  "test:unit": "TEST_TYPE=unit jest --silent --runInBand --forceExit"
-},
+  "scripts": {
+    "build": "medusa build",
+    "start": "medusa start",
+    "dev": "medusa develop",
+    "lint": "medusa lint",
+    "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "test:integration:modules": "TEST_TYPE=integration:modules jest --silent=false --runInBand --forceExit",
+    "test:unit": "TEST_TYPE=unit jest --silent --runInBand --forceExit"
+  },
   "dependencies": {
     "@medusajs/admin-bundler": "2.20.1",
     "@medusajs/admin-sdk": "2.20.1",
     "@medusajs/admin-shared": "2.20.1",
     "@medusajs/caching": "2.20.1",
+    "@medusajs/caching-redis": "2.20.1",
     "@medusajs/cli": "2.20.1",
     "@medusajs/dashboard": "2.20.1",
     "@medusajs/draft-order": "2.20.1",
