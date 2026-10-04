@@ -1,202 +1,78 @@
 
-"use client"
-
-import { HttpTypes } from "@medusajs/types"
-import { Heading, Text } from "@medusajs/ui"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { useMemo, useState } from "react"
-
-type ProductInfoProps = {
-  product: HttpTypes.StoreProduct
-}
-
-type DetailTab = {
-  id: string
-  label: string
-  content: string
-}
-
-const SECTION_HEADINGS = [
-  {
-    id: "description",
-    label: "Description",
-    aliases: ["description", "product description", "about the product"],
-  },
-  {
-    id: "benefits",
-    label: "Benefits",
-    aliases: ["benefits", "key benefits", "product benefits"],
-  },
-  {
-    id: "how-to-use",
-    label: "How to Use",
-    aliases: [
-      "how to use",
-      "directions for use",
-      "directions",
-      "usage instructions",
-      "how to apply",
-      "usage",
-    ],
-  },
-  {
-    id: "ingredients",
-    label: "Ingredients",
-    aliases: [
-      "ingredients",
-      "key ingredients",
-      "ingredient list",
-      "full ingredients",
-    ],
-  },
-] as const
-
-function normalizeHeading(line: string) {
-  return line
-    .trim()
-    .replace(/^[#*\s]+|[*\s]+$/g, "")
-    .replace(/:\s*$/, "")
-    .replace(/^\d+[.)]\s*/, "")
-    .trim()
-    .toLowerCase()
-}
-
-function findSectionHeading(line: string) {
-  const normalized = normalizeHeading(line)
-
-  return SECTION_HEADINGS.find((section) =>
-    (section.aliases as readonly string[]).includes(normalized)
-  )
-}
-
 function parseProductDescription(description: string): DetailTab[] {
-  const lines = description.split(/\r?\n/)
   const sections = new Map<string, string[]>()
+  const headingPattern =
+    /(?:^|\n)\s*(?:#{1,6}\s*)?(description|product description|about the product|key benefits|product benefits|benefits|directions for use|directions|usage instructions|how to apply|how to use|usage|key ingredients|ingredient list|full ingredients|ingredients)\s*:?\s*/gi
 
-  let currentSection: string | null = null
-  let foundHeading = false
-
-  for (const line of lines) {
-    const heading = findSectionHeading(line)
-
-    if (heading) {
-      foundHeading = true
-      currentSection = heading.id
-
-      if (!sections.has(currentSection)) {
-        sections.set(currentSection, [])
-      }
-
-      continue
-    }
-
-    // Keep content before the first recognized heading as general description.
-    if (!foundHeading) {
-      currentSection = "description"
-      if (!sections.has(currentSection)) {
-        sections.set(currentSection, [])
-      }
-    }
-
-    if (currentSection) {
-      sections.get(currentSection)!.push(line)
-    }
+  const headingToId: Record<string, string> = {
+    description: "description",
+    "product description": "description",
+    "about the product": "description",
+    benefits: "benefits",
+    "key benefits": "benefits",
+    "product benefits": "benefits",
+    "how to use": "how-to-use",
+    "directions for use": "how-to-use",
+    directions: "how-to-use",
+    "usage instructions": "how-to-use",
+    "how to apply": "how-to-use",
+    usage: "how-to-use",
+    ingredients: "ingredients",
+    "key ingredients": "ingredients",
+    "ingredient list": "ingredients",
+    "full ingredients": "ingredients",
   }
 
-  // If there are no recognized headings, preserve the whole description.
-  if (!foundHeading) {
+  const labels: Record<string, string> = {
+    description: "Description",
+    benefits: "Benefits",
+    "how-to-use": "How to Use",
+    ingredients: "Ingredients",
+  }
+
+  const matches = Array.from(description.matchAll(headingPattern))
+
+  if (matches.length === 0) {
     return description.trim()
       ? [{ id: "description", label: "Description", content: description.trim() }]
       : []
   }
 
-  return SECTION_HEADINGS.map((section) => ({
-    id: section.id,
-    label: section.label,
-    content: (sections.get(section.id) || []).join("\n").trim(),
-  })).filter((section) => section.content.length > 0)
+  // Keep any introductory text before the first heading as Description.
+  const firstHeadingStart = matches[0].index ?? 0
+  const intro = description.slice(0, firstHeadingStart).trim()
+
+  if (intro) {
+    sections.set("description", [intro])
+  }
+
+  matches.forEach((match, index) => {
+    const headingText = (match[1] || "").trim().toLowerCase()
+    const id = headingToId[headingText]
+    if (!id) return
+
+    const headingEnd = (match.index ?? 0) + match[0].length
+    const nextHeadingStart =
+      index + 1 < matches.length
+        ? matches[index + 1].index ?? description.length
+        : description.length
+
+    const content = description.slice(headingEnd, nextHeadingStart).trim()
+
+    if (content) {
+      const existing = sections.get(id) || []
+      existing.push(content)
+      sections.set(id, existing)
+    } else if (!sections.has(id)) {
+      sections.set(id, [])
+    }
+  })
+
+  return Object.keys(labels)
+    .filter((id) => (sections.get(id) || []).join("\n\n").trim().length > 0)
+    .map((id) => ({
+      id,
+      label: labels[id],
+      content: (sections.get(id) || []).join("\n\n").trim(),
+    }))
 }
-
-const ProductInfo = ({ product }: ProductInfoProps) => {
-  const [activeTab, setActiveTab] = useState("description")
-
-  const tabs = useMemo(
-    () => parseProductDescription(product.description || ""),
-    [product.description]
-  )
-
-  const activeContent =
-    tabs.find((tab) => tab.id === activeTab) || tabs[0]
-
-  return (
-    <div id="product-info" className="w-full">
-      <div className="mx-auto flex w-full max-w-[620px] flex-col gap-y-5">
-        {product.collection && (
-          <LocalizedClientLink
-            href={`/collections/${product.collection.handle}`}
-            className="text-sm text-[#8b7865] transition-colors hover:text-[#44372f]"
-          >
-            {product.collection.title}
-          </LocalizedClientLink>
-        )}
-
-        <Heading
-          level="h1"
-          className="text-3xl leading-tight tracking-tight text-[#292522] md:text-4xl"
-          data-testid="product-title"
-        >
-          {product.title}
-        </Heading>
-
-        {tabs.length > 0 && (
-          <section className="mt-2 border-t border-[#e9e2da]">
-            <div
-              role="tablist"
-              aria-label="Product details"
-              className="flex flex-wrap gap-x-5 border-b border-[#e9e2da]"
-            >
-              {tabs.map((tab) => {
-                const selected = activeContent?.id === tab.id
-
-                return (
-                  <button
-                    key={tab.id}
-                    id={`tab-${tab.id}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={selected}
-                    aria-controls={`panel-${tab.id}`}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`relative py-4 text-sm transition-colors ${
-                      selected
-                        ? "font-medium text-[#44372f] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#9a795b]"
-                        : "text-[#898078] hover:text-[#44372f]"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                )
-              })}
-            </div>
-
-            {activeContent && (
-              <div
-                key={activeContent.id}
-                id={`panel-${activeContent.id}`}
-                role="tabpanel"
-                aria-labelledby={`tab-${activeContent.id}`}
-                className="min-h-[100px] py-5"
-              >
-                <Text className="whitespace-pre-line text-sm leading-7 text-[#655c54]">
-                  {activeContent.content}
-                </Text>
-              </div>
-            )}
-          </section>
-        )}
-      </div>
-    </div>
-  )
-}
-
-export default ProductInfo

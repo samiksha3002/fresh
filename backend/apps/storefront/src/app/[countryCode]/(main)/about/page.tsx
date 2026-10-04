@@ -1,17 +1,48 @@
+
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export default function AboutPage() {
+  const imageSectionRef = useRef<HTMLDivElement>(null)
+  const [colorProgress, setColorProgress] = useState(0)
+
+  useEffect(() => {
+    const updateImageColor = () => {
+      const section = imageSectionRef.current
+      if (!section) return
+
+      const rect = section.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+
+      // Image starts grayscale and becomes colorful as this section scrolls into view.
+      const start = viewportHeight * 0.8
+      const end = viewportHeight * 0.2
+      const progress = Math.min(
+        1,
+        Math.max(0, (start - rect.top) / (start - end))
+      )
+
+      setColorProgress(progress)
+    }
+
+    updateImageColor()
+    window.addEventListener("scroll", updateImageColor, { passive: true })
+    window.addEventListener("resize", updateImageColor)
+
+    return () => {
+      window.removeEventListener("scroll", updateImageColor)
+      window.removeEventListener("resize", updateImageColor)
+    }
+  }, [])
+
   return (
     <main className="bg-[#f8f6f1] text-[#25231f]">
-
-      {/* =========================================================
-          HERO
-      ========================================================= */}
+      {/* HERO */}
       <section className="border-b border-[#25231f]/10">
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:py-28 lg:px-16 lg:py-36">
-          
           <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_0.75fr]">
-            
             <div>
               <p className="mb-7 text-[10px] font-medium uppercase tracking-[0.28em] text-[#77736b]">
                 About Koviea Touch
@@ -40,21 +71,14 @@ export default function AboutPage() {
                 call home.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* =========================================================
-          BRAND INTRO
-      ========================================================= */}
+      {/* BRAND INTRO */}
       <section className="bg-[#eeece6]">
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:py-28 lg:px-16">
-          
           <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
-
-            {/* Left editorial block */}
             <div>
               <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#77736b]">
                 Our Story
@@ -69,7 +93,6 @@ export default function AboutPage() {
                   <p className="text-[11px] uppercase tracking-[0.22em] text-[#77736b]">
                     Years
                   </p>
-
                   <p className="mt-1 text-sm text-[#5f5b54]">
                     of bringing trusted care closer to you.
                   </p>
@@ -77,8 +100,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-
-            {/* Story */}
             <div className="max-w-3xl">
               <h2 className="font-serif text-[38px] font-normal leading-tight tracking-[-0.025em] sm:text-[48px] md:text-[56px]">
                 Care that travels with you.
@@ -107,18 +128,13 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* =========================================================
-          TRUST SECTION
-      ========================================================= */}
+      {/* TRUST SECTION */}
       <section className="bg-[#f8f6f1]">
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:py-28 lg:px-16">
-
           <div className="mb-14 max-w-2xl md:mb-20">
             <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#77736b]">
               What We Stand For
@@ -133,19 +149,14 @@ export default function AboutPage() {
             </h2>
           </div>
 
-
           <div className="grid border-t border-[#25231f]/10 md:grid-cols-3">
-
-            {/* Card 01 */}
             <div className="border-b border-[#25231f]/10 py-10 md:border-b-0 md:border-r md:pr-10 md:py-12 lg:pr-14">
               <p className="text-[11px] tracking-[0.2em] text-[#918c83]">
                 01
               </p>
-
               <h3 className="mt-8 font-serif text-[28px] font-normal">
                 100% Genuine Care
               </h3>
-
               <p className="mt-5 text-[14px] leading-7 text-[#68645d]">
                 Every product is carefully sourced, authentic, and vetted
                 for quality. If we wouldn&apos;t use it in our own homes,
@@ -153,81 +164,66 @@ export default function AboutPage() {
               </p>
             </div>
 
-
-            {/* Card 02 */}
             <div className="border-b border-[#25231f]/10 py-10 md:border-b-0 md:border-r md:px-10 md:py-12 lg:px-14">
               <p className="text-[11px] tracking-[0.2em] text-[#918c83]">
                 02
               </p>
-
               <h3 className="mt-8 font-serif text-[28px] font-normal">
                 Worry-Free Delivery
               </h3>
-
               <p className="mt-5 text-[14px] leading-7 text-[#68645d]">
                 We pack every order with care so your routine arrives safe,
                 fresh, and ready to use — from our hands to your doorstep.
               </p>
             </div>
 
-
-            {/* Card 03 */}
             <div className="py-10 md:py-12 md:pl-10 lg:pl-14">
               <p className="text-[11px] tracking-[0.2em] text-[#918c83]">
                 03
               </p>
-
               <h3 className="mt-8 font-serif text-[28px] font-normal">
                 Real People. Fast Answers.
               </h3>
-
               <p className="mt-5 text-[14px] leading-7 text-[#68645d]">
                 Have a question about a product or tracking an order?
                 You&apos;ll always have a real person ready to help.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* =========================================================
-          AUTHENTIC INDIAN CARE
-      ========================================================= */}
+      {/* AUTHENTIC INDIAN CARE — SCROLL COLOR TRANSITION */}
       <section className="bg-[#26241f] text-[#f8f6f1]">
-        <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:py-28 lg:px-16">
+        <div className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+            {/* Image: grayscale to full colour */}
+            <div
+              ref={imageSectionRef}
+              className="relative mx-auto w-full max-w-[460px] overflow-hidden rounded-sm border border-white/10 bg-[#26241f] shadow-[0_12px_35px_rgba(0,0,0,0.18)]"
+            >
+              <img
+                src="/about main.jpeg"
+                alt="Kovea Touch beauty and skincare"
+                className="block h-auto w-full object-contain"
+                style={{
+                  filter: `grayscale(${1 - colorProgress})`,
+                }}
+              />
 
-          <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-            {/* Large number / visual */}
-            <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden border border-white/10 bg-[#302e28] md:min-h-[480px]">
-              
-              <div className="absolute left-8 top-8 text-[10px] uppercase tracking-[0.3em] text-white/40">
-                Koviea Touch
+              <div className="pointer-events-none absolute left-6 top-6 z-10 text-[10px] uppercase tracking-[0.3em] text-white/90 sm:left-8 sm:top-8">
+                Kovea Touch
               </div>
 
-              <div className="text-center">
-                <p className="font-serif text-[72px] italic leading-none text-[#e8e3d8] sm:text-[92px]">
-                  India
-                </p>
-
-                <div className="mx-auto mt-7 h-px w-16 bg-white/30" />
-
-                <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/50">
-                  Authentic care
-                </p>
-              </div>
-
-              <div className="absolute bottom-8 right-8 text-[10px] uppercase tracking-[0.2em] text-white/30">
+              <div className="pointer-events-none absolute bottom-6 right-6 z-10 text-[10px] uppercase tracking-[0.2em] text-white/90 sm:bottom-8 sm:right-8">
                 Est. 2021
               </div>
             </div>
 
-
-            {/* Content */}
+            {/* Text */}
             <div className="max-w-2xl">
-
               <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-white/50">
                 Authentic Indian Personal Care
               </p>
@@ -259,22 +255,15 @@ export default function AboutPage() {
                   far away.
                 </p>
               </div>
-
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* =========================================================
-          DESTINATIONS
-      ========================================================= */}
+      {/* DESTINATIONS */}
       <section className="border-b border-[#25231f]/10 bg-[#f8f6f1]">
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:py-24 lg:px-16">
-
           <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
-
             <div>
               <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#77736b]">
                 Wherever You Call Home
@@ -288,7 +277,6 @@ export default function AboutPage() {
               </h2>
             </div>
 
-
             <div className="flex flex-wrap gap-3 md:justify-end">
               {["United States", "United Kingdom", "Australia"].map(
                 (country) => (
@@ -301,18 +289,13 @@ export default function AboutPage() {
                 )
               )}
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* =========================================================
-          FINAL CTA
-      ========================================================= */}
+      {/* FINAL CTA */}
       <section className="bg-[#eeece6]">
         <div className="mx-auto max-w-[1440px] px-6 py-24 text-center sm:px-10 md:py-32 lg:px-16">
-
           <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#77736b]">
             Your Daily Ritual
           </p>
@@ -338,10 +321,8 @@ export default function AboutPage() {
               Explore the Collection
             </LocalizedClientLink>
           </div>
-
         </div>
       </section>
-
     </main>
   )
 }
