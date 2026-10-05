@@ -1,11 +1,20 @@
-
 "use client"
 
-import { useState } from "react"
+import { useState, memo } from "react"
 import { HttpTypes } from "@medusajs/types"
+import dynamic from "next/dynamic"
 import ProductActions from "@modules/products/components/product-actions"
-import ProductReviews from "@modules/products/components/product-reviews/ProductReviews"
-import ProductTabs from "@modules/products/components/product-tabs"
+
+// ✅ Lazy load heavy components for faster initial render
+const ProductReviews = dynamic(
+  () => import("@modules/products/components/product-reviews/ProductReviews"),
+  { ssr: false, loading: () => <p>Loading reviews...</p> }
+)
+
+const ProductTabs = dynamic(
+  () => import("@modules/products/components/product-tabs"),
+  { ssr: false, loading: () => <p>Loading details...</p> }
+)
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -24,17 +33,13 @@ const ProductTemplate = ({
     images.length > 0
       ? images
       : product.images ||
-        (product.thumbnail
-          ? [{ url: product.thumbnail }]
-          : [])
+        (product.thumbnail ? [{ url: product.thumbnail }] : [])
 
   const [activeImage, setActiveImage] = useState(0)
-
   const currentImage = productImages[activeImage]?.url
 
   const goToPreviousImage = () => {
     if (productImages.length <= 1) return
-
     setActiveImage((prev) =>
       prev === 0 ? productImages.length - 1 : prev - 1
     )
@@ -42,7 +47,6 @@ const ProductTemplate = ({
 
   const goToNextImage = () => {
     if (productImages.length <= 1) return
-
     setActiveImage((prev) =>
       prev === productImages.length - 1 ? 0 : prev + 1
     )
@@ -60,6 +64,7 @@ const ProductTemplate = ({
                 src={currentImage}
                 alt={product.title}
                 className="h-full w-full object-contain p-5 sm:p-7"
+                loading="lazy" // ✅ lazy load images
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm text-zinc-500">
@@ -126,6 +131,7 @@ const ProductTemplate = ({
                     src={image.url}
                     alt={`${product.title} ${index + 1}`}
                     className="h-full w-full object-contain"
+                    loading="lazy" // ✅ lazy load thumbnails
                   />
                 </button>
               ))}
@@ -135,13 +141,10 @@ const ProductTemplate = ({
 
         {/* RIGHT: PRODUCT DETAILS */}
         <div className="flex min-w-0 flex-col gap-3 text-zinc-900">
-
-          {/* Product title and subtitle */}
           <div>
             <h1 className="font-serif text-3xl font-normal leading-tight tracking-tight text-zinc-950 sm:text-4xl lg:text-[38px]">
               {product.title}
             </h1>
-
             {product.subtitle && (
               <p className="mt-1.5 text-sm leading-5 text-zinc-700 sm:text-base">
                 {product.subtitle}
@@ -149,12 +152,10 @@ const ProductTemplate = ({
             )}
           </div>
 
-          {/* Description, Benefits, How to Use */}
           <div className="min-w-0 text-zinc-800 [&_*]:max-w-full">
             <ProductTabs product={product} />
           </div>
 
-          {/* Product tags */}
           {product.tags && product.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
@@ -168,17 +169,10 @@ const ProductTemplate = ({
             </div>
           )}
 
-          {/* Purchase actions
-              ProductActions already renders the selected variant price.
-              Do not render formattedPrice separately here. */}
           <div className="mt-1">
-            <ProductActions
-              product={product}
-              region={region}
-            />
+            <ProductActions product={product} region={region} />
           </div>
 
-          {/* Supporting information */}
           <div className="mt-1 space-y-3 border-t border-zinc-200 pt-3">
             <div>
               <h2 className="text-sm font-semibold text-zinc-950">
@@ -203,7 +197,6 @@ const ProductTemplate = ({
         </div>
       </div>
 
-      {/* Customer reviews */}
       <div className="mt-10 lg:mt-14">
         <ProductReviews productId={product.id} />
       </div>
@@ -211,4 +204,5 @@ const ProductTemplate = ({
   )
 }
 
-export default ProductTemplate
+// ✅ Prevent unnecessary re-renders
+export default memo(ProductTemplate)

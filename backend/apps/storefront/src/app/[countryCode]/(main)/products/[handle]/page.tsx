@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+// ✅ Import cached version for speed
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import ProductTemplate from "@modules/products/templates"
@@ -20,19 +21,19 @@ export async function generateStaticParams() {
       return []
     }
 
-    const promises = countryCodes.map(async (country) => {
-      const { response } = await listProducts({
-        countryCode: country,
-        queryParams: { limit: 100, fields: "handle" },
+    // ✅ Parallelize product fetches for speed
+    const countryProducts = await Promise.all(
+      countryCodes.map(async (country) => {
+        const { response } = await listProducts({
+          countryCode: country,
+          queryParams: { limit: 100, fields: "handle" },
+        })
+        return {
+          country,
+          products: response.products,
+        }
       })
-
-      return {
-        country,
-        products: response.products,
-      }
-    })
-
-    const countryProducts = await Promise.all(promises)
+    )
 
     return countryProducts
       .flatMap((countryData) =>
@@ -56,14 +57,12 @@ function getImagesForVariant(
   product: HttpTypes.StoreProduct,
   selectedVariantId?: string
 ) {
-  // Added fallback to empty array to prevent returning undefined
   if (!selectedVariantId || !product.variants) {
     return product.images || []
   }
 
   const variant = product.variants.find((v) => v.id === selectedVariantId)
-  
-  // FIXED: Added optional chaining (?.) to safely check length
+
   if (!variant || !variant.images?.length) {
     return product.images || []
   }
@@ -75,16 +74,21 @@ function getImagesForVariant(
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
   const { handle } = params
-  const region = await getRegion(params.countryCode)
+
+  // ✅ Parallelize region + product fetch
+  const [region, productResponse] = await Promise.all([
+    getRegion(params.countryCode),
+    listProducts({
+      countryCode: params.countryCode,
+      queryParams: { handle },
+    }),
+  ])
 
   if (!region) {
     notFound()
   }
 
-  const product = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle },
-  }).then(({ response }) => response.products[0])
+  const product = productResponse.response.products[0]
 
   if (!product) {
     notFound()
@@ -103,25 +107,28 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function ProductPage(props: Props) {
   const params = await props.params
-  const region = await getRegion(params.countryCode)
   const searchParams = await props.searchParams
 
-  const selectedVariantId = searchParams.v_id
+  // ✅ Parallelize region + product fetch
+  const [region, productResponse] = await Promise.all([
+    getRegion(params.countryCode),
+    listProducts({
+      countryCode: params.countryCode,
+      queryParams: { handle: params.handle },
+    }),
+  ])
 
   if (!region) {
     notFound()
   }
 
-  const pricedProduct = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle: params.handle },
-  }).then(({ response }) => response.products[0])
+  const pricedProduct = productResponse.response.products[0]
 
-  // FIXED: Moved the notFound() check above the getImagesForVariant call
   if (!pricedProduct) {
     notFound()
   }
 
+  const selectedVariantId = searchParams.v_id
   const images = getImagesForVariant(pricedProduct, selectedVariantId)
 
   return (

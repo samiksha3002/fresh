@@ -7,6 +7,9 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
 
+/**
+ * List products with pagination
+ */
 export const listProducts = async ({
   pageParam = 1,
   queryParams,
@@ -30,13 +33,12 @@ export const listProducts = async ({
   const _pageParam = Math.max(pageParam, 1)
   const offset = _pageParam === 1 ? 0 : (_pageParam - 1) * limit
 
-  let region: HttpTypes.StoreRegion | undefined | null
-
-  if (countryCode) {
-    region = await getRegion(countryCode)
-  } else {
-    region = await retrieveRegion(regionId!)
-  }
+  // ✅ Parallelize awaits for speed
+  const [region, headers, next] = await Promise.all([
+    countryCode ? getRegion(countryCode) : retrieveRegion(regionId!),
+    getAuthHeaders(),
+    getCacheOptions("products"),
+  ])
 
   if (!region) {
     return {
@@ -45,50 +47,35 @@ export const listProducts = async ({
     }
   }
 
-  const headers = {
-    ...(await getAuthHeaders()),
+  const { products, count } = await sdk.client.fetch<{
+    products: HttpTypes.StoreProduct[]
+    count: number
+  }>("/store/products", {
+    method: "GET",
+    query: {
+      limit,
+      offset,
+      region_id: region.id,
+      // ✅ Keep original fields intact (no data loss)
+      fields: "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
+      ...queryParams,
+    },
+    headers,
+    next: { ...next, revalidate: 60 }, // ✅ cache + revalidate
+    cache: "force-cache",
+  })
+
+  const nextPage = count > offset + limit ? pageParam + 1 : null
+
+  return {
+    response: { products, count },
+    nextPage,
+    queryParams,
   }
-
-  const next = {
-    ...(await getCacheOptions("products")),
-  }
-
-  return sdk.client
-    .fetch<{
-      products: HttpTypes.StoreProduct[]
-      count: number
-    }>("/store/products", {
-      method: "GET",
-      query: {
-        limit,
-        offset,
-        region_id: region.id,
-        fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
-        ...queryParams,
-      },
-      headers,
-      next,
-      cache: "force-cache",
-    })
-    .then(({ products, count }) => {
-      const nextPage = count > offset + limit ? pageParam + 1 : null
-
-      return {
-        response: {
-          products,
-          count,
-        },
-        nextPage,
-        queryParams,
-      }
-    })
 }
 
 /**
- * This will fetch 100 products to the Next.js cache and sort them
- * based on the sortBy parameter. It will then return the paginated
- * products based on the page and limit parameters.
+ * List products with sorting
  */
 export const listProductsWithSort = async ({
   page = 0,
@@ -111,44 +98,24 @@ export const listProductsWithSort = async ({
     response: { products, count },
   } = await listProducts({
     pageParam: 0,
-    queryParams: {
-      ...queryParams,
-      limit: 100,
-    },
+    queryParams: { ...queryParams, limit: 100 },
     countryCode,
   })
 
   const sortedProducts = sortProducts(products, sortBy)
-
   const pageParam = (page - 1) * limit
-
-  const nextPage =
-    count > pageParam + limit ? pageParam + limit : null
-
-  const paginatedProducts = sortedProducts.slice(
-    pageParam,
-    pageParam + limit
-  )
+  const nextPage = count > pageParam + limit ? pageParam + limit : null
+  const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
 
   return {
-    response: {
-      products: paginatedProducts,
-      count,
-    },
+    response: { products: paginatedProducts, count },
     nextPage,
     queryParams,
   }
 }
 
 /**
- * Get a single product by its handle.
- *
- * Example:
- * handle = "adapalene-gel-0-1"
- *
- * This is used by the product detail page so that
- * the UI displays the actual product from Medusa
- * instead of static/demo product information.
+ * Get a single product by handle
  */
 export const getProductByHandle = async ({
   handle,
@@ -161,15 +128,10 @@ export const getProductByHandle = async ({
     return null
   }
 
-  const {
-    response: { products },
-  } = await listProducts({
+  const { response: { products } } = await listProducts({
     pageParam: 1,
     countryCode,
-    queryParams: {
-      handle,
-      limit: 1,
-    },
+    queryParams: { handle, limit: 1 },
   })
 
   return products[0] || null
