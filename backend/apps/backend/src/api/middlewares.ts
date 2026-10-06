@@ -1,7 +1,4 @@
-import {
-  defineMiddlewares,
-  authenticate,
-} from "@medusajs/framework/http"
+import { defineMiddlewares } from "@medusajs/framework/http"
 
 export default defineMiddlewares({
   routes: [
@@ -21,16 +18,6 @@ export default defineMiddlewares({
 
           next()
         },
-      ],
-    },
-
-    // Require a logged-in customer to submit a testimonial.
-    // GET stays public so the storefront can show approved reviews.
-    {
-      matcher: "/store/testimonials",
-      method: ["POST"],
-      middlewares: [
-        authenticate("customer", ["session", "bearer"]),
       ],
     },
   ],

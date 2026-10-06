@@ -1,24 +1,14 @@
 import { defineConfig, loadEnv } from "@medusajs/framework/utils"
 
-// Load environment variables before evaluating the Medusa config
 loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
 const REDIS_URL = process.env.REDIS_URL
 
-// Redis is enabled when REDIS_URL exists and DISABLE_REDIS is not true
-const useRedis =
-  !!REDIS_URL && process.env.DISABLE_REDIS !== "true"
+const useRedis = !!REDIS_URL && process.env.DISABLE_REDIS !== "true"
 
-console.log(
-  "useRedis =",
-  useRedis,
-  "| REDIS_URL =",
-  REDIS_URL,
-  "| DISABLE =",
-  process.env.DISABLE_REDIS
-)
+// Do NOT print the Redis URL in logs.
+console.log("useRedis =", useRedis)
 
-// Redis infrastructure modules
 const redisModules = useRedis
   ? [
       {
@@ -27,7 +17,6 @@ const redisModules = useRedis
           redisUrl: REDIS_URL,
         },
       },
-
       {
         resolve: "@medusajs/medusa/workflow-engine-redis",
         options: {
@@ -36,7 +25,6 @@ const redisModules = useRedis
           },
         },
       },
-
       {
         resolve: "@medusajs/medusa/locking",
         options: {
@@ -55,34 +43,27 @@ const redisModules = useRedis
     ]
   : []
 
-export default defineConfig({
+module.exports = defineConfig({
   admin: {
     disable: false,
     backendUrl: process.env.MEDUSA_BACKEND_URL,
   },
 
   projectConfig: {
-    ...(useRedis
-      ? {
-          redisUrl: REDIS_URL,
-        }
-      : {}),
+    ...(useRedis ? { redisUrl: REDIS_URL } : {}),
 
     http: {
       storeCors:
         process.env.STORE_CORS ||
         "http://localhost:8000,http://localhost:7001",
-
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
-
-      jwtSecret: process.env.JWT_SECRET!,
-      cookieSecret: process.env.COOKIE_SECRET!,
+      jwtSecret: process.env.JWT_SECRET,
+      cookieSecret: process.env.COOKIE_SECRET,
     },
   },
 
   modules: [
-    // Redis event bus / workflow engine / locking
     ...redisModules,
 
     // S3 file storage
@@ -93,15 +74,13 @@ export default defineConfig({
           {
             resolve: "@medusajs/medusa/file-s3",
             id: "s3",
-
             options: {
-              file_url: process.env.S3_FILE_URL!,
-              access_key_id: process.env.S3_ACCESS_KEY_ID!,
-              secret_access_key: process.env.S3_SECRET_ACCESS_KEY!,
-              region: process.env.S3_REGION!,
-              bucket: process.env.S3_BUCKET!,
-              endpoint: process.env.S3_ENDPOINT!,
-
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: process.env.S3_REGION,
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
               additional_client_config: {
                 forcePathStyle: true,
               },
@@ -111,9 +90,9 @@ export default defineConfig({
       },
     },
 
-    // Custom Testimonials module
-   {
-  resolve: "./.medusa/server/src/modules/testimonials",
-},
+    // Testimonials custom module
+    {
+      resolve: "./src/modules/testimonials",
+    },
   ],
 })
