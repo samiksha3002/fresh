@@ -358,7 +358,7 @@ const Hero = () => {
       <div className="border-t border-[var(--kt-border,rgba(43,39,36,0.1))] bg-[var(--kt-white,#ffffff)]">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-4 sm:px-10 md:px-14 lg:px-20">
           <p className="text-[9px] uppercase tracking-[0.28em] text-[var(--kt-secondary,#766c63)]">
-            Authentic Indian Personal Care
+            Authentic Personal Care
           </p>
 
           <p className="hidden text-[9px] uppercase tracking-[0.28em] text-[var(--kt-secondary,#766c63)] sm:block">
