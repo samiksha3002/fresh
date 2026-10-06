@@ -1,4 +1,3 @@
-
 import { Metadata } from "next"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
@@ -23,50 +22,85 @@ export default async function Home(props: {
   params: Promise<{ countryCode: string }>
 }) {
   const params = await props.params
-
   const { countryCode } = params
 
+  // --------------------------------------------------
+  // GET REGION
+  // --------------------------------------------------
   const region = await getRegion(countryCode)
 
+  // --------------------------------------------------
+  // GET COLLECTIONS
+  // --------------------------------------------------
   const { collections } = await listCollections({
     fields: "id, handle, title",
   })
 
-  if (!collections || !region) {
-    return null
-  }
+  // --------------------------------------------------
+  // DEBUG LOGS
+  // These will help us diagnose production issues
+  // without breaking the entire homepage.
+  // --------------------------------------------------
+  console.log("KOVEA HOME:", {
+    countryCode,
+    regionId: region?.id,
+    regionName: region?.name,
+    collectionsCount: collections?.length ?? 0,
+  })
 
   return (
     <>
-      {/* HERO */}
+      {/* ==================================================
+          HERO
+          Always render this section.
+          It should NOT depend on region/collections.
+      ================================================== */}
       <Hero />
 
-      {/* CATEGORIES */}
+      {/* ==================================================
+          CATEGORIES
+      ================================================== */}
       <HomeCategories />
 
-      {/* BEST SELLERS */}
-      <BestSellers region={region} />
+      {/* ==================================================
+          BEST SELLERS
+          Requires a valid Medusa region.
+      ================================================== */}
+      {region && <BestSellers region={region} />}
 
-      {/* SIGNATURE PRODUCTS */}
+      {/* ==================================================
+          SIGNATURE PRODUCTS
+      ================================================== */}
       <SignatureProducts />
 
-      {/* LOCAL / EDITORIAL GRID */}
+      {/* ==================================================
+          LOCAL / EDITORIAL GRID
+      ================================================== */}
       <LocalGrid />
 
-      {/* FEATURED PRODUCTS */}
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts
-            collections={collections}
-            region={region}
-          />
-        </ul>
-      </div>
+      {/* ==================================================
+          FEATURED PRODUCTS
+          Requires both collections and region.
+      ================================================== */}
+      {region && collections?.length > 0 && (
+        <div className="py-12">
+          <ul className="flex flex-col gap-x-6">
+            <FeaturedProducts
+              collections={collections}
+              region={region}
+            />
+          </ul>
+        </div>
+      )}
 
-      {/* CUSTOMER TESTIMONIALS */}
+      {/* ==================================================
+          CUSTOMER TESTIMONIALS
+      ================================================== */}
       <TestimonialsSection />
 
-      {/* BRAND STRIP */}
+      {/* ==================================================
+          BRAND STRIP
+      ================================================== */}
       <InfiniteBrandStrip />
     </>
   )
