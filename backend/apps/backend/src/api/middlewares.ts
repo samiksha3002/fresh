@@ -1,7 +1,4 @@
-import {
-  defineMiddlewares,
-  defineMiddlewaresConfig,
-} from "@medusajs/framework/http"
+import { defineMiddlewares } from "@medusajs/framework/http"
 
 export default defineMiddlewares({
   routes: [
