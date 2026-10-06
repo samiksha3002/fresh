@@ -4,6 +4,7 @@ export default defineMiddlewares({
   routes: [
     {
       matcher: "/store/carts/*",
+
       middlewares: [
         async (req, res, next) => {
           const start = Date.now()
