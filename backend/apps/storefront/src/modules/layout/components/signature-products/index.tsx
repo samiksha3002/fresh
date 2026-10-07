@@ -16,7 +16,7 @@ export default function SignatureProducts() {
           aria-label="Shop signature skincare products"
         >
           <Image
-            src="/tubes.png"
+            src="/tubesfinal.png"
             alt="Kovea Touch signature skincare products"
             fill
             priority
@@ -43,18 +43,16 @@ export default function SignatureProducts() {
         {/* CENTER CONTENT */}
         <div className="pointer-events-none absolute inset-0 z-10 flex items-start justify-center px-4 pt-16 sm:pt-20 md:items-start md:pt-[14%]">
           <div className="pointer-events-auto flex flex-col items-center text-center">
-            <h2 className="text-2xl font-normal uppercase tracking-[0.02em] text-[#2b2724] sm:text-3xl md:text-4xl lg:text-[40px]">
-              Signature Products
-            </h2>
-
+          
             <LocalizedClientLink
               href="/store"
               className="mt-5 inline-flex min-w-[190px] items-center justify-center gap-2 bg-[#2b2724] px-6 py-3 text-sm font-medium text-white transition-colors duration-300 hover:bg-[#766c63]"
             >
-              Shop Signature Products
+              Shop  Products
               <span aria-hidden="true">→</span>
             </LocalizedClientLink>
           </div>
+
         </div>
 
       </div>

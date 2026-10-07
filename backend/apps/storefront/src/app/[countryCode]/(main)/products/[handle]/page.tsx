@@ -21,15 +21,20 @@ export async function generateStaticParams() {
 
     if (!countryCodes) return []
 
-    const promises = countryCodes.map(async (country) => {
-      const { response } = await listProducts({
-        countryCode: country,
-        queryParams: { limit: 100, fields: "handle" },
-      })
-      return { country, products: response.products }
-    })
+    // Parallelize product fetches for speed
+    const countryProducts = await Promise.all(
+      countryCodes.map(async (country) => {
+        const { response } = await listProducts({
+          countryCode: country,
+          queryParams: { limit: 100, fields: "handle" },
+        })
 
-    const countryProducts = await Promise.all(promises)
+        return {
+          country,
+          products: response.products,
+        }
+      })
+    )
 
     return countryProducts
       .flatMap((countryData) =>
@@ -45,6 +50,7 @@ export async function generateStaticParams() {
         error instanceof Error ? error.message : "Unknown error"
       }.`
     )
+
     return []
   }
 }
@@ -60,31 +66,53 @@ function getImagesForVariant(
     return product.images || []
   }
 
-  const variant = product.variants.find((v) => v.id === selectedVariantId)
+  const variant = product.variants.find(
+    (v) => v.id === selectedVariantId
+  )
+
   if (!variant || !variant.images?.length) {
     return product.images || []
   }
 
-  const imageIdsMap = new Map(variant.images.map((i) => [i.id, true]))
-  return (product.images || []).filter((i) => imageIdsMap.has(i.id))
+  const imageIdsMap = new Map(
+    variant.images.map((i) => [i.id, true])
+  )
+
+  return (product.images || []).filter((i) =>
+    imageIdsMap.has(i.id)
+  )
 }
 
 /**
  * Metadata for SEO
  */
-export async function generateMetadata(props: Props): Promise<Metadata> {
+export async function generateMetadata(
+  props: Props
+): Promise<Metadata> {
   const params = await props.params
   const { handle } = params
-  const region = await getRegion(params.countryCode)
 
-  if (!region) notFound()
+  // Parallelize region + product fetch
+  const [region, productResponse] = await Promise.all([
+    getRegion(params.countryCode),
+    listProducts({
+      countryCode: params.countryCode,
+      queryParams: {
+        handle,
+        fields: "title,thumbnail",
+      },
+    }),
+  ])
 
-  const product = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle, fields: "title,thumbnail" },
-  }).then(({ response }) => response.products[0])
+  if (!region) {
+    notFound()
+  }
 
-  if (!product) notFound()
+  const product = productResponse.response.products[0]
+
+  if (!product) {
+    notFound()
+  }
 
   return {
     title: `${product.title} | Medusa Store`,
@@ -100,22 +128,41 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 /**
  * Product page
  */
-export default async function ProductPage(props: Props) {
+export default async function ProductPage(
+  props: Props
+) {
   const params = await props.params
-  const region = await getRegion(params.countryCode)
   const searchParams = await props.searchParams
+
+  // Parallelize region + product fetch
+  const [region, productResponse] = await Promise.all([
+    getRegion(params.countryCode),
+    listProducts({
+      countryCode: params.countryCode,
+      queryParams: {
+        handle: params.handle,
+        fields:
+          "id,title,handle,thumbnail,variants.calculated_price,images",
+      },
+    }),
+  ])
+
+  if (!region) {
+    notFound()
+  }
+
+  const pricedProduct = productResponse.response.products[0]
+
+  if (!pricedProduct) {
+    notFound()
+  }
+
   const selectedVariantId = searchParams.v_id
 
-  if (!region) notFound()
-
-  const pricedProduct = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle: params.handle, fields: "id,title,handle,thumbnail,variants.calculated_price,images" },
-  }).then(({ response }) => response.products[0])
-
-  if (!pricedProduct) notFound()
-
-  const images = getImagesForVariant(pricedProduct, selectedVariantId)
+  const images = getImagesForVariant(
+    pricedProduct,
+    selectedVariantId
+  )
 
   return (
     <ProductTemplate

@@ -4,7 +4,7 @@
   "private": true,
   "author": "Kasper Fabricius Kristensen <kasper@medusajs.com> & Victor Gerbrands <victor@medusajs.com> (https://www.medusajs.com)",
   "description": "Next.js Starter to be used with Medusa V2",
- "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@9.15.9",
   "keywords": [
     "medusa-storefront"
   ],
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@internationalized/date": "^3.12.4",
     "@medusajs/icons": "latest",
     "@medusajs/js-sdk": "latest",
     "@medusajs/ui": "latest",
@@ -63,7 +64,6 @@
     "react-dom": "19.0.5"
   },
   "engines": {
-  "node": ">=24"
-}
-
+    "node": ">=24"
+  }
 }

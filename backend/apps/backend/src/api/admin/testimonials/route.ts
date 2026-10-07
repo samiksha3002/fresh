@@ -1,11 +1,17 @@
-import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import {
+  MedusaRequest,
+  MedusaResponse,
+} from "@medusajs/framework/http"
+
 import { TESTIMONIALS_MODULE } from "../../../modules/testimonials"
 
 export async function GET(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule = req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const testimonials = await testimonialModule.listTestimonials(
     {},
@@ -25,7 +31,9 @@ export async function POST(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule = req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const {
     customer_name,

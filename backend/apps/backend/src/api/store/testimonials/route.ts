@@ -16,8 +16,9 @@ export async function GET(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule =
-    req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const productId = req.query.product_id as string | undefined
 
@@ -56,8 +57,9 @@ export async function POST(
   req: AuthenticatedMedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule =
-    req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const customerId = req.auth_context?.actor_id
 

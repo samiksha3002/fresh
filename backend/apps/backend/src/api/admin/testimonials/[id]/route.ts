@@ -1,11 +1,17 @@
-import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import {
+  MedusaRequest,
+  MedusaResponse,
+} from "@medusajs/framework/http"
+
 import { TESTIMONIALS_MODULE } from "../../../../modules/testimonials"
 
 export async function GET(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule = req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const testimonial = await testimonialModule.retrieveTestimonial(
     req.params.id
@@ -20,7 +26,9 @@ export async function PUT(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule = req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
   const {
     customer_name,
@@ -66,9 +74,13 @@ export async function DELETE(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const testimonialModule = req.scope.resolve(TESTIMONIALS_MODULE)
+  const testimonialModule = req.scope.resolve(
+    TESTIMONIALS_MODULE
+  ) as any
 
-  await testimonialModule.deleteTestimonials(req.params.id)
+  await testimonialModule.deleteTestimonials(
+    req.params.id
+  )
 
   res.json({
     id: req.params.id,

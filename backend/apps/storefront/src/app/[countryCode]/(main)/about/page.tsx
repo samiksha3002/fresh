@@ -225,7 +225,7 @@ export default function AboutPage() {
             {/* Text */}
             <div className="max-w-2xl">
               <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-white/50">
-                Authentic Indian Personal Care
+                Authentic Personal Care
               </p>
 
               <h2 className="mt-7 font-serif text-[42px] font-normal leading-[1.05] tracking-[-0.025em] sm:text-[54px] md:text-[64px]">

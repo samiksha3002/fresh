@@ -1,4 +1,3 @@
-
 import { defineMiddlewares } from "@medusajs/framework/http"
 import type {
   MedusaRequest,

@@ -1,11 +1,28 @@
 
 "use client"
 
-import { useState } from "react"
+import { memo, useState } from "react"
 import { HttpTypes } from "@medusajs/types"
+import dynamic from "next/dynamic"
 import ProductActions from "@modules/products/components/product-actions"
-import ProductReviews from "@modules/products/components/product-reviews/ProductReviews"
-import ProductTabs from "@modules/products/components/product-tabs"
+
+// Lazy-load reviews because they are below the main product content.
+const ProductReviews = dynamic(
+  () => import("@modules/products/components/product-reviews/ProductReviews"),
+  {
+    ssr: false,
+    loading: () => <p>Loading reviews...</p>,
+  }
+)
+
+// Lazy-load product tabs to reduce the initial JavaScript bundle.
+const ProductTabs = dynamic(
+  () => import("@modules/products/components/product-tabs"),
+  {
+    ssr: false,
+    loading: () => <p>Loading details...</p>,
+  }
+)
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -24,9 +41,7 @@ const ProductTemplate = ({
     images.length > 0
       ? images
       : product.images ||
-        (product.thumbnail
-          ? [{ url: product.thumbnail }]
-          : [])
+        (product.thumbnail ? [{ url: product.thumbnail }] : [])
 
   const [activeImage, setActiveImage] = useState(0)
 
@@ -51,7 +66,6 @@ const ProductTemplate = ({
   return (
     <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:gap-10">
-
         {/* LEFT: PRODUCT IMAGE */}
         <div className="flex min-w-0 flex-col gap-3 lg:sticky lg:top-4">
           <div className="relative flex h-[340px] items-center justify-center overflow-hidden rounded-sm border border-zinc-300 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] sm:h-[420px] lg:h-[min(65vh,520px)] lg:min-h-[400px]">
@@ -60,6 +74,9 @@ const ProductTemplate = ({
                 src={currentImage}
                 alt={product.title}
                 className="h-full w-full object-contain p-5 sm:p-7"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm text-zinc-500">
@@ -95,6 +112,7 @@ const ProductTemplate = ({
                       type="button"
                       onClick={() => setActiveImage(index)}
                       aria-label={`View image ${index + 1}`}
+                      aria-pressed={activeImage === index}
                       className={`h-2 w-2 rounded-full transition ${
                         activeImage === index
                           ? "bg-zinc-900"
@@ -116,6 +134,7 @@ const ProductTemplate = ({
                   type="button"
                   onClick={() => setActiveImage(index)}
                   aria-label={`Select image ${index + 1}`}
+                  aria-pressed={activeImage === index}
                   className={`h-16 w-16 shrink-0 overflow-hidden rounded-sm bg-white p-1 transition ${
                     activeImage === index
                       ? "border border-zinc-800"
@@ -126,6 +145,8 @@ const ProductTemplate = ({
                     src={image.url}
                     alt={`${product.title} ${index + 1}`}
                     className="h-full w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </button>
               ))}
@@ -135,8 +156,6 @@ const ProductTemplate = ({
 
         {/* RIGHT: PRODUCT DETAILS */}
         <div className="flex min-w-0 flex-col gap-3 text-zinc-900">
-
-          {/* Product title and subtitle */}
           <div>
             <h1 className="font-serif text-3xl font-normal leading-tight tracking-tight text-zinc-950 sm:text-4xl lg:text-[38px]">
               {product.title}
@@ -149,12 +168,10 @@ const ProductTemplate = ({
             )}
           </div>
 
-          {/* Description, Benefits, How to Use */}
           <div className="min-w-0 text-zinc-800 [&_*]:max-w-full">
             <ProductTabs product={product} />
           </div>
 
-          {/* Product tags */}
           {product.tags && product.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
@@ -168,22 +185,16 @@ const ProductTemplate = ({
             </div>
           )}
 
-          {/* Purchase actions
-              ProductActions already renders the selected variant price.
-              Do not render formattedPrice separately here. */}
           <div className="mt-1">
-            <ProductActions
-              product={product}
-              region={region}
-            />
+            <ProductActions product={product} region={region} />
           </div>
 
-          {/* Supporting information */}
           <div className="mt-1 space-y-3 border-t border-zinc-200 pt-3">
             <div>
               <h2 className="text-sm font-semibold text-zinc-950">
                 About this product
               </h2>
+
               <p className="mt-1 text-sm leading-5 text-zinc-700">
                 Discover more about {product.title} and how it fits into
                 your skincare routine.
@@ -194,6 +205,7 @@ const ProductTemplate = ({
               <h2 className="text-sm font-semibold text-zinc-950">
                 Shipping &amp; Returns
               </h2>
+
               <p className="mt-1 text-sm leading-5 text-zinc-700">
                 Carefully packed and shipped to your address. Please check
                 our shipping and return policy for more information.
@@ -203,7 +215,7 @@ const ProductTemplate = ({
         </div>
       </div>
 
-      {/* Customer reviews */}
+      {/* Reviews */}
       <div className="mt-10 lg:mt-14">
         <ProductReviews productId={product.id} />
       </div>
@@ -211,4 +223,4 @@ const ProductTemplate = ({
   )
 }
 
-export default ProductTemplate
+export default memo(ProductTemplate)

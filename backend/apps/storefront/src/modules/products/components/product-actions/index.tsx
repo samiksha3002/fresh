@@ -1,3 +1,4 @@
+
 "use client"
 
 import { addToCart } from "@lib/data/cart"
@@ -13,12 +14,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation"
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import ProductPrice from "../product-price"
 import MobileActions from "./mobile-actions"
 
@@ -30,16 +26,17 @@ type ProductActionsProps = {
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
-) => {
-  return variantOptions?.reduce(
-    (
-      acc: Record<string, string>,
-      varopt: any
-    ) => {
-      acc[varopt.option_id] = varopt.value
-      return acc
-    },
-    {}
+): Record<string, string> => {
+  return (
+    variantOptions?.reduce(
+      (acc: Record<string, string>, varopt) => {
+        if (varopt.option_id && varopt.value) {
+          acc[varopt.option_id] = varopt.value
+        }
+        return acc
+      },
+      {} as Record<string, string>
+    ) ?? {}
   )
 }
 
@@ -52,359 +49,185 @@ export default function ProductActions({
   const searchParams = useSearchParams()
   const params = useParams()
 
-  const [options, setOptions] = useState<
-    Record<string, string | undefined>
-  >({})
+  const countryCode = params.countryCode as string
 
-  const [isAdding, setIsAdding] =
-    useState(false)
+  const [options, setOptions] = useState<Record<string, string | undefined>>(
+    {}
+  )
+  const [isAdding, setIsAdding] = useState(false)
+  const [optimisticAdded, setOptimisticAdded] = useState(false)
 
-  const countryCode =
-    params.countryCode as string
-
-  /**
-   * ==========================================================
-   * PRESELECT VARIANT
-   * ==========================================================
-   *
-   * If the product has only one variant,
-   * automatically select its options.
-   */
-  useEffect(() => {
-    if (product.variants?.length === 1) {
-      const variantOptions =
-        optionsAsKeymap(
-          product.variants[0].options
-        )
-
-      setOptions(
-        variantOptions ?? {}
-      )
-    }
-  }, [product.variants])
-
-  /**
-   * ==========================================================
-   * SELECTED VARIANT
-   * ==========================================================
-   */
   const selectedVariant = useMemo(() => {
-    if (
-      !product.variants ||
-      product.variants.length === 0
-    ) {
-      return
-    }
+    if (!product.variants?.length) return undefined
 
-    return product.variants.find(
-      (variant) => {
-        const variantOptions =
-          optionsAsKeymap(
-            variant.options
-          )
-
-        return isEqual(
-          variantOptions,
-          options
-        )
-      }
+    return product.variants.find((variant) =>
+      isEqual(optionsAsKeymap(variant.options), options)
     )
-  }, [
-    product.variants,
-    options,
-  ])
+  }, [product.variants, options])
 
-  /**
-   * ==========================================================
-   * UPDATE OPTION
-   * ==========================================================
-   */
-  const setOptionValue = (
-    optionId: string,
-    value: string
-  ) => {
-    setOptions((prev) => ({
-      ...prev,
-      [optionId]: value,
-    }))
-  }
-
-  /**
-   * ==========================================================
-   * VALID VARIANT CHECK
-   * ==========================================================
-   */
   const isValidVariant = useMemo(() => {
-    return product.variants?.some(
-      (variant) => {
-        const variantOptions =
-          optionsAsKeymap(
-            variant.options
-          )
+    if (!selectedVariant) return false
 
-        return isEqual(
-          variantOptions,
-          options
-        )
-      }
-    )
-  }, [
-    product.variants,
-    options,
-  ])
+    return isEqual(optionsAsKeymap(selectedVariant.options), options)
+  }, [selectedVariant, options])
 
-  /**
-   * ==========================================================
-   * UPDATE URL WITH SELECTED VARIANT
-   * ==========================================================
-   */
+  // Preselect options when the product has exactly one variant.
   useEffect(() => {
-    const params =
-      new URLSearchParams(
-        searchParams.toString()
-      )
+    if (product.variants?.length !== 1) return
 
-    const value =
-      isValidVariant
-        ? selectedVariant?.id
-        : null
+    setOptions(optionsAsKeymap(product.variants[0].options))
+  }, [product.id, product.variants])
 
-    if (
-      params.get("v_id") === value
-    ) {
-      return
-    }
+  const setOptionValue = useCallback(
+    (optionId: string, value: string) => {
+      setOptions((prev) => ({
+        ...prev,
+        [optionId]: value,
+      }))
+    },
+    []
+  )
 
-    if (value) {
-      params.set(
-        "v_id",
-        value
-      )
+  // Keep the selected variant in the URL without navigating when unchanged.
+  useEffect(() => {
+    const currentVariantId = searchParams.get("v_id")
+    const nextVariantId = isValidVariant ? selectedVariant?.id : null
+
+    if (currentVariantId === nextVariantId) return
+
+    const nextParams = new URLSearchParams(searchParams.toString())
+
+    if (nextVariantId) {
+      nextParams.set("v_id", nextVariantId)
     } else {
-      params.delete("v_id")
+      nextParams.delete("v_id")
     }
 
-    const queryString =
-      params.toString()
+    const queryString = nextParams.toString()
+    const nextUrl = queryString ? `${pathname}?${queryString}` : pathname
 
-    router.replace(
-      queryString
-        ? `${pathname}?${queryString}`
-        : pathname
-    )
+    router.replace(nextUrl, { scroll: false })
   }, [
-    selectedVariant,
+    selectedVariant?.id,
     isValidVariant,
     pathname,
     router,
     searchParams,
   ])
 
-  /**
-   * ==========================================================
-   * STOCK CHECK
-   * ==========================================================
-   */
   const inStock = useMemo(() => {
-    /**
-     * If inventory isn't managed,
-     * product can always be added.
-     */
-    if (
-      selectedVariant &&
-      !selectedVariant.manage_inventory
-    ) {
-      return true
-    }
+    if (!selectedVariant) return false
+    if (!selectedVariant.manage_inventory) return true
+    if (selectedVariant.allow_backorder) return true
 
-    /**
-     * Backorders are allowed.
-     */
-    if (
-      selectedVariant?.allow_backorder
-    ) {
-      return true
-    }
-
-    /**
-     * Inventory is available.
-     */
-    if (
-      selectedVariant?.manage_inventory &&
-      (selectedVariant.inventory_quantity ||
-        0) > 0
-    ) {
-      return true
-    }
-
-    return false
+    return (selectedVariant.inventory_quantity ?? 0) > 0
   }, [selectedVariant])
 
-  /**
-   * ==========================================================
-   * INTERSECTION / MOBILE ACTIONS
-   * ==========================================================
-   */
-  const actionsRef =
-    useRef<HTMLDivElement>(null)
+  const actionsRef = useRef<HTMLDivElement>(null)
+  const inView = useIntersection(actionsRef, "0px")
 
-  const inView = useIntersection(
-    actionsRef,
-    "0px"
-  )
-
-  /**
-   * ==========================================================
-   * ADD TO CART
-   * ==========================================================
-   *
-   * Calls the optimized server action from:
-   *
-   * src/lib/data/cart.ts
-   *
-   * The cart logic itself remains completely
-   * separate from this client component.
-   */
-  const handleAddToCart =
-    async () => {
-      /**
-       * No valid variant.
-       */
-      if (
-        !selectedVariant?.id
-      ) {
-        return
-      }
-
-      /**
-       * Prevent duplicate clicks
-       * while the previous request is running.
-       */
-      if (isAdding) {
-        return
-      }
-
-      setIsAdding(true)
-
-      try {
-        await addToCart({
-          variantId:
-            selectedVariant.id,
-          quantity: 1,
-          countryCode,
-        })
-      } catch (error) {
-        console.error(
-          "Add to cart failed:",
-          error
-        )
-      } finally {
-        setIsAdding(false)
-      }
+  const handleAddToCart = useCallback(async () => {
+    if (
+      !selectedVariant?.id ||
+      !isValidVariant ||
+      !inStock ||
+      disabled ||
+      isAdding
+    ) {
+      return
     }
 
-  /**
-   * ==========================================================
-   * RENDER
-   * ==========================================================
-   */
+    setIsAdding(true)
+
+    try {
+      await addToCart({
+        variantId: selectedVariant.id,
+        quantity: 1,
+        countryCode,
+      })
+
+      setOptimisticAdded(true)
+    } catch (error) {
+      console.error("Add to cart failed:", error)
+      setOptimisticAdded(false)
+    } finally {
+      setIsAdding(false)
+    }
+  }, [
+    selectedVariant?.id,
+    isValidVariant,
+    inStock,
+    disabled,
+    isAdding,
+    countryCode,
+  ])
+
+  useEffect(() => {
+    if (!optimisticAdded) return
+
+    const timeoutId = setTimeout(() => {
+      setOptimisticAdded(false)
+    }, 1500)
+
+    return () => clearTimeout(timeoutId)
+  }, [optimisticAdded])
+
   return (
-    <>
-      <div
-        className="flex flex-col gap-y-2"
-        ref={actionsRef}
-      >
-        <div>
-          {(product.variants
-            ?.length ?? 0) > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map(
-                (option) => {
-                  return (
-                    <div
-                      key={option.id}
-                    >
-                      <OptionSelect
-                        option={option}
-                        current={
-                          options[
-                            option.id
-                          ]
-                        }
-                        updateOption={
-                          setOptionValue
-                        }
-                        title={
-                          option.title ??
-                          ""
-                        }
-                        data-testid="product-options"
-                        disabled={
-                          !!disabled ||
-                          isAdding
-                        }
-                      />
-                    </div>
-                  )
-                }
-              )}
-
-              <Divider />
+    <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      {(product.variants?.length ?? 0) > 1 && (
+        <div className="flex flex-col gap-y-4">
+          {(product.options || []).map((option) => (
+            <div key={option.id}>
+              <OptionSelect
+                option={option}
+                current={options[option.id]}
+                updateOption={setOptionValue}
+                title={option.title ?? ""}
+                data-testid="product-options"
+                disabled={!!disabled || isAdding}
+              />
             </div>
-          )}
+          ))}
+          <Divider />
         </div>
+      )}
 
-        <ProductPrice
-          product={product}
-          variant={selectedVariant}
-        />
+      <ProductPrice product={product} variant={selectedVariant} />
 
-        <Button
-          onClick={
-            handleAddToCart
-          }
-          disabled={
-            !inStock ||
-            !selectedVariant ||
-            !!disabled ||
-            isAdding ||
-            !isValidVariant
-          }
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!selectedVariant &&
-          !options
+      <Button
+        onClick={handleAddToCart}
+        disabled={
+          !inStock ||
+          !selectedVariant ||
+          !!disabled ||
+          isAdding ||
+          !isValidVariant
+        }
+        variant="primary"
+        className="h-10 w-full"
+        isLoading={isAdding}
+        data-testid="add-product-button"
+      >
+        {optimisticAdded
+          ? "Added!"
+          : !selectedVariant
             ? "Select variant"
-            : !inStock ||
-              !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
+            : !inStock
+              ? "Out of stock"
+              : "Add to cart"}
+      </Button>
 
-        <MobileActions
-          product={product}
-          variant={
-            selectedVariant
-          }
-          options={options}
-          updateOptions={
-            setOptionValue
-          }
-          inStock={inStock}
-          handleAddToCart={
-            handleAddToCart
-          }
-          isAdding={isAdding}
-          show={!inView}
-          optionsDisabled={
-            !!disabled ||
-            isAdding
-          }
-        />
-      </div>
-    </>
+      <MobileActions
+        product={product}
+        variant={selectedVariant}
+        options={options}
+        updateOptions={setOptionValue}
+        inStock={inStock && isValidVariant}
+        handleAddToCart={handleAddToCart}
+        isAdding={isAdding}
+        show={!inView}
+        optionsDisabled={!!disabled || isAdding}
+      />
+    </div>
   )
 }

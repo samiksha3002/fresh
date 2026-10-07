@@ -33,7 +33,7 @@ export const listProducts = async ({
   const _pageParam = Math.max(pageParam, 1)
   const offset = _pageParam === 1 ? 0 : (_pageParam - 1) * limit
 
-  // ✅ Parallelize awaits
+  // Parallelize awaits for speed
   const [region, headers, next] = await Promise.all([
     countryCode ? getRegion(countryCode) : retrieveRegion(regionId!),
     getAuthHeaders(),
@@ -47,7 +47,7 @@ export const listProducts = async ({
     }
   }
 
-  // ✅ Reduce fields to essentials
+  // Keep original fields intact
   const { products, count } = await sdk.client.fetch<{
     products: HttpTypes.StoreProduct[]
     count: number
@@ -57,11 +57,12 @@ export const listProducts = async ({
       limit,
       offset,
       region_id: region.id,
-      fields: "id,title,handle,thumbnail,variants.calculated_price",
+      fields:
+        "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
       ...queryParams,
     },
     headers,
-    next: { ...next, revalidate: 60 }, // ✅ cache + revalidate
+    next: { ...next, revalidate: 60 },
     cache: "force-cache",
   })
 
@@ -128,25 +129,12 @@ export const getProductByHandle = async ({
     return null
   }
 
-  const [region, headers, next] = await Promise.all([
-    getRegion(countryCode),
-    getAuthHeaders(),
-    getCacheOptions("products"),
-  ])
-
-  const { products } = await sdk.client.fetch<{
-    products: HttpTypes.StoreProduct[]
-  }>("/store/products", {
-    method: "GET",
-    query: {
-      handle,
-      limit: 1,
-      region_id: region.id,
-      fields: "id,title,handle,thumbnail,variants.calculated_price",
-    },
-    headers,
-    next: { ...next, revalidate: 60 },
-    cache: "force-cache",
+  const {
+    response: { products },
+  } = await listProducts({
+    pageParam: 1,
+    countryCode,
+    queryParams: { handle, limit: 1 },
   })
 
   return products[0] || null
