@@ -9,20 +9,19 @@ type Props = {
 }
 
 const categoryImages: Record<string, string> = {
-  acne: "/Acne.png",
-  aging: "/Aging.png",
-  "body-pigmentation": "/pigmenentaion.png",
+  acne: "/Acne.jpg",
+  aging: "/Aging.jpg",
+  "body-pigmentation": "/pigmentation.jpg",
   "dark-knees-elbows": "/elbow.png",
   "dark-underarms-dark-neck": "/underarms.png",
   "kp-strawberry-legs": "/strawberry.png",
-  "large-pores-texture": "/large pores and texture.png",
+  "large-pores-texture": "/large pore.jpg",
   "lip-eye-care": "/lip-eye-care.jpg",
   "mild-moderate-pigmentation": "/mild-moderate-pigmentation.jpg",
-  "oily-skin": "/categories/oily-skin.jpg",
+  "oily-skin": "/oily sceen.jpg",
   "pregnancy-safe": "/categories/pregnancy-safe.jpg",
   "scar-treatment": "/categories/scar-treatment.jpg",
-  "sensitive-skin-barrier-repair-dry-skin":
-    "/categories/sensitive-skin-barrier-repair-dry-skin.jpg",
+  "sensitive-skin-barrier-repair-dry-skin":"/categories/sensitive-skin-barrier-repair-dry-skin.jpg",
   "skintags-razor-bumps":
     "/categories/skintags-razor-bumps.jpg",
   "stubborn-pigmentation":

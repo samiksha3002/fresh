@@ -21,86 +21,91 @@ export const metadata: Metadata = {
 export default async function Home(props: {
   params: Promise<{ countryCode: string }>
 }) {
-  const params = await props.params
-  const { countryCode } = params
+  const { countryCode } = await props.params
 
-  // --------------------------------------------------
-  // GET REGION
-  // --------------------------------------------------
-  const region = await getRegion(countryCode)
+  // ==================================================
+  // GET REGION + COLLECTIONS IN PARALLEL
+  // ==================================================
 
-  // --------------------------------------------------
-  // GET COLLECTIONS
-  // --------------------------------------------------
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
+  const [region, collectionsResult] = await Promise.all([
+    getRegion(countryCode),
+    listCollections({
+      fields: "id, handle, title",
+    }),
+  ])
 
-  // --------------------------------------------------
-  // DEBUG LOGS
-  // These will help us diagnose production issues
-  // without breaking the entire homepage.
-  // --------------------------------------------------
+  const collections = collectionsResult?.collections || []
+
+  // ==================================================
+  // DEBUG
+  // ==================================================
+
   console.log("KOVEA HOME:", {
     countryCode,
     regionId: region?.id,
     regionName: region?.name,
-    collectionsCount: collections?.length ?? 0,
+    collectionsCount: collections.length,
   })
 
   return (
     <>
       {/* ==================================================
           HERO
-          Always render this section.
-          It should NOT depend on region/collections.
       ================================================== */}
+
       <Hero />
 
       {/* ==================================================
           CATEGORIES
       ================================================== */}
+
       <HomeCategories />
 
       {/* ==================================================
           BEST SELLERS
-          Requires a valid Medusa region.
+          Only render when region exists
       ================================================== */}
+
       {region && <BestSellers region={region} />}
 
       {/* ==================================================
           SIGNATURE PRODUCTS
       ================================================== */}
+
       <SignatureProducts />
 
       {/* ==================================================
           LOCAL / EDITORIAL GRID
       ================================================== */}
+
       <LocalGrid />
 
       {/* ==================================================
           FEATURED PRODUCTS
-          Requires both collections and region.
+          Only render when region + collections exist
       ================================================== */}
-      {region && collections?.length > 0 && (
-        <div className="py-12">
+
+      {region && collections.length > 0 && (
+        <section className="py-12">
           <ul className="flex flex-col gap-x-6">
             <FeaturedProducts
               collections={collections}
               region={region}
             />
           </ul>
-        </div>
+        </section>
       )}
 
       {/* ==================================================
-          CUSTOMER TESTIMONIALS
+          TESTIMONIALS
       ================================================== */}
+
       <TestimonialsSection />
 
       {/* ==================================================
           BRAND STRIP
       ================================================== */}
+
       <InfiniteBrandStrip />
     </>
   )
