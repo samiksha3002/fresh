@@ -9,8 +9,8 @@ type Props = {
 }
 
 const categoryImages: Record<string, string> = {
-  acne: "/Acne.jpg",
-  aging: "/Aging.jpg",
+  acne: "/acne.jpg",
+  aging: "/aging.jpg",
   "body-pigmentation": "/pigmentation.jpg",
   "dark-knees-elbows": "/elbow.png",
   "dark-underarms-dark-neck": "/underarms.png",
