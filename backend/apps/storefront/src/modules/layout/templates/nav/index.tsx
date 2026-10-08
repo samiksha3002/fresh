@@ -69,10 +69,9 @@ export default async function Nav() {
                     </svg>
                   </button>
 
-                  <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-64">
+                 <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-64 z-50">
 
-                    <div className="theme-bg border theme-border-light shadow-xl p-4 flex flex-col gap-3 theme-text-muted font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
-
+  <div className="bg-white border border-gray-200 shadow-xl p-4 flex flex-col gap-3 text-gray-700 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
                       <LocalizedClientLink
                         href="/store?category=all-skincare"
                         className="hover:theme-text hover:translate-x-1 transition-transform"
@@ -185,9 +184,8 @@ export default async function Nav() {
                     </svg>
                   </button>
 
-                  <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-72">
-
-                    <div className="theme-bg border theme-border-light shadow-xl p-4 flex flex-col gap-3 theme-text-muted font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
+                  <div className="absolute top-full left-0 pt-0 hidden group-hover:block w-72 z-50">
+<div className="bg-white border border-gray-200 shadow-xl p-4 flex flex-col gap-3 text-gray-700 font-normal rounded-b-md max-h-[70vh] overflow-y-auto">
 
                       <LocalizedClientLink
                         href="/store?concern=acne-texture"

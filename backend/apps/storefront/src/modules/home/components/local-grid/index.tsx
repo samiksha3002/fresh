@@ -14,14 +14,14 @@
       {
         subtitle: "Hair concern",
         title: "Frizzy Hair",
-        bg: "bg-[#e3ede6]",
+        bg: "bg-[#f4efe6]",
         image: "/freezy.png",
         href: "/store?category=hair-care",
       },
       {
         subtitle: "Scalp concern",
         title: "Dandruff",
-        bg: "bg-[#e4ebf2]",
+        bg: "bg-[#f4efe6]",
         image: "/dandruff.webp",
         href: "/store?category=hair-care",
       },

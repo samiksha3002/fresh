@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useEffect, useState } from "react"
@@ -76,11 +75,21 @@ function SectionHeading() {
 
 function LoadingCards() {
   return (
-    <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-9 flex gap-4 overflow-hidden">
       {[1, 2, 3].map((item) => (
         <div
           key={item}
-          className="min-h-[220px] animate-pulse border border-[var(--kt-border)] bg-white p-5 sm:p-6"
+          className="
+            min-w-full
+            border
+            border-[var(--kt-border)]
+            bg-white
+            p-5
+            animate-pulse
+            sm:min-w-[calc(50%-8px)]
+            lg:min-w-[calc(33.333%-11px)]
+            sm:p-6
+          "
         >
           <div className="h-3 w-20 bg-[var(--kt-sand)]" />
 
@@ -92,6 +101,7 @@ function LoadingCards() {
 
           <div className="mt-8 flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-[var(--kt-sand)]" />
+
             <div className="space-y-2">
               <div className="h-2.5 w-24 bg-[var(--kt-sand)]" />
               <div className="h-2 w-16 bg-[var(--kt-sand)]" />
@@ -106,6 +116,7 @@ function LoadingCards() {
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
     let cancelled = false
@@ -128,7 +139,6 @@ export default function TestimonialsSection() {
 
         if (cancelled) return
 
-        // API is expected to return approved testimonials.
         setTestimonials(reviews.slice(0, 6))
       } catch (error) {
         console.error("Testimonials could not be loaded:", error)
@@ -150,16 +160,41 @@ export default function TestimonialsSection() {
     }
   }, [])
 
+  /*
+   * AUTOMATIC SLIDER
+   *
+   * Changes the active card every 5 seconds.
+   */
+  useEffect(() => {
+    if (testimonials.length <= 1) return
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [testimonials.length])
+
   return (
     <section className="border-t border-[var(--kt-border)] bg-[var(--kt-cream)]">
       <div className="mx-auto w-full max-w-[1440px] px-6 py-14 sm:px-10 sm:py-16 md:py-20 lg:px-16">
-        {/* SECTION HEADER */}
+
+        {/* =========================================================
+            SECTION HEADER
+        ========================================================= */}
+
         <SectionHeading />
 
-        {/* LOADING STATE */}
+        {/* =========================================================
+            LOADING
+        ========================================================= */}
+
         {loading && <LoadingCards />}
 
-        {/* EMPTY STATE */}
+        {/* =========================================================
+            EMPTY STATE
+        ========================================================= */}
+
         {!loading && testimonials.length === 0 && (
           <div className="mt-8 border border-[var(--kt-border)] bg-white px-5 py-8 text-center sm:py-10">
             <p className="text-[12px] text-[var(--kt-secondary)]">
@@ -168,72 +203,201 @@ export default function TestimonialsSection() {
           </div>
         )}
 
-        {/* TESTIMONIAL CARDS */}
+        {/* =========================================================
+            TESTIMONIAL SLIDER
+        ========================================================= */}
+
         {!loading && testimonials.length > 0 && (
-          <div className="mt-9 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.id}
-                className="group flex min-w-0 flex-col justify-between border border-[var(--kt-border)] bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--kt-border-strong)] hover:shadow-[0_10px_30px_var(--kt-shadow)] sm:p-6"
-              >
-                <div>
-                  {/* RATING AND QUOTE */}
-                  <div className="flex items-center justify-between">
-                    <Stars rating={Number(testimonial.rating)} />
+          <div className="relative mt-9 overflow-hidden">
 
-                    <span
-                      aria-hidden="true"
-                      className="font-serif text-[34px] leading-[0.8] text-[var(--kt-beige)] transition-colors duration-300 group-hover:text-[var(--kt-accent)]"
-                    >
-                      “
-                    </span>
-                  </div>
-
-                  {/* REVIEW */}
-                  <blockquote className="mt-5 text-[13px] leading-[1.8] text-[var(--kt-primary)] sm:text-[13px]">
-                    {testimonial.review}
-                  </blockquote>
-                </div>
-
-                {/* CUSTOMER DETAILS */}
-                <div className="mt-7 flex items-center gap-3 border-t border-[var(--kt-border)] pt-4">
-                  {testimonial.avatar ? (
-                    <img
-                      src={testimonial.avatar}
-                      alt=""
-                      loading="lazy"
-                      className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-[var(--kt-border)]"
-                    />
-                  ) : (
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--kt-sand)] text-[10px] font-medium tracking-[0.06em] text-[var(--kt-primary)]">
-                      {getInitials(testimonial.customer_name)}
-                    </div>
-                  )}
-
-                  <div className="min-w-0">
-                    <p className="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--kt-primary)]">
-                      {testimonial.customer_name}
-                    </p>
-
-                    <p className="mt-1 text-[10px] text-[var(--kt-secondary)]">
-                      Customer Review
-                    </p>
-                  </div>
-
-                  <span
-                    aria-hidden="true"
-                    className="ml-auto text-[13px] text-[var(--kt-accent)] opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+            <div
+              className="
+                flex
+                transition-transform
+                duration-1000
+                ease-in-out
+              "
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (100 / Math.min(testimonials.length, 3))
+                }%)`,
+              }}
+            >
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="
+                    min-w-full
+                    shrink-0
+                    px-0
+                    sm:min-w-1/2
+                    lg:min-w-1/3
+                  "
+                >
+                  <article
+                    className="
+                      group
+                      mx-2
+                      flex
+                      min-h-[250px]
+                      flex-col
+                      justify-between
+                      border
+                      border-[var(--kt-border)]
+                      bg-white
+                      p-5
+                      transition-all
+                      duration-300
+                      hover:-translate-y-1
+                      hover:border-[var(--kt-border-strong)]
+                      hover:shadow-[0_10px_30px_var(--kt-shadow)]
+                      sm:p-6
+                    "
                   >
-                    ✦
-                  </span>
+
+                    {/* TOP */}
+                    <div>
+
+                      <div className="flex items-center justify-between">
+
+                        <Stars
+                          rating={Number(testimonial.rating)}
+                        />
+
+                        <span
+                          aria-hidden="true"
+                          className="
+                            font-serif
+                            text-[34px]
+                            leading-[0.8]
+                            text-[var(--kt-beige)]
+                            transition-colors
+                            duration-300
+                            group-hover:text-[var(--kt-accent)]
+                          "
+                        >
+                          “
+                        </span>
+
+                      </div>
+
+                      {/* REVIEW */}
+
+                      <blockquote
+                        className="
+                          mt-5
+                          text-[13px]
+                          leading-[1.8]
+                          text-[var(--kt-primary)]
+                        "
+                      >
+                        {testimonial.review}
+                      </blockquote>
+
+                    </div>
+
+                    {/* CUSTOMER */}
+
+                    <div
+                      className="
+                        mt-7
+                        flex
+                        items-center
+                        gap-3
+                        border-t
+                        border-[var(--kt-border)]
+                        pt-4
+                      "
+                    >
+
+                      {testimonial.avatar ? (
+                        <img
+                          src={testimonial.avatar}
+                          alt=""
+                          loading="lazy"
+                          className="
+                            h-9
+                            w-9
+                            shrink-0
+                            rounded-full
+                            object-cover
+                            ring-1
+                            ring-[var(--kt-border)]
+                          "
+                        />
+                      ) : (
+                        <div
+                          className="
+                            flex
+                            h-9
+                            w-9
+                            shrink-0
+                            items-center
+                            justify-center
+                            rounded-full
+                            bg-[var(--kt-sand)]
+                            text-[10px]
+                            font-medium
+                            tracking-[0.06em]
+                            text-[var(--kt-primary)]
+                          "
+                        >
+                          {getInitials(testimonial.customer_name)}
+                        </div>
+                      )}
+
+                      <div className="min-w-0">
+
+                        <p
+                          className="
+                            truncate
+                            text-[10px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.1em]
+                            text-[var(--kt-primary)]
+                          "
+                        >
+                          {testimonial.customer_name}
+                        </p>
+
+                        <p className="mt-1 text-[10px] text-[var(--kt-secondary)]">
+                          Customer Review
+                        </p>
+
+                      </div>
+
+                      <span
+                        aria-hidden="true"
+                        className="
+                          ml-auto
+                          text-[13px]
+                          text-[var(--kt-accent)]
+                          opacity-60
+                          transition-opacity
+                          duration-300
+                          group-hover:opacity-100
+                        "
+                      >
+                        ✦
+                      </span>
+
+                    </div>
+
+                  </article>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
+
           </div>
         )}
 
-        {/* FOOTER DETAIL */}
+        {/* =========================================================
+            FOOTER DETAIL
+        ========================================================= */}
+
         <div className="mt-9 flex items-center justify-center gap-3">
+
           <div className="h-px w-8 bg-[var(--kt-border-strong)]" />
 
           <p className="text-[8px] font-medium uppercase tracking-[0.28em] text-[var(--kt-secondary)]">
@@ -241,7 +405,9 @@ export default function TestimonialsSection() {
           </p>
 
           <div className="h-px w-8 bg-[var(--kt-border-strong)]" />
+
         </div>
+
       </div>
     </section>
   )
