@@ -11,11 +11,11 @@ type Props = {
 const categoryImages: Record<string, string> = {
   acne: "/acne.jpg",
   aging: "/aging.jpg",
+  "large-pores-texture": "/largepore.jpeg",
   "body-pigmentation": "/pigmentation.jpg",
   "dark-knees-elbows": "/elbow.png",
   "dark-underarms-dark-neck": "/underarms.png",
   "kp-strawberry-legs": "/strawberry.png",
-  "large-pores-texture": "/large pore.jpg",
   "lip-eye-care": "/lip-eye-care.jpg",
   "mild-moderate-pigmentation": "/mild-moderate-pigmentation.jpg",
   "oily-skin": "/oily sceen.jpg",

@@ -9,42 +9,28 @@ const heroSlides = [
   {
     id: 1,
     eyebrow: "THE KOVEA TOUCH RITUAL",
-    title: ["Pure.", "Radiant.", "Skincare."],
+     title: ["Visible", "Gentle.", "Lasting."],
     description:
-      "Elevate your daily ritual with thoughtfully selected skincare essentials designed to reveal healthy, luminous skin.",
+       "Real results for sensitive skin types. Experience noticeable reduction in flare-ups and redness within your first two weeks.",
     buttonText: "SHOP SKINCARE",
     buttonLink: "/store",
-    before: "/HF7.jpg",
-    after: "/HF6.jpg",
-    concern: "Dull, uneven tone",
-    duration: "4 weeks",
+    before: "/Hero final 2.jpg",
+    after: "/Hero final 1.png",
+   
   },
   {
     id: 2,
     eyebrow: "RESTORE YOUR GLOW",
-    title: ["Defy.", "Restore.", "Protect."],
+    title: ["Reset.", "Soothe. ", "Protect."],
     description:
-      "Discover carefully selected serums and moisturizers created to support your skin barrier and bring back its natural glow.",
+      "Dermatologist-approved organic formulas crafted to fortify stressed barriers and bring effortless clarity back to sensitive skin.",
     buttonText: "EXPLORE SERUMS",
     buttonLink: "/store?category=serums-retinoids",
-    before: "/HF5.jpg",
-    after: "/HF4.jpg",
-    concern: "Dry, tired skin",
-    duration: "6 weeks",
+    before: "/Hero Final 4.jpg",
+    after: "/Hero Final 3.png",
+   
   },
-  {
-    id: 3,
-    eyebrow: "EVERYDAY ESSENTIALS",
-    title: ["Cleanse.", "Refresh.", "Revive."],
-    description:
-      "Gentle cleansing essentials that leave your skin feeling fresh, comfortable and beautifully renewed.",
-    buttonText: "SHOP CLEANSERS",
-    buttonLink: "/store?category=cleansers-body-washes",
-    before: "/HF2.jpg",
-    after: "/HF3.jpg",
-    concern: "Clogged, congested pores",
-    duration: "3 weeks",
-  },
+  
 ]
 
 const SKEW = 7
@@ -201,9 +187,7 @@ const Hero = () => {
 
             {/* RESULT CARD */}
             <div className="pointer-events-none absolute bottom-5 left-5 z-10 max-w-[230px] rounded-2xl border border-[var(--kt-border,#e9e4de)] bg-[var(--kt-white,#ffffff)]/95 px-5 py-4 shadow-[0_24px_50px_-20px_var(--kt-shadow,rgba(43,39,36,0.12))] sm:bottom-8 sm:left-8">
-              <p className="text-[11px] tracking-[0.08em] text-[var(--kt-secondary,#766c63)]">
-                Skin concern
-              </p>
+             
 
               <p className="mt-1 text-[18px] font-medium leading-snug text-[var(--kt-primary,#2b2724)]">
                 {activeSlide.concern}
