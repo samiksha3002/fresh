@@ -15,7 +15,7 @@ export default function SignatureProducts() {
           aria-label="Shop signature skincare products"
         >
           <Image
-            src="/full facew.png"
+            src="/full face.png"
             alt="Kovea Touch signature skincare collection"
             fill
             priority

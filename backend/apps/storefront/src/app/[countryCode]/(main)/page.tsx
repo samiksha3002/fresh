@@ -8,6 +8,8 @@ import SignatureProducts from "@modules/layout/components/signature-products"
 import LocalGrid from "@modules/home/components/local-grid"
 import TestimonialsSection from "@modules/home/components/Testimonials/TestimonialsSection"
 import InfiniteBrandStrip from "@modules/home/components/infinite-brand-strip"
+import DermatologistCTA from
+  "@modules/home/components/dermatologist-cta"
 
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
@@ -58,6 +60,7 @@ export default async function Home(props: {
       {/* ==================================================
           CATEGORIES
       ================================================== */}
+      <DermatologistCTA />
 
       <HomeCategories />
 
