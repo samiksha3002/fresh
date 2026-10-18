@@ -1,6 +1,7 @@
+
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type Testimonial = {
   id: string
@@ -79,17 +80,7 @@ function LoadingCards() {
       {[1, 2, 3].map((item) => (
         <div
           key={item}
-          className="
-            min-w-full
-            border
-            border-[var(--kt-border)]
-            bg-white
-            p-5
-            animate-pulse
-            sm:min-w-[calc(50%-8px)]
-            lg:min-w-[calc(33.333%-11px)]
-            sm:p-6
-          "
+          className="min-w-0 shrink-0 basis-full animate-pulse border border-[var(--kt-border)] bg-white p-5 sm:basis-[calc(50%-8px)] sm:p-6 lg:basis-[calc(33.333%-10.667px)]"
         >
           <div className="h-3 w-20 bg-[var(--kt-sand)]" />
 
@@ -101,7 +92,6 @@ function LoadingCards() {
 
           <div className="mt-8 flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-[var(--kt-sand)]" />
-
             <div className="space-y-2">
               <div className="h-2.5 w-24 bg-[var(--kt-sand)]" />
               <div className="h-2 w-16 bg-[var(--kt-sand)]" />
@@ -116,8 +106,9 @@ function LoadingCards() {
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const sliderRef = useRef<HTMLDivElement>(null)
 
+  // Load the existing testimonials API.
   useEffect(() => {
     let cancelled = false
 
@@ -128,7 +119,9 @@ export default function TestimonialsSection() {
         })
 
         if (!response.ok) {
-          throw new Error(`Testimonials API failed: ${response.status}`)
+          throw new Error(
+            `Testimonials API failed: ${response.status}`
+          )
         }
 
         const data = await response.json()
@@ -137,9 +130,9 @@ export default function TestimonialsSection() {
           ? data.testimonials
           : []
 
-        if (cancelled) return
-
-        setTestimonials(reviews.slice(0, 6))
+        if (!cancelled) {
+          setTestimonials(reviews.slice(0, 6))
+        }
       } catch (error) {
         console.error("Testimonials could not be loaded:", error)
 
@@ -160,40 +153,50 @@ export default function TestimonialsSection() {
     }
   }, [])
 
-  /*
-   * AUTOMATIC SLIDER
-   *
-   * Changes the active card every 5 seconds.
-   */
+  // Automatically advance one visible page every 5 seconds.
   useEffect(() => {
-    if (testimonials.length <= 1) return
+    const slider = sliderRef.current
 
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    if (!slider || testimonials.length <= 1) return
+
+    const timer = window.setInterval(() => {
+      const element = sliderRef.current
+
+      if (!element) return
+
+      const maxScroll =
+        element.scrollWidth - element.clientWidth
+
+      if (maxScroll <= 4) return
+
+      // Return to the first page when reaching the end.
+      if (element.scrollLeft >= maxScroll - 8) {
+        element.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        })
+      } else {
+        // Advance by one screen: 3 cards on desktop,
+        // 2 on tablets, and 1 on mobile.
+        element.scrollTo({
+          left: Math.min(
+            element.scrollLeft + element.clientWidth,
+            maxScroll
+          ),
+          behavior: "smooth",
+        })
+      }
     }, 5000)
 
-    return () => clearInterval(timer)
+    return () => window.clearInterval(timer)
   }, [testimonials.length])
 
   return (
     <section className="border-t border-[var(--kt-border)] bg-[var(--kt-cream)]">
       <div className="mx-auto w-full max-w-[1440px] px-6 py-14 sm:px-10 sm:py-16 md:py-20 lg:px-16">
-
-        {/* =========================================================
-            SECTION HEADER
-        ========================================================= */}
-
         <SectionHeading />
 
-        {/* =========================================================
-            LOADING
-        ========================================================= */}
-
         {loading && <LoadingCards />}
-
-        {/* =========================================================
-            EMPTY STATE
-        ========================================================= */}
 
         {!loading && testimonials.length === 0 && (
           <div className="mt-8 border border-[var(--kt-border)] bg-white px-5 py-8 text-center sm:py-10">
@@ -203,201 +206,75 @@ export default function TestimonialsSection() {
           </div>
         )}
 
-        {/* =========================================================
-            TESTIMONIAL SLIDER
-        ========================================================= */}
-
         {!loading && testimonials.length > 0 && (
-          <div className="relative mt-9 overflow-hidden">
-
+          <div className="relative mt-9">
             <div
-              className="
-                flex
-                transition-transform
-                duration-1000
-                ease-in-out
-              "
-              style={{
-                transform: `translateX(-${
-                  currentIndex * (100 / Math.min(testimonials.length, 3))
-                }%)`,
-              }}
+              ref={sliderRef}
+              className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              aria-label="Customer testimonials"
             >
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="
-                    min-w-full
-                    shrink-0
-                    px-0
-                    sm:min-w-1/2
-                    lg:min-w-1/3
-                  "
+                  className="min-w-0 shrink-0 basis-full snap-start sm:basis-[calc(50%-8px)] lg:basis-[calc(33.333%-10.667px)]"
                 >
-                  <article
-                    className="
-                      group
-                      mx-2
-                      flex
-                      min-h-[250px]
-                      flex-col
-                      justify-between
-                      border
-                      border-[var(--kt-border)]
-                      bg-white
-                      p-5
-                      transition-all
-                      duration-300
-                      hover:-translate-y-1
-                      hover:border-[var(--kt-border-strong)]
-                      hover:shadow-[0_10px_30px_var(--kt-shadow)]
-                      sm:p-6
-                    "
-                  >
-
-                    {/* TOP */}
+                  <article className="group flex min-h-[250px] h-full flex-col justify-between border border-[var(--kt-border)] bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--kt-border-strong)] hover:shadow-[0_10px_30px_var(--kt-shadow)] sm:p-6">
                     <div>
-
                       <div className="flex items-center justify-between">
-
-                        <Stars
-                          rating={Number(testimonial.rating)}
-                        />
+                        <Stars rating={Number(testimonial.rating)} />
 
                         <span
                           aria-hidden="true"
-                          className="
-                            font-serif
-                            text-[34px]
-                            leading-[0.8]
-                            text-[var(--kt-beige)]
-                            transition-colors
-                            duration-300
-                            group-hover:text-[var(--kt-accent)]
-                          "
+                          className="font-serif text-[34px] leading-[0.8] text-[var(--kt-beige)] transition-colors duration-300 group-hover:text-[var(--kt-accent)]"
                         >
                           “
                         </span>
-
                       </div>
 
-                      {/* REVIEW */}
-
-                      <blockquote
-                        className="
-                          mt-5
-                          text-[13px]
-                          leading-[1.8]
-                          text-[var(--kt-primary)]
-                        "
-                      >
+                      <blockquote className="mt-5 break-words text-[13px] leading-[1.8] text-[var(--kt-primary)]">
                         {testimonial.review}
                       </blockquote>
-
                     </div>
 
-                    {/* CUSTOMER */}
-
-                    <div
-                      className="
-                        mt-7
-                        flex
-                        items-center
-                        gap-3
-                        border-t
-                        border-[var(--kt-border)]
-                        pt-4
-                      "
-                    >
-
+                    <div className="mt-7 flex items-center gap-3 border-t border-[var(--kt-border)] pt-4">
                       {testimonial.avatar ? (
                         <img
                           src={testimonial.avatar}
                           alt=""
                           loading="lazy"
-                          className="
-                            h-9
-                            w-9
-                            shrink-0
-                            rounded-full
-                            object-cover
-                            ring-1
-                            ring-[var(--kt-border)]
-                          "
+                          className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-[var(--kt-border)]"
                         />
                       ) : (
-                        <div
-                          className="
-                            flex
-                            h-9
-                            w-9
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-full
-                            bg-[var(--kt-sand)]
-                            text-[10px]
-                            font-medium
-                            tracking-[0.06em]
-                            text-[var(--kt-primary)]
-                          "
-                        >
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--kt-sand)] text-[10px] font-medium tracking-[0.06em] text-[var(--kt-primary)]">
                           {getInitials(testimonial.customer_name)}
                         </div>
                       )}
 
                       <div className="min-w-0">
-
-                        <p
-                          className="
-                            truncate
-                            text-[10px]
-                            font-semibold
-                            uppercase
-                            tracking-[0.1em]
-                            text-[var(--kt-primary)]
-                          "
-                        >
+                        <p className="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--kt-primary)]">
                           {testimonial.customer_name}
                         </p>
 
                         <p className="mt-1 text-[10px] text-[var(--kt-secondary)]">
                           Customer Review
                         </p>
-
                       </div>
 
                       <span
                         aria-hidden="true"
-                        className="
-                          ml-auto
-                          text-[13px]
-                          text-[var(--kt-accent)]
-                          opacity-60
-                          transition-opacity
-                          duration-300
-                          group-hover:opacity-100
-                        "
+                        className="ml-auto text-[13px] text-[var(--kt-accent)] opacity-60 transition-opacity duration-300 group-hover:opacity-100"
                       >
                         ✦
                       </span>
-
                     </div>
-
                   </article>
                 </div>
               ))}
             </div>
-
           </div>
         )}
 
-        {/* =========================================================
-            FOOTER DETAIL
-        ========================================================= */}
-
         <div className="mt-9 flex items-center justify-center gap-3">
-
           <div className="h-px w-8 bg-[var(--kt-border-strong)]" />
 
           <p className="text-[8px] font-medium uppercase tracking-[0.28em] text-[var(--kt-secondary)]">
@@ -405,9 +282,7 @@ export default function TestimonialsSection() {
           </p>
 
           <div className="h-px w-8 bg-[var(--kt-border-strong)]" />
-
         </div>
-
       </div>
     </section>
   )
