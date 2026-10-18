@@ -80,7 +80,7 @@ function LoadingCards() {
       {[1, 2, 3].map((item) => (
         <div
           key={item}
-          className="min-w-0 shrink-0 basis-full animate-pulse border border-[var(--kt-border)] bg-white p-5 sm:basis-[calc(50%-8px)] sm:p-6 lg:basis-[calc(33.333%-10.667px)]"
+          className="min-w-0 shrink-0 basis-full animate-pulse border border-[var(--kt-border)] bg-white p-5 sm:basis-[calc(50%-8px)] sm:p-6 lg:basis-[calc(33.333333%-10.667px)]"
         >
           <div className="h-3 w-20 bg-[var(--kt-sand)]" />
 
@@ -92,6 +92,7 @@ function LoadingCards() {
 
           <div className="mt-8 flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-[var(--kt-sand)]" />
+
             <div className="space-y-2">
               <div className="h-2.5 w-24 bg-[var(--kt-sand)]" />
               <div className="h-2 w-16 bg-[var(--kt-sand)]" />
@@ -106,9 +107,15 @@ function LoadingCards() {
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
-  const sliderRef = useRef<HTMLDivElement>(null)
+  const [cardsPerView, setCardsPerView] = useState(3)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [step, setStep] = useState(0)
+  const [transitionEnabled, setTransitionEnabled] = useState(true)
 
-  // Load the existing testimonials API.
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  // Load real testimonials from the existing API.
   useEffect(() => {
     let cancelled = false
 
@@ -119,9 +126,7 @@ export default function TestimonialsSection() {
         })
 
         if (!response.ok) {
-          throw new Error(
-            `Testimonials API failed: ${response.status}`
-          )
+          throw new Error(`Testimonials API failed: ${response.status}`)
         }
 
         const data = await response.json()
@@ -153,43 +158,111 @@ export default function TestimonialsSection() {
     }
   }, [])
 
-  // Automatically advance one visible page every 5 seconds.
+  // Show 1 card on mobile, 2 on tablet, and 3 on desktop.
   useEffect(() => {
-    const slider = sliderRef.current
+    const updateCardsPerView = () => {
+      if (window.innerWidth < 640) {
+        setCardsPerView(1)
+      } else if (window.innerWidth < 1024) {
+        setCardsPerView(2)
+      } else {
+        setCardsPerView(3)
+      }
+    }
 
-    if (!slider || testimonials.length <= 1) return
+    updateCardsPerView()
+
+    window.addEventListener("resize", updateCardsPerView)
+
+    return () => {
+      window.removeEventListener("resize", updateCardsPerView)
+    }
+  }, [])
+
+  // Measure the exact card width plus the gap.
+  // This keeps every slide aligned at all screen sizes.
+  useEffect(() => {
+    const viewport = viewportRef.current
+    const track = trackRef.current
+
+    if (!viewport || !track) return
+
+    const measure = () => {
+      const firstCard = track.firstElementChild as HTMLElement | null
+
+      if (!firstCard) return
+
+      const cardWidth = firstCard.getBoundingClientRect().width
+      const gap = Number.parseFloat(
+        window.getComputedStyle(track).columnGap
+      ) || 0
+
+      setStep(cardWidth + gap)
+    }
+
+    measure()
+
+    const observer = new ResizeObserver(measure)
+
+    observer.observe(viewport)
+
+    if (track.firstElementChild) {
+      observer.observe(track.firstElementChild)
+    }
+
+    return () => observer.disconnect()
+  }, [cardsPerView, testimonials.length])
+
+  // Reset the carousel when the screen size changes.
+  useEffect(() => {
+    setTransitionEnabled(false)
+    setCurrentIndex(0)
+
+    const frame = window.requestAnimationFrame(() => {
+      setTransitionEnabled(true)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [cardsPerView])
+
+  const canSlide = testimonials.length > cardsPerView
+
+  // Add copies of the first cards for a seamless looping transition.
+  const displayedTestimonials: Testimonial[] = canSlide
+    ? [
+        ...testimonials,
+        ...testimonials.slice(0, cardsPerView),
+      ]
+    : testimonials
+
+  // Advance exactly ONE card every 4.5 seconds.
+  useEffect(() => {
+    if (!canSlide || step <= 0) return
 
     const timer = window.setInterval(() => {
-      const element = sliderRef.current
-
-      if (!element) return
-
-      const maxScroll =
-        element.scrollWidth - element.clientWidth
-
-      if (maxScroll <= 4) return
-
-      // Return to the first page when reaching the end.
-      if (element.scrollLeft >= maxScroll - 8) {
-        element.scrollTo({
-          left: 0,
-          behavior: "smooth",
-        })
-      } else {
-        // Advance by one screen: 3 cards on desktop,
-        // 2 on tablets, and 1 on mobile.
-        element.scrollTo({
-          left: Math.min(
-            element.scrollLeft + element.clientWidth,
-            maxScroll
-          ),
-          behavior: "smooth",
-        })
-      }
-    }, 5000)
+      setCurrentIndex((index) => index + 1)
+    }, 4500)
 
     return () => window.clearInterval(timer)
-  }, [testimonials.length])
+  }, [canSlide, step])
+
+  // After sliding onto the duplicated cards, jump back to the
+  // original first card without animation.
+  function handleTransitionEnd(
+    event: React.TransitionEvent<HTMLDivElement>
+  ) {
+    if (event.target !== event.currentTarget) return
+    if (!canSlide || currentIndex < testimonials.length) return
+
+    setTransitionEnabled(false)
+    setCurrentIndex(0)
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        setTransitionEnabled(true)
+      })
+    })
+  }
 
   return (
     <section className="border-t border-[var(--kt-border)] bg-[var(--kt-cream)]">
@@ -207,69 +280,84 @@ export default function TestimonialsSection() {
         )}
 
         {!loading && testimonials.length > 0 && (
-          <div className="relative mt-9">
+          <div
+            ref={viewportRef}
+            className="relative mt-9 overflow-hidden"
+          >
             <div
-              ref={sliderRef}
-              className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              aria-label="Customer testimonials"
+              ref={trackRef}
+              onTransitionEnd={handleTransitionEnd}
+              className="flex items-stretch gap-4"
+              style={{
+                transform: `translate3d(-${currentIndex * step}px, 0, 0)`,
+                transition: transitionEnabled
+                  ? "transform 900ms cubic-bezier(0.22, 1, 0.36, 1)"
+                  : "none",
+                willChange: "transform",
+              }}
             >
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="min-w-0 shrink-0 basis-full snap-start sm:basis-[calc(50%-8px)] lg:basis-[calc(33.333%-10.667px)]"
-                >
-                  <article className="group flex min-h-[250px] h-full flex-col justify-between border border-[var(--kt-border)] bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--kt-border-strong)] hover:shadow-[0_10px_30px_var(--kt-shadow)] sm:p-6">
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <Stars rating={Number(testimonial.rating)} />
+              {displayedTestimonials.map((testimonial, index) => {
+                const isClone = index >= testimonials.length
+
+                return (
+                  <div
+                    key={`${testimonial.id}-${index}`}
+                    aria-hidden={isClone ? true : undefined}
+                    className="min-w-0 shrink-0 basis-full sm:basis-[calc(50%-8px)] lg:basis-[calc(33.333333%-10.667px)]"
+                  >
+                    <article className="group flex h-full min-h-[250px] flex-col justify-between border border-[var(--kt-border)] bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--kt-border-strong)] hover:shadow-[0_12px_35px_var(--kt-shadow)] sm:p-6">
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <Stars rating={Number(testimonial.rating)} />
+
+                          <span
+                            aria-hidden="true"
+                            className="font-serif text-[34px] leading-[0.8] text-[var(--kt-beige)] transition-colors duration-500 group-hover:text-[var(--kt-accent)]"
+                          >
+                            “
+                          </span>
+                        </div>
+
+                        <blockquote className="mt-5 break-words text-[13px] leading-[1.8] text-[var(--kt-primary)]">
+                          {testimonial.review}
+                        </blockquote>
+                      </div>
+
+                      <div className="mt-7 flex items-center gap-3 border-t border-[var(--kt-border)] pt-4">
+                        {testimonial.avatar ? (
+                          <img
+                            src={testimonial.avatar}
+                            alt=""
+                            loading="lazy"
+                            className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-[var(--kt-border)]"
+                          />
+                        ) : (
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--kt-sand)] text-[10px] font-medium tracking-[0.06em] text-[var(--kt-primary)]">
+                            {getInitials(testimonial.customer_name)}
+                          </div>
+                        )}
+
+                        <div className="min-w-0">
+                          <p className="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--kt-primary)]">
+                            {testimonial.customer_name}
+                          </p>
+
+                          <p className="mt-1 text-[10px] text-[var(--kt-secondary)]">
+                            Customer Review
+                          </p>
+                        </div>
 
                         <span
                           aria-hidden="true"
-                          className="font-serif text-[34px] leading-[0.8] text-[var(--kt-beige)] transition-colors duration-300 group-hover:text-[var(--kt-accent)]"
+                          className="ml-auto text-[13px] text-[var(--kt-accent)] opacity-60 transition-opacity duration-500 group-hover:opacity-100"
                         >
-                          “
+                          ✦
                         </span>
                       </div>
-
-                      <blockquote className="mt-5 break-words text-[13px] leading-[1.8] text-[var(--kt-primary)]">
-                        {testimonial.review}
-                      </blockquote>
-                    </div>
-
-                    <div className="mt-7 flex items-center gap-3 border-t border-[var(--kt-border)] pt-4">
-                      {testimonial.avatar ? (
-                        <img
-                          src={testimonial.avatar}
-                          alt=""
-                          loading="lazy"
-                          className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-[var(--kt-border)]"
-                        />
-                      ) : (
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--kt-sand)] text-[10px] font-medium tracking-[0.06em] text-[var(--kt-primary)]">
-                          {getInitials(testimonial.customer_name)}
-                        </div>
-                      )}
-
-                      <div className="min-w-0">
-                        <p className="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--kt-primary)]">
-                          {testimonial.customer_name}
-                        </p>
-
-                        <p className="mt-1 text-[10px] text-[var(--kt-secondary)]">
-                          Customer Review
-                        </p>
-                      </div>
-
-                      <span
-                        aria-hidden="true"
-                        className="ml-auto text-[13px] text-[var(--kt-accent)] opacity-60 transition-opacity duration-300 group-hover:opacity-100"
-                      >
-                        ✦
-                      </span>
-                    </div>
-                  </article>
-                </div>
-              ))}
+                    </article>
+                  </div>
+                )
+              })}
             </div>
           </div>
         )}

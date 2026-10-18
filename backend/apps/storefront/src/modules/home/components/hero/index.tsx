@@ -26,8 +26,8 @@ const heroSlides = [
       "Dermatologist-approved organic formulas crafted to fortify stressed barriers and bring effortless clarity back to sensitive skin.",
     buttonText: "EXPLORE SERUMS",
     buttonLink: "/store?category=serums-retinoids",
-    before: "/hero Final 4.jpg",
-    after: "/hero final 3.png",
+    before: "/Hero Final 4.jpg",
+    after: "/Hero final 3.png",
    
   },
   
