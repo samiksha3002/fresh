@@ -43,6 +43,30 @@ const HomeCategoriesClient = ({ categories }: Props) => {
       behavior: "smooth",
     })
   }
+  const normalizeCategory = (value = "") =>
+  value.toLowerCase().replace(/[^a-z0-9]/g, "")
+
+const categoryImageAliases: Record<string, string> = {
+  largeporestexture: "/largepore.jpeg",
+  largepores: "/largepore.jpeg",
+  skintexture: "/largepore.jpeg",
+}
+
+function getCategoryImage(category: HttpTypes.StoreProductCategory) {
+  // First, preserve all existing exact-handle mappings.
+  const exactMatch = categoryImages[category.handle]
+
+  if (exactMatch) return exactMatch
+
+  // Fall back to normalized category handles and names.
+  const normalizedHandle = normalizeCategory(category.handle)
+  const normalizedName = normalizeCategory(category.name)
+
+  return (
+    categoryImageAliases[normalizedHandle] ||
+    categoryImageAliases[normalizedName]
+  )
+}
 
   return (
     <section className="bg-white py-10 sm:py-12 md:py-14">
@@ -75,7 +99,7 @@ const HomeCategoriesClient = ({ categories }: Props) => {
           }}
         >
           {categories.map((category) => {
-            const image = categoryImages[category.handle]
+            const image = getCategoryImage(category)
 
             return (
               <LocalizedClientLink
