@@ -14,8 +14,8 @@ const heroSlides = [
        "Real results for sensitive skin types. Experience noticeable reduction in flare-ups and redness within your first two weeks.",
     buttonText: "SHOP SKINCARE",
     buttonLink: "/store",
-    before: "/Hero final 2.jpg",
-    after: "/Hero final 1.png",
+    before: "/hero Final 2.jpg",
+    after: "/Hero Final 1.png",
    
   },
   {
@@ -26,8 +26,8 @@ const heroSlides = [
       "Dermatologist-approved organic formulas crafted to fortify stressed barriers and bring effortless clarity back to sensitive skin.",
     buttonText: "EXPLORE SERUMS",
     buttonLink: "/store?category=serums-retinoids",
-    before: "/Hero Final 4.jpg",
-    after: "/Hero Final 3.png",
+    before: "/hero Final 4.jpg",
+    after: "/hero final 3.png",
    
   },
   
