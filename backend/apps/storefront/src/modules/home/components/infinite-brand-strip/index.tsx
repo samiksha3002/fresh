@@ -1,7 +1,7 @@
 "use client"
 
 const items = [
-  "Authentic Indian Skincare",
+  "Authentic  Skincare",
   "Thoughtfully Selected",
   "100% Genuine Care",
   "Carefully Delivered",

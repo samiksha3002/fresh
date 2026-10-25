@@ -48,13 +48,7 @@ export default function AboutPage() {
                 About Koviea Touch
               </p>
 
-              <h1 className="max-w-5xl font-serif text-[48px] font-normal leading-[0.98] tracking-[-0.035em] sm:text-[64px] md:text-[78px] lg:text-[92px]">
-                Rooted in India.
-                <br />
-                <span className="italic text-[#6f6a61]">
-                  Delivered to your doorstep.
-                </span>
-              </h1>
+             
             </div>
 
             <div className="max-w-md lg:pb-2">
@@ -66,7 +60,7 @@ export default function AboutPage() {
               </p>
 
               <p className="mt-5 text-[15px] leading-7 text-[#5f5b54]">
-                We bring India&apos;s most trusted skincare and wellness
+                We bring  most trusted skincare and wellness
                 essentials directly to your daily routine — wherever you
                 call home.
               </p>
@@ -108,13 +102,13 @@ export default function AboutPage() {
               <div className="mt-8 space-y-6 text-[15px] leading-8 text-[#5f5b54]">
                 <p>
                   For the past five years, our goal has been simple: bring
-                  India&apos;s most trusted skincare and wellness essentials
+                   most trusted skincare and wellness essentials
                   directly to your daily routine — whether you live in the
                   US, UK, or Australia.
                 </p>
 
                 <p>
-                  We understand that finding authentic products from India
+                  We understand that finding authentic products 
                   can sometimes feel complicated when you live thousands of
                   miles away. Koviea Touch was created to make that experience
                   easier, more reliable, and more personal.
@@ -193,7 +187,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* AUTHENTIC INDIAN CARE — SCROLL COLOR TRANSITION */}
+      {/* AUTHENTIC CARE — SCROLL COLOR TRANSITION */}
       <section className="bg-[#26241f] text-[#f8f6f1]">
         <div className="mx-auto max-w-[1440px] px-6 py-16 sm:px-10 md:py-20 lg:px-16 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
@@ -238,14 +232,14 @@ export default function AboutPage() {
 
               <div className="mt-9 space-y-6 text-[15px] leading-8 text-white/65">
                 <p>
-                  India has always had a deep connection with personal care,
+                  KKovea Touch has always had a deep connection with personal care,
                   beauty, wellness, and everyday rituals. We want to make
                   those familiar products easier to access, no matter where
                   life takes you.
                 </p>
 
                 <p>
-                  Koviea Touch connects you with authentic Indian personal
+                  Koviea Touch connects you with  personal
                   care products while keeping the experience simple,
                   thoughtful, and dependable.
                 </p>
@@ -269,12 +263,7 @@ export default function AboutPage() {
                 Wherever You Call Home
               </p>
 
-              <h2 className="mt-5 font-serif text-[38px] font-normal tracking-[-0.025em] sm:text-[48px]">
-                From India,
-                <span className="italic text-[#77736b]">
-                  {" "}with care.
-                </span>
-              </h2>
+             
             </div>
 
             <div className="flex flex-wrap gap-3 md:justify-end">
@@ -309,7 +298,7 @@ export default function AboutPage() {
           </h2>
 
           <p className="mx-auto mt-7 max-w-xl text-[14px] leading-7 text-[#68645d]">
-            Discover authentic Indian skincare and personal care essentials,
+            Discover authentic  skincare and personal care essentials,
             thoughtfully brought closer to you.
           </p>
 

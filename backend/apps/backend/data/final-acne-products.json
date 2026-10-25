@@ -1,0 +1,1994 @@
+{
+  "format": "medusa-v2-product-data",
+  "currency": "usd",
+  "product_count": 45,
+  "notes": [
+    "Generated from the user's final acne.csv; source values are preserved where mapped.",
+    "USD prices are represented in minor units (cents) for Medusa API price objects.",
+    "All product statuses remain draft.",
+    "This is a JSON data file, not a CSV import file and not a standalone executable importer.",
+    "Review blank descriptions and repeated image URLs before publishing."
+  ],
+  "products": [
+    {
+      "title": "Ezanic Azelaic Acid",
+      "handle": "ezanic-azelaic-acid",
+      "description": "Description\nAdding this effective product to your skincare routine can help improve acne, fade discoloration, smooth rough texture, and reduce the appearance of redness over time.\nBenefits\nImproves hyperpigmentation, acne, rough texture, and redness.\nHow to use\nApply after shower 1-2x daily for best results.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914151/Ezanic_Azelaic_Acid.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914151/Ezanic_Azelaic_Acid.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2198
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 2
+    },
+    {
+      "title": "Adapalene Gel 0.1%",
+      "handle": "adapalene-gel-0-1",
+      "description": "Description\nAdaferin Gel contains 0.1% adapalene, a dermatologist-recommended retinoid that helps treat acne. It works deep inside the pores to prevent clogged pores, reduce inflammation, and gradually clear blackheads and pimples.\nIngredients\nAdapalene 0.1% active; minimal fragrance and non-comedogenic base.\nBenefits\nHelps prevent new breakouts and keep pores clear.\nCorrects texture and uneven tone for smoother results.\n\nWhy select it: A medically-trusted acne weapon that also supports better tone and fewer scars.\nHow to use\nUse in evenings, patch-test first, avoid if pregnant or breastfeeding unless advised by a physician.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914156/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914156/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 3
+    },
+    {
+      "title": "Kisocare – Azelaic Acid Cream 20%",
+      "handle": "kisocare-azelaic-acid-cream-20",
+      "description": "Description\nKisocare Azelaic Acid Cream 20% helps unclog pores, calm redness, and even out your skin tone. Its gentle, dermatologist-recommended formula targets acne, inflammation, dark spots, and stubborn discoloration without drying out your skin. The creamy texture also provides soothing hydration, making it a great choice for normal to dry skin.\nIngredients\nAzelaic Acid 20%, Water, Caprylic/Capric Triglyceride, Cetearyl Alcohol, Glycerin, Polysorbate 60, Carbomer, Sodium Hydroxide, Phenoxyethanol, Ethylhexylglycerin\nBenefits\nClears breakouts and prevents future blemishes\nReduces redness, swelling, and irritation\nHelps fade dark spots and post-acne hyperpigmentation\nSmooths uneven texture for a healthier-looking complexion\nCream base provides added hydration — ideal for sensitive or dry skin\nHow to use\nApply a thin, even layer to clean, dry skin once daily. For sensitive skin, begin with 2–3 applications per week and increase frequency as tolerated. Use sunscreen daily when incorporating azelaic acid into your routine.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913908/3.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913908/3.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1599
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 4
+    },
+    {
+      "title": "Cos De BAHA Azelaic Acid 15% Serum",
+      "handle": "cos-de-baha-azelaic-acid-15-serum",
+      "description": "Description\nThis high-strength azelaic acid serum is made to help with acne, dark spots, redness, and uneven skin texture—without using hydroquinone. With 15% azelaic acid, it helps keep pores clear, balance excess oil, reduce breakouts, and gradually fade the look of pigmentation for a more even-looking complexion.\nIt’s a great addition to routines for acne-prone, redness-prone, or uneven skin, including skin that is prone to rosacea.\nIngredients\nAzelaic Acid (15%) – Targets acne, dark spots, and uneven tone\nMSM (1%) – Helps calm inflammation and support skin recovery\nNiacinamide – Balances oil and brightens complexion\nPanthenol (Pro-Vitamin B5) – Soothes and strengthens barrier\nSodium Hyaluronate – Provides lightweight hydration\nCeramide NP – Supports healthy skin barrier\nBenefits\nHelps fade post-acne marks and hyperpigmentation\nReduces breakouts and clogged pores\nCalms redness and inflammation\nImproves overall skin clarity and texture\nSupports the skin barrier while treating discoloration\nHow to use\nApply a thin layer to clean, dry skin once daily.\nIncrease to twice daily if tolerated.\nFollow with moisturizer.\nUse sunscreen during the day.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914142/Cos_De_BAHA_Azelaic_Acid_15__Serum.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914142/Cos_De_BAHA_Azelaic_Acid_15__Serum.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1399
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 5
+    },
+    {
+      "title": "Cos De BAHA Azelaic Acid 20% Serum",
+      "handle": "cos-de-baha-azelaic-acid-20-serum",
+      "description": "Description\nCos De BAHA’s advanced corrective cream combines 20% azelaic acid with soothing, skin-supporting ingredients to help improve acne, post-acne marks, redness, and uneven skin tone.\nAlong with azelaic acid, it contains calming Centella Asiatica and Madecassoside, plus antioxidant-rich green tea extract. Together, these ingredients help reduce the look of inflammation and discoloration while supporting a healthier, more balanced skin barrier.\nIngredients\nAzelaic Acid (20%)\nNiacinamide\nCentella Asiatica Extract\nCamellia Sinensis Leaf Extract (Green Tea)\nMadecassoside\nAllantoin\nPanthenol (Vitamin B5)\nGlycerin\nBeta-Glucan\nButylene Glycol\nCarbomer\nPhenoxyethanol\nEthylhexylglycerin\nSodium Hyaluronate\nAloe Barbadensis Leaf Extract\nBenefits\nVisibly reduces dark spots and patches especially common in deeper or neutral-undertone skin.\nAssists in calming post-acne redness, clogged pores, and uneven texture.\nStrengthens and soothes the skin barrier — ideal for skin undergoing brightening treatments.\nDelivers long-term tone-evening and anti-blemish support with daily use\nHow to use\nOn clean, dry skin, apply a small amount of the cream to the face (especially where discoloration or… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914143/Cos_De_Baha_Azelaic_Acid_20_Cream.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914143/Cos_De_Baha_Azelaic_Acid_20_Cream.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1699
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 6
+    },
+    {
+      "title": "John Jeff - 20% Azelaic Acid Acne Treatment Gel",
+      "handle": "john-jeff-20-azelaic-acid-acne-treatment-gel",
+      "description": "Description\nThis fast-acting acne treatment is designed for stubborn breakouts, redness, and pus-filled pimples when your skin needs extra support. Its lightweight gel formula helps active ingredients reach deep into clogged pores, targeting excess oil and acne at the source.\nWith 20% azelaic acid, 2% salicylic acid, and 1.98% lactic acid, it helps clear congestion, reduce the look of redness and swelling, and encourage smoother, clearer-looking skin. Pomegranate peel extract, o-cymene-5-ol, totarol, and Pionin help support acne-prone skin and reduce recurring breakouts, while angustifolia extract helps soothe irritation and fade the appearance of post-acne marks.\nThe alcohol-free, oil-free gel stays comfortably on blemishes, making it ideal as a targeted spot treatment for active acne.\nIngredients\nAzelaic Acid 20%, Water, Propylene Glycol, Polysorbate 80, Carbomer, Sodium Hydroxide, Phenoxyethanol, Ethylhexylglycerin.\nBenefits\nTreatment for active breakouts and post-acne marks\nReduces redness, swelling, and irritation\nHelps fade hyperpigmentation and uneven skin tone\nLightweight gel absorbs quickly without residue\nPerfect travel size for on-the-go use\nHow to use\n1. Recommended to… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914153/John_Jeff_-_20__Azelaic_Acid_Acne_Treatment_Gel.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914153/John_Jeff_-_20__Azelaic_Acid_Acne_Treatment_Gel.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1718
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 7
+    },
+    {
+      "title": "Benzoyl Peroxide Acne Treatment – BENZAC AC 5% Gel",
+      "handle": "benzoyl-peroxide-acne-treatment-benzac-ac-5-gel",
+      "description": "Description\nBENZAC AC 5% Gel is a topical acne treatment formulated with 5% benzoyl peroxide. Ideal for individuals with mild to moderate acne, it helps achieve clearer skin with consistent use.\nIngredients\nBenzoyl Peroxide 5%, Aqua (Water), Carbomer, Sodium Hydroxide, Propylene Glycol, Glycerin, Allantoin.\nBenefits\nEffectively treats and prevents acne breakouts.\nReduces acne-causing bacteria on the skin.\nHelps to unclog pores and reduce inflammation.\nImproves overall skin clarity and texture.\nSuitable for all skin types, especially acne-prone skin.\nHow to use\nCleanse and dry the affected area before application.\nApply a thin layer of the gel once or twice daily, starting with once daily to assess tolerance.\nAvoid contact with eyes, mouth, and sensitive areas.\nUse sunscreen during the day, as benzoyl peroxide can increase sun sensitivity.\nSafety advice\nPerform a patch test before full use to check for sensitivity.\nMay cause dryness or peeling initially; start slowly and moisturize if needed.\nNot recommended for use during pregnancy without medical advice.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913912/Benzoyl_Peroxide_Acne_Treatment_BENZAC_AC_5__Gel.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913912/Benzoyl_Peroxide_Acne_Treatment_BENZAC_AC_5__Gel.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2799
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 8
+    },
+    {
+      "title": "Salicylic Acid Cleanser - Cosrx",
+      "handle": "salicylic-acid-cleanser-cosrx",
+      "description": "Description\nCOSRX Salicylic Acid Daily Gentle Cleanser is a gentle everyday face wash made for oily and acne-prone skin. With 0.5% salicylic acid, it helps clear away excess oil, dirt, and clogged impurities while providing mild exfoliation to keep pores feeling fresh and clean.\nThe formula also includes tea tree oil and willow bark water, which help calm the skin and support a clearer-looking complexion. It cleanses thoroughly without leaving your face feeling overly dry or tight, making it a practical option for a simple daily skincare routine.\nIngredients\nAzelaic Acid (15%) – Targets acne, dark spots, and uneven tone\nMSM (1%) – Helps calm inflammation and support skin recovery\nNiacinamide – Balances oil and brightens complexion\nPanthenol (Pro-Vitamin B5) – Soothes and strengthens barrier\nSodium Hyaluronate – Provides lightweight hydration\nCeramide NP – Supports healthy skin barrier\nBenefits\nGently exfoliates and cleanses the skin\nHelps reduce acne and prevent breakouts\nSoothes and calms irritated skin\nMaintains the skin's natural moisture balance\nSuitable for daily use on oily and acne-prone skin\nHow to use\nWet your face with lukewarm water.\nApply a small amount of the cleanser… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914171/Salicylic_Acid_Cleanser_-_Cosrx.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914171/Salicylic_Acid_Cleanser_-_Cosrx.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1398
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 9
+    },
+    {
+      "title": "LION Pair Acne Cream",
+      "handle": "lion-pair-acne-cream",
+      "description": "Description\nLION Pair Acne Cream W is a spot treatment made to help calm and clear breakouts. It works on active pimples by helping reduce redness, swelling, and irritation, while also supporting the prevention of new acne from forming.\nThe lightweight cream absorbs quickly, so it does not feel heavy or greasy on the skin. Its antibacterial and soothing ingredients help treat blemishes without leaving the area overly dry or uncomfortable. It is a good option for acne-prone skin and can be applied directly to spots whenever needed.\nIngredients\nIsopropylmethylphenol, Dipotassium Glycyrrhizate, L-Menthol, Tocopherol Acetate (Vitamin E), Stearic Acid, Glycerin, Water (Aqua).\nBenefits\nReduces acne inflammation and redness\nPrevents formation of new acne\nSoothes irritated and sensitive skin\nLightweight, non-greasy formula absorbs quickly\nSuitable for all skin types, especially acne-prone skin\nHow to use\nCleanse and dry the affected area.\nApply a thin layer of the cream to acne spots once or twice daily.\nAvoid contact with eyes and sensitive areas\nUse sunscreen during the day as acne treatments can increase sun sensitivity\nUse sunscreen during the day.\nSafety advice\nPerform a patch test… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914157/LION_Pair_Acne_Cream.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914157/LION_Pair_Acne_Cream.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1598
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 10
+    },
+    {
+      "title": "Salicylic Acid 1% by Zitcare S",
+      "handle": "salicylic-acid-1-by-zitcare-s",
+      "description": "Description\nA lightweight, fast-absorbing gel formulated with 1% Salicylic Acid to exfoliate inside pores and remove buildup. Zitcare S reduces blackheads, whiteheads, and surface blemishes without drying the skin.\nIngredients\nSalicylic Acid 1%, Aloe Vera Extract, Glycerin, Carbomer, Sodium Hydroxide.\nBenefits\n• Clears pores and smooths rough texture\n• Minimizes acne breakouts and oil buildup\n• Supports faster healing of blemishes.\nHow to use\nApply a thin layer to affected areas once daily (evening preferred). Follow with a hydrating moisturizer.\n12Minimalist Salicylic Acid Cleanser\nDescription\nMinimalist Salicylic Acid Cleanser 2% is a gentle yet effective cleanser formulated to deeply clean pores and help treat and prevent acne. The 2% salicylic acid exfoliates the skin’s surface and penetrates pores to remove excess oil and impurities, reducing breakouts and promoting clearer skin. It also soothes and calms irritated skin while maintaining the skin’s natural moisture balance. Suitable for daily use on oily and acne-prone skin.\nIngredients\nIngredients include salicylic acid 2%, aqua (water), cocamidopropyl betaine, glycerin, sodium chloride, disodium EDTA, phenoxyethanol, and… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914170/Salicylic_Acid_1__by_Zitcare_S.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914170/Salicylic_Acid_1__by_Zitcare_S.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2299
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 11
+    },
+    {
+      "title": "Cos De Baha Salicylic Acid Serum 2%",
+      "handle": "cos-de-baha-salicylic-acid-serum-2",
+      "description": "Description\nGentle leave-on exfoliating serum that helps dissolve pore congestion promote clearer skin and refine texture without heavy peeling.\nBest For:\nOily skin\nCombination skin\nAcne-prone skin\nTexture concerns\nIngredients\nAloe Barbadensis Leaf Extract, Propanediol, Niacinamide, Salicylic Acid, 1,2-Hexanediol, Camellia Sinensis Leaf Extract, Leontopodium Alpinum Extract, Momordica Charantia Fruit Extract, Sambucus Nigra Flower Extract, Polysorbate 20, Sodium Citrate, Hydroxyethylcellulose\nBenefits\nHelps clear clogged pores and excess sebum\nReduces the appearance of breakouts and blackheads\nImproves skin texture and smoothness\nSupports clearer, more even-looking complexion\nHow to use\nApply 1–2 drops to clean dry skin in the evening\nDo not rinse\nFollow with moisturizer\nWear sunscreen daily while using exfoliating acids",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914145/Cos_De_Baha_Salicylic_Acid_Serum_2_.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914145/Cos_De_Baha_Salicylic_Acid_Serum_2_.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 899
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 12
+    },
+    {
+      "title": "SkinCeuticals BLEMISH + AGE DEFENSE 1 fl oz",
+      "handle": "skinceuticals-blemish-age-defense-1-fl-oz",
+      "description": "Description\nAn oil-free salicylic acid face serum that reduces the formation of adult acne and improves visible signs of aging.\nSKIN TYPES: Oily, Combination\nSKIN CONCERN: Acne, Aging\nFEATURES:\nBlemish + Age Defense is a targeted, oil-free serum for aging skin prone to acne breakouts. This first-to-market acid blend combines 2% dioic acid with an optimal alpha- and beta-hydroxy acid formulation to reduce the formation of acne and clogged pores, while improving the appearance of fine lines, wrinkles, and uneven skin tone.\nBenefits\nReduces excess sebum production\nImproves the appearance of blotchiness, blemishes, and uneven skin tone\nDecongests clogged pores\nDiminishes visible signs of aging\nIdeal for acne-prone, oily, combination, and aging skin types\nTSA Approved TSA approved when traveling by airplane\nHow to use\nApply a thin layer to clean, dry skin once daily.\nIncrease to twice daily if tolerated.\nFollow with moisturizer.\nUse sunscreen during the day.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914176/SkinCeuticals_BLEMISH_AGE_DEFENSE_1_fl_oz.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914176/SkinCeuticals_BLEMISH_AGE_DEFENSE_1_fl_oz.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 9799
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 13
+    },
+    {
+      "title": "Minimalist Salicylic Acid Face Wash and Body Wash Combo",
+      "handle": "minimalist-salicylic-acid-face-wash-and-body-wash-combo",
+      "description": "Description\nMinimalist Salicylic Acid Face Wash and Body Wash Combo\nThis Kit Contains:\n1. Minimalist 2% Salicylic Acid + LHA Face Wash - 100 ml\n2. Minimalist 2% Salicylic Acid + LHA Body wash - 200 ml\nAbout the kit:\n2% Salicylic Acid + LHA Face Wash: A daily hydrating face cleanser for oil control & acne-prone skin. It provides multi-level cleansing without drying your skin unlike traditional face washes\n2% Salicylic Acid + LHA Body wash: An everyday body cleanser which gently removes excess sebum as well as cleanses & exfoliates to keep the skin healthy and even textured\nLegal disclaimer\nProduct images are for illustrative purposes only. Images/packaging/ labels may vary from time to time due to changes made by the manufacturer's manufacturing batch and location. The product description is for information purposes only and may contain additional ingredients.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914164/Minimalist_Salicylic_Acid_Face_Wash_and_Body_Wash_Combo.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914164/Minimalist_Salicylic_Acid_Face_Wash_and_Body_Wash_Combo.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2199
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 14
+    },
+    {
+      "title": "Benzac AC Wash (Galderma)",
+      "handle": "benzac-ac-wash-galderma",
+      "description": "Description\nA clinically-proven benzoyl peroxide cleanser that targets acne-causing bacteria and reduces excess oil. Benzac AC Wash cleans deep into pores to help prevent breakouts and blackheads without stripping the skin..\nIngredients\nBenzoyl Peroxide 5%, Aqua, Carbomer, Disodium EDTA, Glycerin, Sodium Hydroxide.\nBenefits\n• Kills 99.9% of acne bacteria\n• Removes oil and impurities for clearer skin\n• Ideal for face, chest, and back acne\nHow to use\nApply to wet skin once daily. Massage gently for 30–60 seconds, rinse thoroughly, and pat dry. Follow with moisturizer..",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913911/Benzac_AC_Wash_Galderma.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913911/Benzac_AC_Wash_Galderma.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2799
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 15
+    },
+    {
+      "title": "Skinaa Azelaic Acid Serum For Dark Spots And Skin Texture",
+      "handle": "skinaa-azelaic-acid-serum-for-dark-spots-and-skin-texture",
+      "description": "Description\nAbout The Product:\nSkinaa Azelaic Acid Serum is specially formulated to target multiple skin concerns, offering a comprehensive solution for brighter and clearer skin. This powerful serum combines the benefits of Azelaic Acid, Lactic Acid, Centella Asiatica, and Licorice Extract to reduce pigmentation, acne, and visible pores while improving overall skin texture. Azelaic Acid works to lighten dark spots and even out skin tone, while Lactic Acid gently exfoliates, promoting a smoother and more refined complexion. Centella Asiatica soothes and heals, reducing redness and inflammation, while Licorice Extract brightens and clarifies, giving your skin a radiant.\nLegal Disclaimer:Product images are for illustrative purposes only. Images/packaging/ labels may vary from time to time due to changes made by the manufacturer's manufacturing batch and location. The product description is for information purposes only and may contain additional ingredients.\nHow to use\nApply 3-4 Drops of Skinaa Azelaic Acid Face Serum on your face & Neck, gently massage in circular motions, and let it absorb for optimal skin rejuvenation.\nAvoid eye area & Use Daily For Best Results.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914175/Skinaa_Azelaic_Acid_Serum_For_Dark_Spots_And_Skin_Texture.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914175/Skinaa_Azelaic_Acid_Serum_For_Dark_Spots_And_Skin_Texture.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1500
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 16
+    },
+    {
+      "title": "Differin Acne Retinoid Face and Body Treatment Gel Adapalene 0.1% 45g - Imperfect Box",
+      "handle": "differin-acne-retinoid-face-and-body-treatment-gel-adapalene-0-1-45g-imperfect-box",
+      "description": "Differin Gel Acne Treatment contains adapalene, an Rx-strength acne-fighting retinoid that helps clear breakouts where they start (works deep into pores in 5 minutes), helps prevents new acne from forming, and as a result, can restore skin’s overall tone and texture. Adapalene is the first over-the-counter active ingredient for acne in more than 30 years. It clears acne with the power of an Rx without the prescription, prevents breakouts, blackheads, whiteheads, blemishes and clogged pores, and can be used to effectively treat acne, or maskne, caused by wearing face masks or facial coverings. When used as directed, you could start to see results in as little as 1 week, and when used every single day, Differin Gel can help reduce up to 87% of acne in just 12 weeks (Cunliffe et al 1998, Galderma Laboratories).Key Ingredient:Adapalene",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914149/Differin_Acne_Retinoid_Face_and_Body_Treatment_Gel_Adapalene_0.1__45g_-_Imperfect_Box.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914149/Differin_Acne_Retinoid_Face_and_Body_Treatment_Gel_Adapalene_0.1__45g_-_Imperfect_Box.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3442
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 17
+    },
+    {
+      "title": "The Ordinary Salicylic Acid 2% Anhydrous Pore Clearing Serum: Exfoliate, Reduce Acne & Blemishes for Clear, Smooth Skin",
+      "handle": "the-ordinary-salicylic-acid-2-anhydrous-pore-clearing-serum-exfoliate-reduce-acne-blemishes-for-clear-smooth-skin",
+      "description": "Description\nUnlock Clear, Radiant Skin with The Ordinary Salicylic Acid 2% Anhydrous Serum\nTired of battling stubborn pores, frustrating acne, and uneven skin texture? Imagine waking up every day with a smoother, clearer, and more confident complexion. The Ordinary Salicylic Acid 2% Anhydrous Serum is your powerful yet gentle solution for achieving the healthy, radiant skin you deserve.\nExperience the Benefits of Salicylic Acid\nDeep Pore Cleansing & Exfoliation\nThe potent 2% Salicylic Acid in this serum works wonders by effectively exfoliating the skin's surface. It dives deep into your pores, dissolving the buildup of oil, dirt, and dead skin cells that lead to blackheads and whiteheads. Imagine the feeling of your pores finally breathing freely, as your skin transforms from dull and congested to clear and refreshed. Say goodbye to those persistent blemishes and hello to a smoother, more refined texture.\nGentle & Non-Irritating Formula\nWorried about harsh chemicals irritating your skin? This anhydrous (water-free) formulation enhances the stability and efficacy of the Salicylic Acid while minimizing the potential for irritation compared to traditional water-based formulas. The… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914178/The_Ordinary_Salicylic_Acid_2__Anhydrous_Pore_Clearing_Serum__Exfoliate_Reduce_Acne_Blemishes_for_Clear_Smooth_Skin.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914178/The_Ordinary_Salicylic_Acid_2__Anhydrous_Pore_Clearing_Serum__Exfoliate_Reduce_Acne_Blemishes_for_Clear_Smooth_Skin.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1854
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 18
+    },
+    {
+      "title": "Minimalist 2% Salicylic Acid Face Wash",
+      "handle": "minimalist-2-salicylic-acid-face-wash",
+      "description": "Description\nMulti-Level Cleansing: Formulated with Capryloyl Salicylic Acid (LHA), which stays on the outer layer of skin and provides gentle exfoliation, revealing soft skin, while Salicylic Acid penetrates deep into pores and reduces sebum and oil production. This Salicylic acid and LHA combination provides multi-level cleansing, unlike other Salicylic Acid face wash.\nSulphate-Free, Non-Drying: Compared to traditional face wash this is formulated with very mild sulfate-free surfactants (cleansers) that provide optimum cleaning along with several hydrating & soothing ingredients like Panthenol (Vitamin B5) for hydrating overall after-feel.\nAnti Acne: Boosted with anti-bacterial Zinc and Salicylic Acid that effectively controls oil production and acts as potent anti-acne (or pimple) active. Reduces acne and prevents future breakout for clear-looking skin.\nClean & Transparent Beauty: This face wash is (i) Fragrance-free (ii) Silicones-free (iii) Sulfates-free (iv) Parabens-free (v) Essential Oils-free and (vi) Dyes-free (vii) Mild Cleanser. Also, it is non-comedogenic, anti-bacterial, and hypoallergenic. Formulated at pH 4.5 - 5.5 with high purity grade Salicylic Acid by Merck,… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914160/Minimalist_2__Salicylic_Acid_Face_Wash.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914160/Minimalist_2__Salicylic_Acid_Face_Wash.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1071
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 19
+    },
+    {
+      "title": "La Roche Posay Effaclar Gel Facial Cleansing Gel for Acne-Prone Skin, 400ml - Gentle, Dermatologically Tested, Sensitive Skin Friendly",
+      "handle": "la-roche-posay-effaclar-gel-facial-cleansing-gel-for-acne-prone-skin-400ml-gentle-dermatologically-tested-sensitive-skin-friendly",
+      "description": "Description\nAre you tired of using facial cleansers that strip your skin of its natural oils, leaving it dry and irritated? Do you struggle with acne-prone skin that's hard to manage? Look no further than the La Roche Posay Effaclar Gel Facial Cleansing Gel. This 400ml gel cleanser is specifically formulated to effectively cleanse the face while being gentle on sensitive skin.\nWhy Choose La Roche Posay Effaclar Gel?\nThe La Roche Posay Effaclar Gel is more than just a facial cleanser - it's a solution to your skin care woes. With its large 400ml capacity, you can enjoy a longer-lasting product that offers better value for money. The gel is dermatologically tested, ensuring safety for sensitive skin and reducing the risk of adverse skin reactions.\nKey Benefits:\nEffective Cleansing: The Effaclar Gel is formulated to remove dirt and impurities thoroughly, helping to maintain clear skin.\nGentle on Skin: Suitable for sensitive skin, this gel minimizes irritation risk, making it perfect for those who struggle with harsh skin care products.\nTrusted Brand: La Roche Posay is a trusted brand in dermatology, assuring quality and efficacy in their products.\nIdeal Use Cases\nThis facial… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914154/La_Roche_Posay_Effaclar_Gel_Facial_Cleansing_Gel_for_Acne-Prone_Skin_400ml_-_Gentle_Dermatologically_Tested_Sensitive_Skin_Fr.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914154/La_Roche_Posay_Effaclar_Gel_Facial_Cleansing_Gel_for_Acne-Prone_Skin_400ml_-_Gentle_Dermatologically_Tested_Sensitive_Skin_Fr.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3292
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 20
+    },
+    {
+      "title": "Medicube Zero Pore Pad Mild",
+      "handle": "medicube-zero-pore-pad-mild",
+      "description": "Description\nA mild version of medicube best-selling Zero Pore Pad 2.0.\nA toner pads enriched with Salicylic Acid to gently exfoliate dead skin cells while offering pore tightening effect.\nFormulated with PHA patented pore care ingredients to help exfoliate dead skin cells, clear sebum, and minimize the look of pores.\nFeatures dual-textured pads that exfoliate and moiturize skin at the same time.\nSmoothens skin texture by removing accumulated dead skin cells and sebum clogged in pores to purify skin.\nFree from harmful ingredients, suitable for sensitive skin.\nSIZE-155g (70pcs)\nHow to use\nAfter cleansing, use the embossing side of the pad to wipe over the entire face\nUse the softer side to massage over the skin\nPat in any remaining toner onto skin for better absorption\nNote: The package design is subject to change without noticeay.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914160/Medicube_Zero_Pore_Pad_Mild.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914160/Medicube_Zero_Pore_Pad_Mild.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1394
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 21
+    },
+    {
+      "title": "La Roche Posay Effaclar K (+) Sebum Control Face Moisturizer for Oily Skin - Non-Comedogenic & Hypoallergenic",
+      "handle": "la-roche-posay-effaclar-k-sebum-control-face-moisturizer-for-oily-skin-non-comedogenic-hypoallergenic",
+      "description": "Description\nTransform Your Skincare Routine with La Roche Posay Effaclar K (+)\nAre you tired of dealing with oily skin that seems impossible to manage? Do you struggle with the appearance of pores and blackheads? La Roche Posay Effaclar K (+) is here to revolutionize your skincare. This powerful, 8-hour sebum control face moisturizer is specifically designed for oily skin, providing long-lasting hydration while controlling shine and minimizing pores.\nUnlock the Power of Salicylic Acid and LHA\nEffaclar K (+) harnesses the potency of Salicylic Acid and LHA to gently exfoliate and regulate sebum production. This means that your skin will not only feel smoother and softer but will also look more matte and refined. Say goodbye to unwanted shine and hello to a more balanced complexion.\nWhy Choose La Roche Posay Effaclar K (+)?\nNon-Comedogenic & Hypoallergenic: Formulated to be gentle on sensitive skin, reducing the risk of allergic reactions.\n8-Hour Sebum Control: Keeps your skin looking fresh and matte for longer.\nHydrating & Softening: Provides long-lasting moisture, leaving your skin feeling soft and supple.\nIdeal for: Individuals with oily skin seeking to control sebum production,… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914155/La_Roche_Posay_Effaclar_K_Sebum_Control_Face_Moisturizer_for_Oily_Skin_-_Non-Comedogenic_Hypoallergenic.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914155/La_Roche_Posay_Effaclar_K_Sebum_Control_Face_Moisturizer_for_Oily_Skin_-_Non-Comedogenic_Hypoallergenic.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3716
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 22
+    },
+    {
+      "title": "The Ordinary Salicylic Acid 0.5% Body Serum - Acne Treatment, Exfoliating, Vegan & Cruelty-Free",
+      "handle": "the-ordinary-salicylic-acid-0-5-body-serum-acne-treatment-exfoliating-vegan-cruelty-free",
+      "description": "Description\nTransform Your Skin with Salicylic Acid 0.5% Body Serum\nAre you tired of dealing with body acne and uneven skin texture? Our Salicylic Acid 0.5% Body Serum is here to help. This powerful, clinically-tested formula exfoliates within pores to target acne blemishes and smooths skin texture, leaving you with clearer, healthier-looking skin.\nKey Benefits:\nTargets Acne Blemishes: Salicylic Acid 0.5% penetrates deep into pores to fight acne-causing bacteria and reduce the appearance of blemishes.\nExfoliates and Smooths Skin: Sarcosine helps to visibly improve skin texture and reduce the appearance of pores, giving you a smoother, more even-toned complexion.\nSuitable for Sensitive Skin: Fragrance-free and hypoallergenic, our serum minimizes the risk of irritation, making it perfect for even the most sensitive skin types.\nAligns with Your Values: Our vegan, gluten-free, and cruelty-free formulation ensures that you can feel good about what you're putting on your skin.\nWhy Choose Our Salicylic Acid 0.5% Body Serum?\nOur serum is backed by clinical evidence, with results showing a visible reduction in body acne in just 3 days. It's the perfect solution for individuals prone to… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914177/The_Ordinary_Salicylic_Acid_0.5__Body_Serum_-_Acne_Treatment_Exfoliating_Vegan_Cruelty-Free.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914177/The_Ordinary_Salicylic_Acid_0.5__Body_Serum_-_Acne_Treatment_Exfoliating_Vegan_Cruelty-Free.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2750
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 23
+    },
+    {
+      "title": "Medicube Zero Pore One Day Cream",
+      "handle": "medicube-zero-pore-one-day-cream",
+      "description": "Description\nSmooth out skin by refining pores with this lightweight moisturizer that is formulated with pore care ingredients for visibly smaller-looking pores. Clinically proven to decrease the look of pore size, volume, and depth by up to 55.1% and reduce blackheads and whiteheads by 21.3% even after just one use.\nControl excess oil and hydrate skin with the hydra-fresh formulation that includes Hyaluronic Acid, Niacinamide, Salicylic Acid (BHA) and Panthenol. Helps balance sebum production and keeps skin moisturized without feeling sticky.\nEnriched with Panthenol that strengthens the skin's moisture barrier, Salicylic Acid that reduces excess sebum and blackheads, and Niacinamide that creates glow and tightens the skin.\nSuitable for all skin types and perfect for those who desire healthy-looking skin without enlarged pores.\nSize-50mL\nHow to use\nApply in the morning and evening after cleansing and toning. Scoop an appropriate amount and apply on face starting from the center outwards.\nGently pat for better absorption.\nNote: The package design is subject to change without notice",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914158/Medicube_Zero_Pore_One_Day_Cream.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914158/Medicube_Zero_Pore_One_Day_Cream.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2099
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 24
+    },
+    {
+      "title": "Cosrx Original Clear Pad",
+      "handle": "cosrx-original-clear-pad",
+      "description": "Description\nContains BHA to gently exfoliate and prevent sebum build-up\nHelps reduce redness and clear up skin troubles\nSize: 70 pcs\nHow to use\nAfter cleansing, gently wipe all over face and avoiding the eye area.\nNote: The package design is subject to change without notice",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914147/Cosrx_Original_Clear_Pad.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914147/Cosrx_Original_Clear_Pad.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1299
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 25
+    },
+    {
+      "title": "CeraVe Cleanser, Acne Control️",
+      "handle": "cerave-cleanser-acne-control",
+      "description": "CeraVe Acne Control Cleanser acne-prone aur oily skin ke liye ek gentle daily face wash hai. iska 2% Salicylic Acid formula pores ke andar jaakar excess oil aur dead skin cells ko exfoliate karta hai.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914139/CeraVe_Cleanser_Acne_Control%EF%B8%8F.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914139/CeraVe_Cleanser_Acne_Control%EF%B8%8F.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3489
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 26
+    },
+    {
+      "title": "CeraVe SA Cleanser, Renewing",
+      "handle": "cerave-sa-cleanser-renewing",
+      "description": "CeraVe Renewing SA Cleanser rough, bumpy, aur texture-prone skin ko chemical exfoliation ke zariye smooth karta hai. Iska gentle formula non-abrasive chemical exfoliants (Salicylic Acid) ka use karta hai, jisse skin harsh physical scrubs ke bina smooth feel karti hai.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914140/CeraVe_SA_Cleanser_Renewing%EF%B8%8F.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914141/CeraVe_SA_Cream_For_Rough_And_Bumpy_Skin_Moisturizer_-_12oz.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3021
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 27
+    },
+    {
+      "title": "CeraVe Acne Foaming Wash Cream, 5 oz",
+      "handle": "cerave-acne-foaming-wash-cream-5-oz",
+      "description": "Description",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914139/CeraVe_Acne_Foaming_Wash_Cream_5_oz.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914139/CeraVe_Acne_Foaming_Wash_Cream_5_oz.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1640
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 28
+    },
+    {
+      "title": "PanOxyl 10% Benzoyl Peroxide Acne Foaming Wash, Maximum Strength",
+      "handle": "panoxyl-10-benzoyl-peroxide-acne-foaming-wash-maximum-strength",
+      "description": "CeraVe Acne Foaming Wash Cream combines dermatologist-developed formulation with clinically validated acne-fighting technology. This innovative cleanser features benzoyl peroxide, which penetrates follicles to eliminate existing comedones and prevent future breakout formation. The cream-to-foam transformation during application provides thorough cleansing without over-drying the skin barrier. Essential ceramides and hyaluronic acid work synergistically to maintain skin hydration and structural integrity while treating active acne. The non-irritating formulation suits sensitive and acne-prone skin types, making it suitable for daily use. This 5 oz bottle delivers an effective, evidence-based approach to acne management that respects the skin's natural protective functions.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914167/PanOxyl_10__Benzoyl_Peroxide_Acne_Foaming_Wash_Maximum_Strength.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914167/PanOxyl_10__Benzoyl_Peroxide_Acne_Foaming_Wash_Maximum_Strength.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2371
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 29
+    },
+    {
+      "title": "Differin Daily Deep Cleanser Benzoyl Peroxide 5% A...",
+      "handle": "differin-daily-deep-cleanser-benzoyl-peroxide-5-a",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914150/Differin_Daily_Deep_Cleanser_Benzoyl_Peroxide_5__A.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914150/Differin_Daily_Deep_Cleanser_Benzoyl_Peroxide_5__A.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2295
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 30
+    },
+    {
+      "title": "Differin Acne Treatment Gel, 30 Day Supply, Retino...",
+      "handle": "differin-acne-treatment-gel-30-day-supply-retino",
+      "description": "Key Features & Benefits",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914149/Differin_Acne_Treatment_Gel_30_Day_Supply_Retino.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914149/Differin_Acne_Treatment_Gel_30_Day_Supply_Retino.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3467
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 31
+    },
+    {
+      "title": "Neutrogena Acne Body Clear Body Wash, 2% Salicylic...",
+      "handle": "neutrogena-acne-body-clear-body-wash-2-salicylic",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914165/Neutrogena_Acne_Body_Clear_Body_Wash_2__Salicylic.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914165/Neutrogena_Acne_Body_Clear_Body_Wash_2__Salicylic.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2397
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 32
+    },
+    {
+      "title": "PanOxyl® Acne Creamy Wash, 6 oz. 30316022706",
+      "handle": "panoxyl-acne-creamy-wash-6-oz-30316022706",
+      "description": "Gentle Exfoliation: Salicylic Acid (BHA) dead skin cells ko slough-off karke clogged pores aur rough texture ko refine karta hai.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914168/PanOxyl_Acne_Creamy_Wash_6_oz._30316022706.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914168/PanOxyl_Acne_Creamy_Wash_6_oz._30316022706.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3099
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 33
+    },
+    {
+      "title": "PanOxyl 4% Benzoyl Peroxide Acne Creamy Wash, Gentle, pH Balanced",
+      "handle": "panoxyl-4-benzoyl-peroxide-acne-creamy-wash-gentle-ph-balanced",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914166/PanOxyl_4__Benzoyl_Peroxide_Acne_Creamy_Wash_Gentle_pH_Balanced.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914166/PanOxyl_4__Benzoyl_Peroxide_Acne_Creamy_Wash_Gentle_pH_Balanced.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2371
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 34
+    },
+    {
+      "title": "CeraVe SA Cream For Rough And Bumpy Skin, Moisturizer - 12oz",
+      "handle": "cerave-sa-cream-for-rough-and-bumpy-skin-moisturizer-12oz",
+      "description": "No Harsh Microbeads: Bina kisi abrasive beads ya physical scrubbers ke skin ko chemical action se smooth karta hai.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914141/CeraVe_SA_Cream_For_Rough_And_Bumpy_Skin_Moisturizer_-_12oz.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914141/CeraVe_SA_Cream_For_Rough_And_Bumpy_Skin_Moisturizer_-_12oz.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3021
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 35
+    },
+    {
+      "title": "La Roche-Posay Effaclar Adapalene Gel 0.1% Retinoid Cream for Acne, 45g",
+      "handle": "la-roche-posay-effaclar-adapalene-gel-0-1-retinoid-cream-for-acne-45g",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914156/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914156/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3292
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 36
+    },
+    {
+      "title": "Medicube Zero Pore Pad 2.0",
+      "handle": "medicube-zero-pore-pad-2-0",
+      "description": "Hydrating & Soothing: Hyaluronic Acid hydration bind karta hai aur Niacinamide skin comfort increase karta hai.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914159/Medicube_Zero_Pore_Pad_2.0.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914159/Medicube_Zero_Pore_Pad_2.0.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 299
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 37
+    },
+    {
+      "title": "Cosrx AHA/BHA Clarifying Treatment Toner",
+      "handle": "cosrx-aha-bha-clarifying-treatment-toner",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914147/Cosrx_AHA_BHA_Clarifying_Treatment_Toner.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914147/Cosrx_AHA_BHA_Clarifying_Treatment_Toner.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1800
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 38
+    },
+    {
+      "title": "Sebamed Clear Face Care Gel",
+      "handle": "sebamed-clear-face-care-gel",
+      "description": "Barrier Restoration: Essential ceramides natural moisture lock maintain karte hain.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914173/Sebamed_Clear_Face_Care_Gel.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914173/Sebamed_Clear_Face_Care_Gel.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1112
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 39
+    },
+    {
+      "title": "BeBodywise Hydrocolloid Acne Pimple Patch",
+      "handle": "bebodywise-hydrocolloid-acne-pimple-patch",
+      "description": null,
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913910/BeBodywise_Hydrocolloid_Acne_Pimple_Patch.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913910/BeBodywise_Hydrocolloid_Acne_Pimple_Patch.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1418
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 40
+    },
+    {
+      "title": "BeBodywise 2% Salicylic Acid Face Wash for Acne-Prone Skin",
+      "handle": "bebodywise-2-salicylic-acid-face-wash-for-acne-prone-skin",
+      "description": "Dermatologist Tested: Fragrance-free, non-comedogenic, allergy-tested formula.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913909/BeBodywise_2__Salicylic_Acid_Face_Wash_for_Acne-Prone_Skin.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913909/BeBodywise_2__Salicylic_Acid_Face_Wash_for_Acne-Prone_Skin.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 800
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 41
+    },
+    {
+      "title": "BeBodywise Acne Spot Correction Gel",
+      "handle": "bebodywise-acne-spot-correction-gel",
+      "description": "Clean Formula: Non-comedogenic, fragrance-free, aur paraben-free.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913909/BeBodywise_Acne_Spot_Correction_Gel.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913909/BeBodywise_Acne_Spot_Correction_Gel.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 767
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 42
+    },
+    {
+      "title": "Minimalist Salicylic Acid 2%",
+      "handle": "minimalist-salicylic-acid-2",
+      "description": "Description\nBlackheads Removal Serum: Our salicylic acid easily penetrates the pore lining and scoops out the dirt, debris, and sebum (clinically proven to work better than oil-based traditional salicylic acid), so skin looks clear and soft. Removes blackheads & whiteheads by keeping your pores clean and controlling excessive oil. It is a potent exfoliant for oily acne-prone skin.\nPore Cleansing & Tightening: 2% BHA helps in pore cleansing by flushing out oil and dirt, minimizing pore size. Regular use not only reduce blackheads and whiteheads but also prevents future blackheads, resulting in clear skin. You can include it in your night skincare routine for pore exfoliation.\nAnti Acne & Balances Oil: Removes excess oil and shine resulting in a matt look. Aloe added reduces the acne redness and soothes skin along with providing hydration. By effectively controlling oil production it acts as a potent anti-acne (or pimple) serum.\nLegal Disclaimer: The product is guaranteed to be 100% genuine. Product images are for illustrative purposes only. Images/packaging/ labels may vary from time to time due to the manufacturer's manufacturing batch and location changes. The product description… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914163/Minimalist_Salicylic_Acid_2_.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914163/Minimalist_Salicylic_Acid_2_.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1071
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 43
+    },
+    {
+      "title": "BeBodywise 1% Salicylic Acid Body Wash",
+      "handle": "bebodywise-1-salicylic-acid-body-wash",
+      "description": "Description\nBeBodywise 1% Salicylic Acid Body Wash\nHow to use\nOn wet skin, take some body wash in your palms or on a loofah.\nMassage this salicylic acid body wash into skin using a gentle, circular motion.\nOnce done using this body wash containing salicylic acid, rinse.\nLegal Disclaimer: Product images are for illustrative purposes only. Images/packaging/ labels may vary from time to time due to changes made by the manufacturer's manufacturing batch and location. The product description is for information purposes only and may contain additional ingredients.",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913908/BeBodywise_1__Salicylic_Acid_Body_Wash.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792913908/BeBodywise_1__Salicylic_Acid_Body_Wash.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3244
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 44
+    },
+    {
+      "title": "Cos De BAHA Salicylic Acid 2% Liquid",
+      "handle": "cos-de-baha-salicylic-acid-2-liquid",
+      "description": "Description\nIf clogged pores, body acne, or textured skin are the issue — this is the reset button.\nThis 2% Salicylic Acid (BHA) liquid penetrates inside pores to dissolve oil, debris, and dead skin buildup. Unlike surface exfoliants, BHA works where breakouts actually start.\nIngredients\nSalicylic Acid (2%), Betaine Salicylate, Niacinamide, Aloe Barbadensis Leaf Extract, Camellia Sinensis (Green Tea) Leaf Extract, Lavandula Angustifolia (Lavender) Extract, Rosmarinus Officinalis (Rosemary) Extract, Glycerin, Arginine, Carbomer, 1,2-Hexanediol.\nBenefits\nUnclogs pores and reduces blackheads\nHelps control excess oil\nSmooths rough texture\nMinimizes active breakouts\nImproves overall clarity over time\nHow to use\nApply to clean skin 2–3 nights per week using a cotton pad or hands. Increase frequency as tolerated. Always wear sunscreen during the day..",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914144/Cos_De_BAHA_Salicylic_Acid_2__Liquid.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914144/Cos_De_BAHA_Salicylic_Acid_2__Liquid.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 899
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 45
+    },
+    {
+      "title": "Sebogel – Acne Treatment Gel",
+      "handle": "sebogel-acne-treatment-gel",
+      "description": "Description\nSebogel is a targeted acne treatment gel formulated to reduce acne inflammation, clear existing pimples, and prevent new breakouts. Its lightweight, fast-absorbing formula combines antibacterial and anti-inflammatory ingredients to soothe irritated skin and improve overall skin texture. Suitable for acne-prone skin, Sebogel helps reduce redness and promotes clearer, healthier-looking skin.\nIngredients\nIngredients include Isopropylmethylphenol, Dipotassium Glycyrrhizate, L-Menthol, Tocopherol Acetate (Vitamin E), Stearic Acid, Glycerin, and Water (Aqua).\nBenefits\nKey Benefits include reducing acne inflammation and redness, clearing pimples effectively, preventing future breakouts, soothing irritated skin, and being suitable for all skin types prone to acne.\nHow to use\nCleanse and dry the affected area thoroughly.\nApply a thin layer of Sebogel to acne spots once or twice daily.\nAvoid contact with eyes and sensitive areas.\nUse sunscreen during the day to protect your skin\nSafety Advice\nPerform a patch test before full application to ensure skin compatibility.\nIf irritation or excessive dryness occurs, reduce usage or discontinue.\nConsult a healthcare professional if… [truncated in preview; source Word file has full text]",
+      "status": "draft",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914174/Sebogel_Acne_Treatment_Gel.png",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/ynbrnt7h/image/upload/v1792914174/Sebogel_Acne_Treatment_Gel.png"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Acne"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": null,
+          "manage_inventory": true,
+          "allow_backorder": false,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1548
+            }
+          ]
+        }
+      ],
+      "_source_csv_row": 46
+    }
+  ]
+}

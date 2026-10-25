@@ -309,7 +309,13 @@ export default async function Nav() {
                     </div>
                   </div>
                 </div>
-
+{/* Hair */}
+<LocalizedClientLink
+  href="/store?category=hair-care"
+  className="hover:theme-text transition-colors"
+>
+  Hair Care
+</LocalizedClientLink>
                 {/* About Us */}
                 <LocalizedClientLink
                   href="/about"

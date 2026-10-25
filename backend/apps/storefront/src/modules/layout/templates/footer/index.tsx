@@ -146,12 +146,7 @@ export default async function Footer() {
                 className="h-px w-7"
                 style={{ backgroundColor: "var(--kt-beige, #d8c9be)" }}
               />
-              <span
-                className="text-[9px] font-medium uppercase tracking-[0.2em]"
-                style={{ color: "var(--kt-accent, #96745c)" }}
-              >
-                Rooted in India
-              </span>
+             
             </div>
           </div>
 
