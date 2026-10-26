@@ -1989,6 +1989,1891 @@
         }
       ],
       "_source_csv_row": 46
+    },
+    {
+  "currency": "usd",
+  "product_count": 39,
+  "notes": [
+    "Prices are stored as integer cents to match the existing import-acne-products.js importer. Example: 1799 means USD 17.99.",
+    "Product status is published.",
+    "Thumbnail and images use the Image URL from the latest uploaded Excel.",
+    "The current Excel RSS Price column is blank; prices below use the Kovea Price column exactly as entered.",
+    "The existing import-acne-products.js script does not assign Medusa product categories; assign the existing Anti-Aging category separately if required."
+  ],
+  "products": [
+    {
+      "title": "Glycolic Acid Cream 12%",
+      "handle": "glycolic-acid-cream-12",
+      "description": "Glyco-12 Glycolic Acid Cream 12% (30g) Glyco-12 is a powerful skin care product enriched with 12% glycolic acid, a renowned alpha hydroxy acid (AHA) known for its exceptional exfoliating properties. Formulated to target a range of skin concerns, this cream is ideal for those seeking smoother, healthier, and more radiant skin.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041028/Glycolic_Acid_Cream_12__qb6gvi.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041028/Glycolic_Acid_Cream_12__qb6gvi.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-001",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 2,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Glycolic Acid 12% by KLM – Exfoliating Treatment for Smooth, Radiant Skin",
+      "handle": "glycolic-acid-12-by-klm-exfoliating-treatment-for-smooth-radiant-skin",
+      "description": "Reveal a brighter, smoother complexion with Glycolic Acid 12% by KLM. This powerful exfoliating solution helps to gently remove dead skin cells, fade dark spots, unclog pores, and smooth rough texture for visibly clearer skin. Ideal for acne-prone, uneven, or dull skin types.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_12__by_KLM_Exfoliating_Treatment_for_Smooth_Radiant_Skin_rhnyvp.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_12__by_KLM_Exfoliating_Treatment_for_Smooth_Radiant_Skin_rhnyvp.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-002",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 3,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Glycolic Acid Cream 6% - Exfoliation & Pigmentation",
+      "handle": "glycolic-acid-cream-6-exfoliation-pigmentation",
+      "description": "Rejuvenate your skin with Glycolic 6% cream. Designed for all skin types, this cream is formulated with glycolic acid to gently exfoliate and brighten your complexion.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_Cream_6__-_Exfoliation_Pigmentation_zzdxfj.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_Cream_6__-_Exfoliation_Pigmentation_zzdxfj.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-003",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1240
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 4,
+      "_kovea_price_usd": 12.4,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Adapalene Gel 0.1%",
+      "handle": "adapalene-gel-0-1",
+      "description": "Powerful treatment gel formulated with adapalene 0.1% — the first-line topical retinoid for acne. Adaferin Gel works deep in the pores to regulate skin-cell turnover, reduce inflammation and clear both blackheads and pimples",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041022/Adapalene_Gel_0.1__zaefq8.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041022/Adapalene_Gel_0.1__zaefq8.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-004",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 5,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "SOME BY MI - Retinol Intense Advanced Triple Action Eye Cream",
+      "handle": "some-by-mi-retinol-intense-advanced-triple-action-eye-cream",
+      "description": "The SOME BY MI Retinol Intense Advanced Triple Action Eye Cream (2023 Version) is a powerful yet gentle anti-aging eye treatment designed to target fine lines, dark circles, and loss of firmness. Formulated with Retinol, Retinal, and Niacinamide, this upgraded formula delivers triple-action care: smoothing wrinkles, brightening the under-eye area, and firming sagging skin. Enriched with soothing Centella and Panthenol, it hydrates and nourishes without irritation, making it suitable even for sensitive skin.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SOME_BY_MI_-_Retinol_Intense_Advanced_Triple_Action_Eye_Cream_ql5los.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SOME_BY_MI_-_Retinol_Intense_Advanced_Triple_Action_Eye_Cream_ql5los.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-005",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1698
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 6,
+      "_kovea_price_usd": 16.98,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "SOME BY MI - Retinol Intense Reactivating Serum",
+      "handle": "some-by-mi-retinol-intense-reactivating-serum",
+      "description": "SOME BY MI Retinol Intense Reactivating Serum is a lightweight anti-aging serum that combines retinol and retinal to help reduce the look of wrinkles, improve skin firmness, and smooth uneven texture. It also contains niacinamide, panthenol, and centella asiatica to brighten, hydrate, and soothe the skin while helping reduce irritation. With regular use, it leaves skin looking smoother, firmer, and more radiant.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SOME_BY_MI_-_Retinol_Intense_Reactivating_Serum_qglomg.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SOME_BY_MI_-_Retinol_Intense_Reactivating_Serum_qglomg.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-006",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2070
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 7,
+      "_kovea_price_usd": 20.7,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Glycolic Acid Lotion 6% - Glybest 6",
+      "handle": "glycolic-acid-lotion-6-glybest-6",
+      "description": "Glybest 6% Lotion is a gentle exfoliating body and face lotion formulated with 6% Glycolic Acid to improve skin texture, fade hyperpigmentation, and promote brighter, smoother-looking skin. Compared to stronger glycolic acid products, the 6% concentration is better suited for beginners and those with sensitive skin who want gradual exfoliation with less irritation. By accelerating skin cell turnover, it helps reduce the appearance of acne marks, dark spots, rough patches, keratosis pilaris (KP), and uneven skin tone while improving overall skin radiance.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_Lotion_6__-_Glybest_6_rndk80.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Glycolic_Acid_Lotion_6__-_Glybest_6_rndk80.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-007",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 8,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Minimalist 8% Glycolic Acid Toner For Glowing Skin",
+      "handle": "minimalist-8-glycolic-acid-toner-for-glowing-skin",
+      "description": "This exfoliating liquid contains 8% glycolic acid, an AHA that gently removes dead skin cells to make skin feel smoother, look brighter, and improve uneven texture. Its free-acid form is designed for deeper exfoliation and better absorption. It is also enriched with bamboo water to help soothe and calm the skin. Start slowly, especially if your skin is sensitive, and use sunscreen every day because glycolic acid can increase sun sensitivity.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_8__Glycolic_Acid_Toner_For_Glowing_Skin_ll3ydd.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_8__Glycolic_Acid_Toner_For_Glowing_Skin_ll3ydd.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-008",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1760
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 9,
+      "_kovea_price_usd": 17.6,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Cos De BAHA - Glycolic Acid 10% AHA Serum",
+      "handle": "cos-de-baha-glycolic-acid-10-aha-serum",
+      "description": "High-strength exfoliating serum designed to smooth rough texture, fade dark spots, and boost skin radiance. Formulated with 10% Glycolic Acid (AHA), a water-soluble exfoliating acid that penetrates the upper layers of skin to dissolve dead skin cells and accelerate cell turnover. With consistent use, skin appears clearer, more even, and visibly refined.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041027/Cos_De_BAHA_-_Glycolic_Acid_10__AHA_Serum_yfnhe1.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041027/Cos_De_BAHA_-_Glycolic_Acid_10__AHA_Serum_yfnhe1.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-009",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1699
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 10,
+      "_kovea_price_usd": 16.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "SkinCeuticals BLEMISH + AGE DEFENSE 1 fl oz",
+      "handle": "skinceuticals-blemish-age-defense-1-fl-oz",
+      "description": "An oil-free salicylic acid face serum that reduces the formation of adult acne and improves visible signs of aging.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SkinCeuticals_BLEMISH_AGE_DEFENSE_1_fl_oz_trnjrc.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041081/SkinCeuticals_BLEMISH_AGE_DEFENSE_1_fl_oz_trnjrc.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-010",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 9799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 11,
+      "_kovea_price_usd": 97.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Vaseline Healthy Bright Complete 10 Anti Ageing Body Lotion, 10 in 1 Body Lotion With Vitamin B3, AHA, Pro-Retinol",
+      "handle": "vaseline-healthy-bright-complete-10-anti-ageing-body-lotion-10-in-1-body-lotion-with-vitamin-b3-aha-pro-retinol",
+      "description": "Vaseline Healthy Bright Complete 10 Anti- Ageing Lotion, 10 in 1 Body Lotion With Vitamin B3, Aha, Pro-Retinol About the Product: A lotion with Vitamin B3, AHA, Pro-Retinol which provides 10 in 1 skin brightening and anti-ageing benefits Nourishes skin from deep within, providing intense moisturization and radiance It reduces dullness and gives you an even skin tone, visibly radiant & younger-looking skin Protects the skin from the harmful effects of UVA and UVB; Helps in skin renewal",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041083/Vaseline_Healthy_Bright_Complete_10_Anti_Ageing_Body_Lotion_10_in_1_Body_Lotion_With_Vitamin_B3_AHA_Pro-Retinol_ndiw2o.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041083/Vaseline_Healthy_Bright_Complete_10_Anti_Ageing_Body_Lotion_10_in_1_Body_Lotion_With_Vitamin_B3_AHA_Pro-Retinol_ndiw2o.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-011",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 552
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 12,
+      "_kovea_price_usd": 5.52,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Minimalist Retinoid 2% Cream (Emulsion)",
+      "handle": "minimalist-retinoid-2-cream-emulsion",
+      "description": "Minimalist Retinoid 2% Cream (Emulsion)",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Minimalist_Retinoid_2__Cream_Emulsion_ermokj.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Minimalist_Retinoid_2__Cream_Emulsion_ermokj.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-012",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2135
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 13,
+      "_kovea_price_usd": 21.35,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Differin Acne Retinoid Face and Body Treatment Gel Adapalene 0.1% 45g - Imperfect Box",
+      "handle": "differin-acne-retinoid-face-and-body-treatment-gel-adapalene-0-1-45g-imperfect-box",
+      "description": "Differin Acne Retinoid Face and Body Treatment Gel Adapalene 0.1% 45g - Imperfect Box",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Differin_Acne_Retinoid_Face_and_Body_Treatment_Gel_Adapalene_0.1__45g_-_Imperfect_Box_h1zt6c.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Differin_Acne_Retinoid_Face_and_Body_Treatment_Gel_Adapalene_0.1__45g_-_Imperfect_Box_h1zt6c.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-013",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1596
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 14,
+      "_kovea_price_usd": 15.96,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Nivea Q10 Firming Body Lotion with Vitamin C - Anti-aging Moisturizer for Dry Skin",
+      "handle": "nivea-q10-firming-body-lotion-with-vitamin-c-anti-aging-moisturizer-for-dry-skin",
+      "description": "Nivea Q10 Firming Body Lotion is made for dry to very dry skin that needs extra moisture and care. It helps hydrate the skin for longer, making it feel softer, smoother, and less rough. The lotion contains Q10 and Vitamin C, which help improve the skin’s firmness and elasticity over time. With regular use, your skin may look healthier, more radiant, and feel more supple. It is a good option if you want a daily body moisturizer that not only tackles dryness but also supports firmer-looking skin. You may start noticing smoother and softer skin in around 10 days. Ideal Use Cases",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041079/Nivea_Q10_Firming_Body_Lotion_with_Vitamin_C_-_Anti-aging_Moisturizer_for_Dry_Skin_igjfyf.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041079/Nivea_Q10_Firming_Body_Lotion_with_Vitamin_C_-_Anti-aging_Moisturizer_for_Dry_Skin_igjfyf.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-014",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2463
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 15,
+      "_kovea_price_usd": 24.63,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "The Ordinary Multi-Antioxidant Radiance Serum:",
+      "handle": "the-ordinary-multi-antioxidant-radiance-serum",
+      "description": "The Ordinary Multi-Antioxidant Radiance Serum:",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041801/yxwgccGzr4oq04qaACii4Y3TMUBcVXovXxjQpP8I_xxhu7q.webp",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041801/yxwgccGzr4oq04qaACii4Y3TMUBcVXovXxjQpP8I_xxhu7q.webp"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-015",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3018
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 16,
+      "_kovea_price_usd": 30.18,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Roc Derm Correxion Firming Rl 1oz",
+      "handle": "roc-derm-correxion-firming-rl-1oz",
+      "description": "Roc Derm Correxion Firming Rl 1oz",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041080/Roc_Derm_Correxion_Firming_Rl_1oz_up1dgl.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041080/Roc_Derm_Correxion_Firming_Rl_1oz_up1dgl.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-016",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2869
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 17,
+      "_kovea_price_usd": 28.69,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Naturium Vitamin C Super Serum Plus 1 fl oz - Missing Box",
+      "handle": "naturium-vitamin-c-super-serum-plus-1-fl-oz-missing-box",
+      "description": "This multi-benefit serum combines Vitamin C, retinol, hyaluronic acid, niacinamide, and salicylic acid to target several skin concerns in one step. It helps make the skin look brighter and smoother, while reducing the appearance of fine lines and wrinkles. Hyaluronic acid provides hydration, niacinamide helps support an even-looking skin tone, and salicylic acid helps keep pores clear. The serum also contains antioxidants to help protect the skin from daily environmental stress, such as pollution and sun exposure.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Naturium_Vitamin_C_Super_Serum_Plus_1_fl_oz_-_Missing_Box_pwtopg.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Naturium_Vitamin_C_Super_Serum_Plus_1_fl_oz_-_Missing_Box_pwtopg.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-017",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1495
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 18,
+      "_kovea_price_usd": 14.95,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Wishcare Collagen Retinol Body Lotion",
+      "handle": "wishcare-collagen-retinol-body-lotion",
+      "description": "Wishcare Collagen Retinol Body Lotion About the Product: WishCare Collagen Retinol Body Lotion is an anti-aging body moisturizer with 1% retinol and plant-based collagen. It helps improve the look of dry, dull, and uneven body skin, while supporting smoother texture, firmer-looking skin, and a healthy glow. Use it at night and begin slowly, especially if you are new to retinol. Apply sunscreen on exposed areas during the day, as retinol can cause dryness and increase sun sensitivity.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041084/Wishcare_Collagen_Retinol_Body_Lotion_fpgldb.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041084/Wishcare_Collagen_Retinol_Body_Lotion_fpgldb.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-018",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1585
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 19,
+      "_kovea_price_usd": 15.85,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Dr. Sheth's Gulab & Glycolic Acid Face Serum with 5% Niacinamide, Skin Texture & Uneven Skin, For Normal to Oily Skin",
+      "handle": "dr-sheth-s-gulab-glycolic-acid-face-serum-with-5-niacinamide-skin-texture-uneven-skin-for-normal-to-oily-skin",
+      "description": "Dr. Sheth’s Gulab & Glycolic Acid Serum is a lightweight brightening serum for dull, uneven skin and dark spots. Glycolic acid gently removes dead skin cells to smooth and refresh the skin, while niacinamide helps improve the appearance of pigmentation and blemish marks. Rose extract helps soothe the skin, leaving it looking clearer, brighter, and more even with regular use.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Dr._Sheth_s_Gulab_Glycolic_Acid_Face_Serum_with_5__Niacinamide_Skin_Texture_Uneven_Skin_For_Normal_to_Oily_Skin_wl4qwh.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Dr._Sheth_s_Gulab_Glycolic_Acid_Face_Serum_with_5__Niacinamide_Skin_Texture_Uneven_Skin_For_Normal_to_Oily_Skin_wl4qwh.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-019",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 850
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 20,
+      "_kovea_price_usd": 8.5,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Benton Bakuchiol Serum",
+      "handle": "benton-bakuchiol-serum",
+      "description": "Benton Bakuchiol Serum",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041023/Benton_Bakuchiol_Serum_ip6f46.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041023/Benton_Bakuchiol_Serum_ip6f46.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-020",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1299
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 21,
+      "_kovea_price_usd": 12.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "CeraVe Skin Renewing Retinol Face Cream Serum 1 Oz",
+      "handle": "cerave-skin-renewing-retinol-face-cream-serum-1-oz",
+      "description": "CeraVe Skin Renewing Retinol Face Cream Serum helps reduce the look of fine lines and wrinkles while supporting your skin’s natural protective barrier. It contains retinol and three essential ceramides to help keep skin smooth, hydrated, and healthy-looking. The formula is fragrance-free and non-comedogenic, so it will not clog pores.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/CeraVe_Skin_Renewing_Retinol_Face_Cream_Serum_1_Oz_ij1osp.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/CeraVe_Skin_Renewing_Retinol_Face_Cream_Serum_1_Oz_ij1osp.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-021",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 22,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "CeraVe Resurfacing Retinol Serum 1 Oz",
+      "handle": "cerave-resurfacing-retinol-serum-1-oz",
+      "description": "CeraVe Resurfacing Retinol Serum is a lightweight serum that helps improve uneven skin texture, visible pores, fine lines, and dark marks. It uses encapsulated retinol for a gentler treatment and includes ceramides and hyaluronic acid to support the skin barrier and keep skin hydrated. The fast-absorbing, non-greasy formula is suitable for most skin types and can be used in an evening skincare routine.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/CeraVe_Resurfacing_Retinol_Serum_1_Oz_mr7qmb.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/CeraVe_Resurfacing_Retinol_Serum_1_Oz_mr7qmb.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-022",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1799
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 23,
+      "_kovea_price_usd": 17.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "La Roche-Posay Effaclar Adapalene Gel 0.1% Retinoid Cream for Acne, 45g",
+      "handle": "la-roche-posay-effaclar-adapalene-gel-0-1-retinoid-cream-for-acne-45g",
+      "description": "La Roche-Posay Effaclar Gel with 0.1% adapalene is a daily acne treatment designed to clear existing breakouts and help stop new ones from forming. Adapalene is a topical retinoid that helps unclog pores and speeds up skin-cell turnover, which can reduce blackheads, whiteheads, pimples, and other acne blemishes over time. The lightweight, oil-free, fragrance-free gel is made for oily, combination, and acne-prone skin. It absorbs quickly without leaving a greasy or sticky feeling. ## How it works - Helps prevent dead skin cells from building up and blocking pores - Reduces congestion that can l",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041076/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g_p7qfnn.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041076/La_Roche-Posay_Effaclar_Adapalene_Gel_0.1__Retinoid_Cream_for_Acne_45g_p7qfnn.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-023",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 3399
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 24,
+      "_kovea_price_usd": 33.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Centellian24+ Madeca Cream Time Reverse",
+      "handle": "centellian24-madeca-cream-time-reverse",
+      "description": "- This cream relieves signs of aging by providing 10 kinds of anti-aging benefits.  - Patented ingredient - Madeca Science contains 12 types of Cica ingredients to maximize soothing effect.  - Formulated with effective ingredients such as ACTIVE-TECA, Collagen, Hyaluronic Acid and Glycogen, it offers a triple benefit of moisturizing, tightening and skin glowing.  - Lightweight cream can be immediately absorbed into the skin without leaving stickiness.  - Passed skin irritation and non-comedogenic test, it is suitable for all types of skin including sensitive and acne-prone skin.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Centellian24_Madeca_Cream_Time_Reverse_dxible.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Centellian24_Madeca_Cream_Time_Reverse_dxible.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-024",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 2195
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 25,
+      "_kovea_price_usd": 21.95,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Cosrx The 6 Peptide Skin Booster",
+      "handle": "cosrx-the-6-peptide-skin-booster",
+      "description": "Skin Booster Toner: Skin Boosting Serum with 6 Peptides that improve skin elasticity, fine lines, pores, and radiance. Boost your skin's condition and achieve multiple benefits with this serum. First Step of Skincare: This lightweight serum with a toner-like texture absorbs quickly into the skin, making it a great first step in your daily skincare routine. Its quick absorption allows for easy layering with other products.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Cosrx_The_6_Peptide_Skin_Booster_uitakv.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041025/Cosrx_The_6_Peptide_Skin_Booster_uitakv.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-025",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1495
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 26,
+      "_kovea_price_usd": 14.95,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Goodal Green Tangerine Vitamin C Dark Spot Serum",
+      "handle": "goodal-green-tangerine-vitamin-c-dark-spot-serum",
+      "description": "Green Tangerine Vita C Dark Spot Serum is a lightweight brightening serum made to help reduce the appearance of dark spots, freckles, and uneven skin tone. This upgraded formula provides a stronger vitamin C brightening effect and is designed to leave the skin looking clearer, more even, and radiant. It contains green tangerine extract and niacinamide, two ingredients known for supporting brighter-looking skin. The serum has a fresh, moisturizing texture that absorbs quickly without feeling heavy or sticky.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041027/Goodal_Green_Tangerine_Vitamin_C_Dark_Spot_Serum_eoymzh.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041027/Goodal_Green_Tangerine_Vitamin_C_Dark_Spot_Serum_eoymzh.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-026",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1699
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 27,
+      "_kovea_price_usd": 16.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "SKIN1004 Madagascar Centella Retinol 0.2 Boosting Shot Ampoule",
+      "handle": "skin1004-madagascar-centella-retinol-0-2-boosting-shot-ampoule",
+      "description": "This retinol ampoule combines 0.2% retinol, retinal, centella asiatica, panthenol, and squalane to help smooth skin texture, improve elasticity, and support a stronger skin barrier. Tiny spicules help the formula absorb more effectively for firmer, healthier-looking skin. The nourishing formula is suitable for dry, normal, and sensitive skin. Use it at night, start slowly, follow with moisturizer, and wear sunscreen every day, as retinol and retinal can cause dryness and sun sensitivity.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041080/SKIN1004_Madagascar_Centella_Retinol_0.2_Boosting_Shot_Ampoule_hqvfex.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041080/SKIN1004_Madagascar_Centella_Retinol_0.2_Boosting_Shot_Ampoule_hqvfex.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-027",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1299
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 28,
+      "_kovea_price_usd": 12.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Dr. Althea Gentle Vitamin C Serum",
+      "handle": "dr-althea-gentle-vitamin-c-serum",
+      "description": "Gentle Vitamin C is a beginner-friendly serum designed to combat dark spots and improve skin tone. It features 5% Niacinamide, 20% Hippophae rhamnoides fruit extract—offering more vitamin C than many fruits—and 2% Camellia sinensis leaf water for soothing effects. Perfect for sensitive skin, this serum has a simple, under-20-ingredient formula that is acne-safe and calming.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Dr._Althea_Gentle_Vitamin_C_Serum_qthptn.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041026/Dr._Althea_Gentle_Vitamin_C_Serum_qthptn.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-028",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1699
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 29,
+      "_kovea_price_usd": 16.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Medicube PDRN Pink Collagen Capsule Cream",
+      "handle": "medicube-pdrn-pink-collagen-capsule-cream",
+      "description": "This PDRN capsule gel moisturizer is designed to give your skin a hydrated, firm, and healthy-looking glow. It uses special encapsulation technology to protect the PDRN until it is applied to the skin, helping the formula deliver its moisturizing and firming benefits more effectively. The product combines pink moisture capsules with a lightweight gel. When you blend them together, the capsules melt into the gel and create a fresh, hydrating layer on the skin without feeling oily, heavy, or sticky.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041076/Medicube_PDRN_Pink_Collagen_Capsule_Cream_cblgmo.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041076/Medicube_PDRN_Pink_Collagen_Capsule_Cream_cblgmo.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-029",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1499
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 30,
+      "_kovea_price_usd": 14.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Celimax Retinol Shot Tightening Booster",
+      "handle": "celimax-retinol-shot-tightening-booster",
+      "description": "Celimax Retinal Shot Tightening Booster is a lightweight anti-aging treatment that helps improve skin firmness, smoothness, and glow. It combines retinal and peptides to reduce the appearance of fine lines, support skin elasticity, and improve uneven texture. It also helps fade dark spots and uneven skin tone, while 1% panthenol provides hydration and soothing care to reduce dryness and irritation.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/Celimax_Retinol_Shot_Tightening_Booster_kbgig3.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041024/Celimax_Retinol_Shot_Tightening_Booster_kbgig3.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-030",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1299
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 31,
+      "_kovea_price_usd": 12.99,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Minimalist 16% Vitamin C Face Serum (Advanced)",
+      "handle": "minimalist-16-vitamin-c-face-serum-advanced",
+      "description": "Minimalist 16% Vitamin C Face Serum is an advanced brightening serum made with stable ethyl ascorbic acid, a vitamin C derivative that helps improve dullness, dark spots, uneven skin tone, and early signs of ageing. It also contains vitamin E, ferulic acid, and fullerene (C-60), which provide antioxidant support and help protect the skin from environmental damage. With regular use, it can make skin look brighter, smoother, and more radiant. Ethyl ascorbic acid is a stable vitamin C form, while vitamin E and ferulic acid can help improve vitamin C stability and antioxidant performance.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_16__Vitamin_C_Face_Serum_Advanced_b1wfp4.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_16__Vitamin_C_Face_Serum_Advanced_b1wfp4.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-031",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1882
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 32,
+      "_kovea_price_usd": 18.82,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Minimalist 10% Vitamin C Face Serum For Glowing Skin",
+      "handle": "minimalist-10-vitamin-c-face-serum-for-glowing-skin",
+      "description": "Minimalist Vitamin C 10% + AG 1% Face Serum Legal Disclaimer: Product images are for illustrative purposes only. Images/packaging/ labels may vary from time to time due to the manufacturer's manufacturing batch and location changes. The product description is for information purposes only and may contain additional ingredients",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_16__Vitamin_C_Face_Serum_Advanced_b1wfp4.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_16__Vitamin_C_Face_Serum_Advanced_b1wfp4.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-032",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1047
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 33,
+      "_kovea_price_usd": 10.47,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "L'Oreal Paris Glycolic Acid Glowing And Protecting CSMS (Cleanser, Serum, Moisturizer, Sunscreen) Regime Kit",
+      "handle": "l-oreal-paris-glycolic-acid-glowing-and-protecting-csms-cleanser-serum-moisturizer-sunscreen-regime-kit",
+      "description": "L’Oréal Paris Glycolic Bright CSMS Kit is a complete skincare routine for dull skin, dark spots, and uneven skin tone. It includes a glycolic acid cleanser, a 1% glycolic acid and niacinamide serum, a brightening day cream with SPF 17, and an SPF 50 PA+++ sunscreen. Together, these products help cleanse, brighten, reduce the look of dark spots, moisturize, and protect the skin from sun damage for a clearer, more radiant complexion.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041050/L_Oreal_Paris_Glycolic_Acid_Glowing_And_Protecting_CSMS_Cleanser_Serum_Moisturizer_Sunscreen_Regime_Kit_l7gjci.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041050/L_Oreal_Paris_Glycolic_Acid_Glowing_And_Protecting_CSMS_Cleanser_Serum_Moisturizer_Sunscreen_Regime_Kit_l7gjci.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-033",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 4065
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 34,
+      "_kovea_price_usd": 40.65,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "The Derma Co 15% AHA+1% BHA Beginner Peeling Face Solution",
+      "handle": "the-derma-co-15-aha-1-bha-beginner-peeling-face-solution",
+      "description": "The Derma Co 15% AHA+1% BHA Beginner Peeling Face Solution",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_15__AHA_1__BHA_Beginner_Peeling_Face_Solution_rl0fce.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_15__AHA_1__BHA_Beginner_Peeling_Face_Solution_rl0fce.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-034",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1533
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 35,
+      "_kovea_price_usd": 15.33,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "The Derma Co 10% Vitamin C Face Serum For Skin Radiance",
+      "handle": "the-derma-co-10-vitamin-c-face-serum-for-skin-radiance",
+      "description": "The Derma Co 10% Vitamin C Face Serum For Skin Radiance",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_10__Vitamin_C_Face_Serum_For_Skin_Radiance_frkhw6.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_10__Vitamin_C_Face_Serum_For_Skin_Radiance_frkhw6.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-035",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1187
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 36,
+      "_kovea_price_usd": 11.87,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Neutrogena Hyaluronic Acid Gel + Retinol Face Moisturizer Anti-Ageing Combo For Wrinkle-Free Skin",
+      "handle": "neutrogena-hyaluronic-acid-gel-retinol-face-moisturizer-anti-ageing-combo-for-wrinkle-free-skin",
+      "description": "Neutrogena Hyaluronic Acid Gel + Retinol Face Moisturizer Anti-Ageing Combo For Wrinkle-Free Skin This Combo Contains: 1. Neutrogena Hydro Boost Hyaluronic Acid Water Gel Light Face Moisturizer For Normal, Dry & Oily Skin- 50 gm 2. Neutrogena Visible Repair Retinol + Peptide Anti-Ageing Day & Night Cream For Wrinkles & Fine Lines - 50 gm",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Neutrogena_Hyaluronic_Acid_Gel_Retinol_Face_Moisturizer_Anti-Ageing_Combo_For_Wrinkle-Free_Skin_qt3a7j.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041078/Neutrogena_Hyaluronic_Acid_Gel_Retinol_Face_Moisturizer_Anti-Ageing_Combo_For_Wrinkle-Free_Skin_qt3a7j.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-036",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 5406
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 37,
+      "_kovea_price_usd": 54.06,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Minimalist Retinol 0.6% Face Serum",
+      "handle": "minimalist-retinol-0-6-face-serum",
+      "description": "Minimalist Retinol 0.6% Face Serum About the Product: Minimalist Retinol 0.6% Face Serum is an intermediate serum with increased concentration of retinol which is the most proven ingredient for anti-aging and skin renewal. Formulated with 0.6% retinol, which promotes cell turnover and decreases enzymes, causing collagen breakdown. Boosted with coenzyme Q10, an antioxidant and radical scavenger which reduces wrinkle depths. It is combined with rosehip, which is known to boost collagen synthesis as well as reduce signs of photoaging. This mid-strength serum is ideal for intermediate users.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_Retinol_0.6__Face_Serum_oevouz.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041077/Minimalist_Retinol_0.6__Face_Serum_oevouz.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-037",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1300
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 38,
+      "_kovea_price_usd": 13.0,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "The Derma Co 0.3% Retinol Serum for Spotless Skin",
+      "handle": "the-derma-co-0-3-retinol-serum-for-spotless-skin",
+      "description": "The Derma Co 0.3% Retinol Serum is a beginner-friendly anti-aging and brightening serum designed to improve dark spots, uneven skin tone, dullness, and early signs of aging. It combines retinol with vitamin C to support smoother, clearer, and more radiant-looking skin. ## Key benefits - Gently exfoliates and improves rough or uneven skin texture - Helps fade dark spots, post-acne marks, and pigmentation - Reduces the appearance of fine lines and improves skin radiance - Uses a stabilized retinol formula designed to release gradually and help reduce irritation ## How to use Use it at night on c",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_0.3__Retinol_Serum_for_Spotless_Skin_ygjqiv.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041082/The_Derma_Co_0.3__Retinol_Serum_for_Spotless_Skin_ygjqiv.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-038",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1262
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 39,
+      "_kovea_price_usd": 12.62,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
+    },
+    {
+      "title": "Retinol 0.3% by Minimalist",
+      "handle": "retinol-0-3-by-minimalist",
+      "description": "Achieve smoother, more youthful skin with the Minimalist 0.3% Retinol Serum, a potent yet gentle nighttime treatment designed to reduce fine lines, improve skin texture, and enhance overall radiance.",
+      "status": "published",
+      "discountable": true,
+      "thumbnail": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041079/Retinol_0.3__by_Minimalist_j2uod5.jpg",
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dl4nqxxfp/image/upload/v1793041079/Retinol_0.3__by_Minimalist_j2uod5.jpg"
+        }
+      ],
+      "tags": [
+        {
+          "value": "Anti-Aging"
+        }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default",
+          "sku": "KOV-ANTIAGING-039",
+          "manage_inventory": false,
+          "allow_backorder": true,
+          "options": {
+            "Size": "One Size"
+          },
+          "prices": [
+            {
+              "currency_code": "usd",
+              "amount": 1472
+            }
+          ]
+        }
+      ],
+      "_source_excel_row": 40,
+      "_kovea_price_usd": 14.72,
+      "_category_label": "Anti-Aging",
+      "_brand": null,
+      "_source_product_url": null
     }
+  ]
+}
   ]
 }
