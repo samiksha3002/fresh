@@ -1,4 +1,6 @@
 import { retrieveOrder } from "@lib/data/orders"
+import { purchaseData } from "@lib/util/ecommerce"
+import EcommerceEvent from "@modules/common/components/ecommerce-event"
 import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -19,5 +21,14 @@ export default async function OrderConfirmedPage(props: Props) {
     return notFound()
   }
 
-  return <OrderCompletedTemplate order={order} />
+  return (
+    <>
+      <EcommerceEvent
+        name="purchase"
+        data={purchaseData(order)}
+        dedupeKey={order.id}
+      />
+      <OrderCompletedTemplate order={order} />
+    </>
+  )
 }

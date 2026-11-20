@@ -2,6 +2,12 @@
 "use client"
 
 import { addToCart } from "@lib/data/cart"
+import {
+  cartEcommerceData,
+  productViewData,
+  trackEcommerce,
+} from "@lib/util/ecommerce"
+import EcommerceEvent from "@modules/common/components/ecommerce-event"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
@@ -140,13 +146,17 @@ export default function ProductActions({
     setIsAdding(true)
 
     try {
-      await addToCart({
+      const updatedCart = await addToCart({
         variantId: selectedVariant.id,
         quantity: 1,
         countryCode,
       })
 
       setOptimisticAdded(true)
+      trackEcommerce(
+        "add_to_cart",
+        cartEcommerceData(updatedCart, selectedVariant.id, 1)
+      )
     } catch (error) {
       console.error("Add to cart failed:", error)
       setOptimisticAdded(false)
@@ -174,6 +184,11 @@ export default function ProductActions({
 
   return (
     <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <EcommerceEvent
+        name="view_item"
+        data={productViewData(product, selectedVariant)}
+        dedupeKey={product.id}
+      />
       {(product.variants?.length ?? 0) > 1 && (
         <div className="flex flex-col gap-y-4">
           {(product.options || []).map((option) => (
