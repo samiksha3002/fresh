@@ -7,6 +7,7 @@ import "styles/globals.css"
 
 import WhatsAppPopup from "@modules/common/components/whatsapp-popup"
 import ConsultationPopup from "@modules/common/components/consultation-popup"
+import AnalyticsConsentBanner from "@modules/common/components/analytics-consent"
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 
         <ConsultationPopup />
         <WhatsAppPopup />
+        <AnalyticsConsentBanner />
       </body>
     </html>
   )
