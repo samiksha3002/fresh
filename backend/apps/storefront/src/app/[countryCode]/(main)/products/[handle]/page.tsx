@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { buildCanonicalUrl, CanonicalSearchParams } from "@lib/util/canonical-url"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
@@ -7,7 +8,7 @@ import { HttpTypes } from "@medusajs/types"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
-  searchParams: Promise<{ v_id?: string }>
+  searchParams: Promise<CanonicalSearchParams & { v_id?: string }>
 }
 
 /**
@@ -91,6 +92,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params
   const { handle } = params
+  const searchParams = await props.searchParams
 
   // Parallelize region + product fetch
   const [region, productResponse] = await Promise.all([
@@ -114,12 +116,20 @@ export async function generateMetadata(
     notFound()
   }
 
+  const canonical = buildCanonicalUrl({
+    countryCode: params.countryCode,
+    segments: ["products", handle],
+    searchParams,
+    equivalentProductVariants: true,
+  })
   return {
-    title: `${product.title} | Medusa Store`,
+    title: `${product.title} | Kovea Touch`,
     description: `${product.title}`,
+    alternates: { canonical },
     openGraph: {
-      title: `${product.title} | Medusa Store`,
+      title: `${product.title} | Kovea Touch`,
       description: `${product.title}`,
+      url: canonical,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
   }

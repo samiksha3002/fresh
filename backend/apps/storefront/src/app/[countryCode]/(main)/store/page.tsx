@@ -1,18 +1,34 @@
 import { Metadata } from "next"
+import { buildCanonicalUrl, CanonicalSearchParams } from "@lib/util/canonical-url"
 
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import StoreTemplate from "@modules/store/templates"
 
-export const metadata: Metadata = {
-  title: "Store",
-  description: "Explore all of our products.",
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const [{ countryCode }, searchParams] = await Promise.all([
+    props.params,
+    props.searchParams,
+  ])
+  return {
+    title: "Store | Kovea Touch",
+    description: "Explore all of our products.",
+    alternates: {
+      canonical: buildCanonicalUrl({
+        countryCode,
+        segments: ["store"],
+        searchParams,
+      }),
+    },
+  }
 }
 
 type Params = {
-  searchParams: Promise<{
-    sortBy?: SortOptions
-    page?: string
-  }>
+  searchParams: Promise<
+    CanonicalSearchParams & {
+      sortBy?: SortOptions
+      page?: string
+    }
+  >
   params: Promise<{
     countryCode: string
   }>

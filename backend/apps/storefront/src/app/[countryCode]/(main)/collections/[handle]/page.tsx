@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { buildCanonicalUrl, CanonicalSearchParams } from "@lib/util/canonical-url"
 import { notFound } from "next/navigation"
 
 import { getCollectionByHandle, listCollections } from "@lib/data/collections"
@@ -9,10 +10,12 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 
 type Props = {
   params: Promise<{ handle: string; countryCode: string }>
-  searchParams: Promise<{
-    page?: string
-    sortBy?: SortOptions
-  }>
+  searchParams: Promise<
+    CanonicalSearchParams & {
+      page?: string
+      sortBy?: SortOptions
+    }
+  >
 }
 
 export const PRODUCT_LIMIT = 12
@@ -60,6 +63,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
+  const searchParams = await props.searchParams
   const collection = await getCollectionByHandle(params.handle)
 
   if (!collection) {
@@ -67,8 +71,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   const metadata = {
-    title: `${collection.title} | Medusa Store`,
+    title: `${collection.title} | Kovea Touch`,
     description: `${collection.title} collection`,
+    alternates: {
+      canonical: buildCanonicalUrl({
+        countryCode: params.countryCode,
+        segments: ["collections", params.handle],
+        searchParams,
+      }),
+    },
   } as Metadata
 
   return metadata

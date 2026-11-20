@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { buildCanonicalUrl, CanonicalSearchParams } from "@lib/util/canonical-url"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
@@ -14,10 +15,20 @@ import DermatologistCTA from
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
-export const metadata: Metadata = {
-  title: "Kovea Touch | Skincare E-Commerce",
-  description:
-    "Discover our exclusive collections designed for modern skincare routine.",
+export async function generateMetadata(props: {
+  params: Promise<{ countryCode: string }>
+  searchParams: Promise<CanonicalSearchParams>
+}): Promise<Metadata> {
+  const [{ countryCode }, searchParams] = await Promise.all([
+    props.params,
+    props.searchParams,
+  ])
+  return {
+    title: "Kovea Touch | Skincare E-Commerce",
+    description:
+      "Discover our exclusive collections designed for modern skincare routine.",
+    alternates: { canonical: buildCanonicalUrl({ countryCode, searchParams }) },
+  }
 }
 
 export default async function Home(props: {
